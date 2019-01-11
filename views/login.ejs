@@ -1,0 +1,42 @@
+<nav role="login">
+</nav>
+<div class="header">
+    <img src="./images/nemsa_logo1.png">
+    <div>
+        <h5>NIGERIAN ELECTRICITY MANAGEMENT SERVICES AGENCY</h5>
+    </div>
+</div>
+<div class="overlay-bg">
+</div>
+<div class="overlay"></div>
+<main role='login'>
+    <div class="overlay"></div>
+    <div id="sign-in-form">
+
+        <form action="/login" method="POST">
+            <legend>Sign in to your account</legend>
+            <p>
+                <label for="email"></label>
+                <input type="email" required placeholder="Enter email" name="email">
+            </p>
+            <p>
+                <label for="password"></label>
+                <input type="password" required placeholder="Enter password" name="password">
+            </p>
+            <p>
+                <label for="location">Select location</label>
+                <select>
+                    <option>Lagos</option>
+                    <option>Abuja</option>
+                    <option>Kaduna</option>
+                    <option>Imo</option>
+                </select>
+            </p>
+            <p>
+                <button type="submit">Log In</button>
+            </p>
+            <p class="instructions">Click <a href="/admin-login">here</a> for administrative purposes</p>
+        </form>
+
+    </div>
+</main>

@@ -1,0 +1,337 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cardo", serif;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+.overlay-bg {
+  position: absolute;
+  width: 100vw;
+  background: #7CC68D;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-image: url(../images/mc5.jpg); */
+  height: 100%;
+  z-index: -99;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 100%;
+  z-index: -96;
+}
+
+nav[role="login"] {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #7cc68d;
+  border-bottom: 1px solid #e5ecf0;
+  z-index: 4;
+  text-align: center;
+  display: inline-block;
+}
+
+header[role="banner"] {
+  position: fixed;
+  width: 100%;
+  height: 54px;
+  z-index: 999;
+  top: 0;
+  background-color: #7CC68D;
+}
+
+header[role="banner"] h2 {
+  position: absolute;
+  top: 12px;
+  left: 35px;
+  color: #fff;
+}
+
+
+header[role="banner"] ul {
+  display: flex;
+  float: right;
+  position: relative;
+}
+
+header[role="banner"] ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+header[role="banner"] ul li a img {
+  height: 40ox;
+  width: 40px;
+  top: 5px;
+  position: relative;
+  border-radius: 50%;
+}
+
+header[role="banner"] ul li .logout {
+  color: #fff;
+  top: 15px;
+  position: relative;
+  text-decoration: none;
+}
+
+header[role="banner"] ul li .logout::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  content: "\f2f5";
+  margin-right: 2px;
+}
+
+
+.header {
+  position: fixed;
+  top: 56px;
+  width: 100%;
+  z-index: 99;
+  padding-bottom: 15px;
+  border-bottom: 1px solid gray;
+}
+
+.header img {
+  max-width: 40vw;
+  top: 5px;
+  height: 90px;
+  display: inline-block;
+}
+
+.header div {
+  display: inline-block;
+  word-wrap: break-word;
+  width: 300px;
+  text-align: center;
+  margin-right: 10px;
+  hyphens: auto;
+}
+
+main[role="login"] {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+main #sign-in-form {
+  z-index: 3;
+  position: relative;
+  top: 25vh;
+  margin: 0 auto;
+  max-width: 400px;
+  border-radius: 4px;
+  height: 450px;
+  background: rgb(250, 250, 250);
+  padding: 20px 22px;
+  padding: 1.2em;
+  color: #fff;
+  -webkit-box-shadow: 0px 10px 13px -7px #000000,
+    10px 10px 20px 10px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 13px -7px #000000, 10px 10px 20px 10px rgba(0, 0, 0, 0);
+}
+
+#sign-in-form form {
+  color: #000;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
+}
+
+#sign-in-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#sign-in-form input {
+  width: 100%;
+  padding: 0.6em;
+  height: 52px;
+  border: 2px solid rgba(81, 203, 238, 1);
+  outline: none;
+  border-radius: 5px;
+  /* outline: #fff; */
+}
+
+#sign-in-form input:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 3px solid rgba(81, 203, 238, 1);
+}
+
+#sign-in-form button {
+  width: 100%;
+  padding: 1.2em;
+  background-color: #61b374;
+  border-radius: 5px;
+  border-style: none;
+  box-shadow: rgb(105, 228, 126) 0 1px 0 0;
+  color: #ffffff;
+  outline-style: none;
+  padding: 9px 30px;
+  cursor: pointer;
+  height: 52px;
+}
+
+#sign-in-form button:hover {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+#sign-in-form .instructions {
+  position: absolute;
+  bottom: 4px;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  color: #000;
+  -webkit-box-shadow: 0px 10px 13px -7px #000000,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.form-div {
+  width: 800px;
+  height: 1000px;
+  margin: 220px auto 0;
+  padding: 1.5rem;
+  -moz-box-shadow: 0 0 6px rgb(71, 71, 71);
+  -webkit-box-shadow: 0 0 6px rgb(105, 104, 104);
+  box-shadow: 0 0 6px rgb(65, 63, 63);
+}
+
+.form-div p {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.form-div input {
+  width: 40rem;
+  height: 2em;
+  outline: 0;
+  border: 0;
+  border-bottom: 2px solid #d3d3d3;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 
+select {
+  height: 2em;
+  width: 40rem;
+  font-size: 1rem;
+} */
+#submitBtn {
+  position: relative;
+  float: center;
+  margin-right: 40px;
+}
+
+button {
+  background-color: #1971C2;
+  border-radius: 5px;
+  border-style: none;
+  box-shadow: #38549d 0 1px 0 0;
+  color: #ffffff;
+  outline-style: none;
+  padding: 9px 30px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+main[role="dashboard"] {
+  position: absolute;
+  width: 100vw;
+  z-index: -2;
+  color: #333;
+}
+
+main[role="dashboard"] .welcome {
+  position: relative;
+  max-width: 1200px;
+  top: 200px;
+  margin: 0 auto;
+  padding: 1em;
+  color: #000;
+  line-height: 1.6;
+  background: #fff;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 10px 13px -7px #000000,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background: #D5E0CC;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+main[role="dashboard"] #reminder {
+  position: relative;
+  max-width: 1200px;
+  top: 200px;
+  margin: 0 auto;
+  padding: 1em;
+  line-height: 1.6;
+  font-size: 19px;
+}
+
+main[role="dashboard"] #reminder .record-form {
+  top: 500px;
+}
+
+main[role="dashboard"] #reminder .record-form form {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+  top: 0px;
+  border-collapse: collapse;
+}
+
+main[role="dashboard"] #reminder .record-form form label {
+  display: block;
+  color: #000;
+}
+
+main[role="dashboard"] #reminder .record-form form p input {
+  height: 30px;
+  width: 100%;
+}
+
+main[role="dashboard"] #reminder .record-form form p button {
+  height: 30px;
+  width: 100%;
+  margin-top: 30px;
+  background: green;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+}
