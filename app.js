@@ -6,10 +6,10 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// const db = require('./config/keys').MongoURI;
-// mongoose.connect(db, {useNewUrlParser: true})
-// .then(() => console.log('MongoDB connected...'))
-// .catch(err => console.log(err));
+const db = require('./config/keys').MongoURI;
+mongoose.connect(db, { useNewUrlParser: true})
+.then(() => console.log('MongoDB Connected...'))
+.catch(err => console.log(err));
 
 app.use(express.static(__dirname + '/public'));
 app.use(expressLayouts);

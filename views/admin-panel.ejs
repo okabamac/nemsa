@@ -1,18 +1,163 @@
 <header role="banner">
-        <h2>Admin</h2>
-        <ul class='avatar-login'>
-            <li class="avatar">
-                <a href=""><img src="./images/avatar.png"></a>
-            </li>
-            <li><a href="/admin-login" class="logout">Logout</a></li>
-        </ul>
-    </header>
-    <div class="header">
-        <img src="./images/nemsa_logo.png">
-    </div>
-    
+    <h2>Admin</h2>
+    <ul class='avatar-login'>
+        <li class="avatar">
+            <a href=""><img src="./images/avatar.png"></a>
+        </li>
+        <li><a href="/admin-login" class="logout">Logout</a></li>
+    </ul>
+</header>
+<div class="header">
+    <img src="./images/nemsa_logo.png">
+</div>
+
 <main role="dashboard">
     <div class="container">
-        <h1>Hello</h1>
+        <h2>Manage Users</h2>
+        <div class="toggle-buttons"><button class="btn" id="routine-test">Add User</button> <button class="btn" id="type-test">Remove
+                User</button></div>
+        <div class="docker" id="docker-1">
+            <form>
+                <div>
+                    <label for="">First Name</label>
+                    <input type="text" required>
+                </div>
+
+                <div>
+                    <label for="">Last Name</label>
+                    <input type="text" required>
+                </div>
+
+                <div>
+                    <label for="">Staff ID</label>
+                    <input type="text" required>
+                </div>
+                <div>
+                    <label for="">Email</label>
+                    <input type="text" required>
+                </div>
+
+                <div>
+                    <label for="">Password</label>
+                    <input type="password" required>
+                </div>
+                <div>
+                    <label for="">Confirm Password</label>
+                    <input type="password" required>
+                </div>
+                <div>
+                    <label for="profile">Upload Image</label>
+                    <input type="file" name="profile" accept="image/jpeg, image/png" required/>
+                </div>
+
+                 <div class="radio-div">
+                    <label>Administrator</label>
+                    <label class="radio-button">
+                        <input type="radio" name="radio" checked="checked">
+                        <span class="label-visible">
+                            <span class="fake-radiobutton"></span>
+                            Yes
+                        </span>
+                    </label>
+
+                    <label class="radio-button">
+                        <input type="radio" name="radio">
+                        <span class="label-visible">
+                            <span class="fake-radiobutton"></span>
+                            No
+                        </span>
+                    </label>
+
+                </div>
+
+                <div>
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="docker" id="docker-2">
+            <form>
+                <div class="radio-div">
+                    <label>Vendor Type</label>
+                    <label class="radio-button">
+                        <input type="radio" name="radio" checked="checked">
+                        <span class="label-visible">
+                            <span class="fake-radiobutton"></span>
+                            Local
+                        </span>
+                    </label>
+
+                    <label class="radio-button">
+                        <input type="radio" name="radio">
+                        <span class="label-visible">
+                            <span class="fake-radiobutton"></span>
+                            Foreign
+                        </span>
+                    </label>
+
+                </div>
+
+                <div>
+                    <label for="">Year of Manufacture</label>
+                    <input type="date">
+                </div>
+
+                <div>
+                    <label for="">Meter Model</label>
+                    <select>
+                        <option></option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="">Meter Type</label>
+                    <select>
+                        <option></option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label for="">Meter Class</label>
+                    <select>
+                        <option></option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Meter Number</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label for="">CRIMP Seal number</label>
+                    <p> Seal <span><input type="text"> </span> </p>
+                </div>
+
+                <div>
+                    <label for="">Date of Routine Test</label>
+                    <input type="date">
+                </div>
+                <div>
+                    <label for="">Expiry Date</label>
+                    <input type="date">
+                </div>
+
+
+                <div>
+                    <label for="">Tariff Charge</label>
+                    <input type="text">
+                </div>
+
+                <div class="full">
+                    <label for="remarks">Observation/Remarks</label>
+                    <textarea></textarea>
+                </div>
+
+                <div id="last-submit-button">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
 </main>
