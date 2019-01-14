@@ -10,53 +10,154 @@
 <div class="header" id="header">
     <img src="./images/nemsa_logo.png">
 </div>
-<div class="container">
-    <div class="form-div">
-        <form action="">
-            <p>Types of certifications</p>
-            <select>
-                <option>Type Test certification</option>
-                <option>Routiine Test certification</option>
-                <option>Recertification</option>
-                 <option>Acceptance Test</option>
-            </select>
-            <p>Meter types</p>
-            <select>
-                </option>3PH 4W CT Operated Static Energy Meter</option>
-                <option>3 Phase 4Wire 10(100) Amps (Whole Current) Electronic Credit Meter</option>
-                <option>3 Phase 4wire 5(60) Amps Credit Static Meter</option>
-                <option>Keypad Single & 3 Phase Electricity Dispense</option>
-                <option>Single Phase (2Wire) 5(60) Amp Credit Static Meter</option>
-                <option>Split typpe Prepayment Single & # Phase Dispenser</option>
-                <option>Automatic Meter Reading System (AMR)</option>
-                <option>Single Phase (Dual Prepayment and credittype)</option>
-            </select>
-            <p>Zonal Office Location</p>
-            <select>
-                <option>Ibadan</option>
-                <option>Lagos</option>
-                <option>Kaduna</option>
-                <option>Abuja</option>
-            </select>
-            <p>ID of officer certifying batch</p>
-            <input type="number" placeholder="Enter id here">
-            <p>Batch ID</p>
-            <input type="number" placeholder="Enter batch ID here">
-            <p>Meter manufacturer's name</p>
-            <input type="text" placeholder="Enter name here">
-            <p>Country of manufacturer</p>
-            <select>
+<main role="dashboard">
+    <div class="container">
+        <h2>Meter Verification/Testing</h2>
+        <div class="toggle-buttons"><button>Routine Test</button> <button>Type Test</button></div>
+        <div class="docker">
+            <form>
+                <div>
+                    <label for="">Vendor Type</label>
+                    <input type="checkbox">
+                    <input type="checkbox">
+                </div>
 
-            </select>
-            <p>Assign serial number</p>
-            <input type="number" id="serialInput">
-            <button type="button" id="generateButton">Generate</button>
-            <p>Supplier's name</p>
-            <input type="text" placeholder="Enter name here">
-            <p id="submitBtn"></p>
-                <button type="submit">Submit</button>
-            </p>
-        </form>
+                <div>
+                    <label for="">Year of Manufacture</label>
+                    <input type="date" >
+                </div>
+
+                <div>
+                    <label for="">Meter Model</label>
+                    <select>
+                        <option></option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="">Meter Type</label>
+                    <select>
+                        <option></option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label for="">Meter Class</label>
+                    <select>
+                        <option></option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Meter Number</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label for="">CRIMP Seal number</label>
+                    <p> Seal 1 <span><input type="text"> </span> </p>
+                    <p> Seal 2 <span><input type="text"> </span> </p>
+                </div>
+
+                <div>
+                    <label for="">Date of Routine Test</label>
+                    <input type="date">
+                </div>
+                <div>
+                    <label for="">Expiry Date</label>
+                    <input type="date">
+                </div>
+
+
+                <div>
+                    <label for="">Tariff Charge</label>
+                    <input type="text">
+                </div>
+
+                <div class="full">
+                    <label for="remarks">Observation/Remarks</label>
+                    <textarea name="remarks" cols="30" rows="5"></textarea>
+                </div>
+
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="docker" >
+            <form>
+                <div>
+                    <label for="">Vendor Name</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label for="">Country of Manufacture</label>
+                    <select>
+                        <option>
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Type Design</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label for="">Meter Make</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label for="">Meter Rating</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label for="">Test Certification Number</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label for="">Date Certified</label>
+                    <input type="date">
+                </div>
+
+                <div>
+                    <label for="">Expiry Date</label>
+                    <input type="date">
+                </div>
+
+                <div>
+                    <label for="">Vendor Email Address</label>
+                    <input type="email">
+                </div>
+
+                <div>
+                    <label for="">Vendor Phone Number</label>
+                    <input type="text">
+                </div>
+                <div class="full">
+                    <label for="">Observation</label>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="">Remark</label>
+                    <input type="checkbox">
+                    <input type="checkbox">
+                </div>
+
+                <div>
+                    <label for="">Name of officer that certified the meter</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label for="">Officer's Email Address</label>
+                    <input type="email">
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+</main>
 <script type="text/javascript" src="/main/main.js"></script>

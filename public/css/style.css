@@ -14,11 +14,6 @@ body {
   position: absolute;
   width: 100vw;
   background: #7CC68D;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* background-image: url(../images/mc5.jpg); */
   height: 100%;
   z-index: -99;
 }
@@ -26,7 +21,7 @@ body {
 .overlay {
   position: absolute;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(68, 65, 65, 0.3);
   height: 100%;
   z-index: -96;
 }
@@ -80,7 +75,7 @@ header[role="banner"] ul li a img {
 }
 
 header[role="banner"] ul li .logout {
-  color: #fff;
+  color: darkgreen;
   top: 15px;
   position: relative;
   text-decoration: none;
@@ -90,7 +85,7 @@ header[role="banner"] ul li .logout::after {
   font-family: "Font Awesome 5 Free";
   font-weight: 600;
   content: "\f2f5";
-  margin-right: 2px;
+  margin-left: 2px;
 }
 
 
@@ -113,9 +108,12 @@ header[role="banner"] ul li .logout::after {
 .header div {
   display: inline-block;
   word-wrap: break-word;
-  width: 300px;
+  top: 29px;
+  max-width: 340px;
+  position: absolute;
   text-align: center;
-  margin-right: 10px;
+  margin-left: 1px;
+  font-size: 20px;
   hyphens: auto;
 }
 
@@ -132,14 +130,29 @@ main #sign-in-form {
   margin: 0 auto;
   max-width: 400px;
   border-radius: 4px;
-  height: 450px;
+  height: 400px;
   background: rgb(250, 250, 250);
   padding: 20px 22px;
   padding: 1.2em;
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: 3s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
   color: #fff;
   -webkit-box-shadow: 0px 10px 13px -7px #000000,
     10px 10px 20px 10px rgba(0, 0, 0, 0);
   box-shadow: 0px 10px 13px -7px #000000, 10px 10px 20px 10px rgba(0, 0, 0, 0);
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1
+  }
 }
 
 #sign-in-form form {
@@ -151,6 +164,8 @@ main #sign-in-form {
 
 #sign-in-form label {
   display: block;
+  left: 40px;
+  position: relative;
   margin-bottom: 10px;
 }
 
@@ -158,22 +173,50 @@ main #sign-in-form {
   width: 100%;
   padding: 0.6em;
   height: 52px;
-  border: 2px solid rgba(81, 203, 238, 1);
+  border: none;
+  transition: .3s;
+  padding-left: 40px;
+  border-bottom: 2px solid #ccc;
   outline: none;
   border-radius: 5px;
-  /* outline: #fff; */
+}
+
+#sign-in-form div {
+  position: relative;
+}
+
+#sign-in-form div i {
+  position: absolute;
+  left: 0;
+  top: 19px;
+  padding: 9px 8px;
+  color: #61b374;
+  transition: .3s;
+}
+
+legend {
+  text-decoration: underline;
+  font-size: 20px;
+  color: rgb(31, 160, 61)
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  border: none;
 }
 
 #sign-in-form input:focus {
-  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-  border: 3px solid rgba(81, 203, 238, 1);
+  border-bottom: 3px solid rgba(81, 203, 238, 1) !important;
 }
 
 #sign-in-form button {
   width: 100%;
   padding: 1.2em;
   background-color: #61b374;
-  border-radius: 5px;
+  border-radius: 10px;
   border-style: none;
   box-shadow: rgb(105, 228, 126) 0 1px 0 0;
   color: #ffffff;
@@ -193,145 +236,59 @@ main #sign-in-form {
   bottom: 4px;
 }
 
-.container {
+
+main[role="dashboard"] {
+  position: absolute;
   display: flex;
-  height: 100%;
   justify-content: center;
-  flex-direction: column;
-  color: #000;
-  -webkit-box-shadow: 0px 10px 13px -7px #000000,
-    5px 5px 15px 5px rgba(0, 0, 0, 0);
-  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  width: 100vw;
+  height: 100vh;
 }
 
-.form-div {
-  width: 800px;
-  height: 1000px;
-  margin: 220px auto 0;
-  padding: 1.5rem;
-  -moz-box-shadow: 0 0 6px rgb(71, 71, 71);
-  -webkit-box-shadow: 0 0 6px rgb(105, 104, 104);
-  box-shadow: 0 0 6px rgb(65, 63, 63);
-}
-
-.form-div p {
-  margin-top: 30px;
-  font-size: 20px;
-  font-weight: 400;
-}
-
-.form-div input {
-  width: 40rem;
-  height: 2em;
-  outline: 0;
-  border: 0;
-  border-bottom: 2px solid #d3d3d3;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* 
-select {
-  height: 2em;
-  width: 40rem;
-  font-size: 1rem;
-} */
-#submitBtn {
+main[role="dashboard"] .container {
+  background-color: #333;
+  width: 1200px;
+  height: 70%;
+  top: 170px;
+  padding: 0 2em;
+  line-height: 1.6;
+  color: white;
   position: relative;
-  float: center;
-  margin-right: 40px;
 }
 
-button {
-  background-color: #1971C2;
-  border-radius: 5px;
+.toggle-buttons button {
+  width: 150px;
+  margin-top: 10px;
+  padding: 1.2em;
+  background-color: #61b374;
+  border-radius: 10px;
   border-style: none;
-  box-shadow: #38549d 0 1px 0 0;
+  box-shadow: rgb(105, 228, 126) 0 1px 0 0;
   color: #ffffff;
   outline-style: none;
   padding: 9px 30px;
   cursor: pointer;
-  margin: 5px;
+  height: 30px;
 }
-
-main[role="dashboard"] {
-  position: absolute;
-  width: 100vw;
-  z-index: -2;
-  color: #333;
-}
-
-main[role="dashboard"] .welcome {
-  position: relative;
-  max-width: 1200px;
-  top: 200px;
-  margin: 0 auto;
-  padding: 1em;
-  color: #000;
-  line-height: 1.6;
-  background: #fff;
-  border-radius: 5px;
-  -webkit-box-shadow: 0px 10px 13px -7px #000000,
-    5px 5px 15px 5px rgba(0, 0, 0, 0);
-  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th {
-  background: #D5E0CC;
-}
-
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-main[role="dashboard"] #reminder {
-  position: relative;
-  max-width: 1200px;
-  top: 200px;
-  margin: 0 auto;
-  padding: 1em;
-  line-height: 1.6;
-  font-size: 19px;
-}
-
-main[role="dashboard"] #reminder .record-form {
-  top: 500px;
-}
-
-main[role="dashboard"] #reminder .record-form form {
+.container .docker form {
+  margin-top: 40px;
   display: grid;
-  position: relative;
-  grid-template-columns: repeat(4, 1fr);
   grid-gap: 15px;
-  top: 0px;
-  border-collapse: collapse;
+  grid-template-columns: repeat(4, 1fr);
 }
 
-main[role="dashboard"] #reminder .record-form form label {
+.container .docker form label {
   display: block;
-  color: #000;
+}
+.container .docker form input, .container .docker form select {
+  width: 80%;
+  height: 30px;
+  margin-top: 5px;
 }
 
-main[role="dashboard"] #reminder .record-form form p input {
-  height: 30px;
-  width: 100%;
+.container .docker form .full {
+  grid-column: 1/2;
 }
-
-main[role="dashboard"] #reminder .record-form form p button {
-  height: 30px;
-  width: 100%;
-  margin-top: 30px;
-  background: green;
-  text-transform: uppercase;
-  cursor: pointer;
-  color: #fff;
-  border: none;
-  font-weight: 600;
+.container .docker form input[type="checkbox"] {
+  display: inline-block;
 }
