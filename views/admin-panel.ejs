@@ -17,145 +17,85 @@
         <div class="toggle-buttons"><button class="btn" id="routine-test">Add User</button> <button class="btn" id="type-test">Remove
                 User</button></div>
         <div class="docker" id="docker-1">
-            <form>
+            <form action="/addUser" method="POST" encrypt="multipart/form-data" id="add_user">
                 <div>
-                    <label for="">First Name</label>
-                    <input type="text" required>
+                    <label for="first_name">First Name</label>
+                    <input type="text" name="first_name" required>
                 </div>
 
                 <div>
-                    <label for="">Last Name</label>
-                    <input type="text" required>
+                    <label for="last_name">Last Name</label>
+                    <input type="text" name="last_name" required>
                 </div>
 
                 <div>
-                    <label for="">Staff ID</label>
-                    <input type="text" required>
+                    <label for="staff_id">Staff ID</label>
+                    <input type="text" name="staff_id" required>
                 </div>
                 <div>
-                    <label for="">Email</label>
-                    <input type="text" required>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" required>
                 </div>
 
                 <div>
-                    <label for="">Password</label>
-                    <input type="password" required>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" required>
                 </div>
                 <div>
-                    <label for="">Confirm Password</label>
-                    <input type="password" required>
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" name="confirm_password" required>
                 </div>
                 <div>
-                    <label for="profile">Upload Image</label>
-                    <input type="file" name="profile" accept="image/jpeg, image/png" required/>
+                    <label for="avatar">Upload Image</label>
+                    <input type="file" name="avatar" accept="image/jpeg, image/png" required />
                 </div>
 
-                 <div class="radio-div">
+                <div class="radio-div">
                     <label>Administrator</label>
                     <label class="radio-button">
-                        <input type="radio" name="radio" checked="checked">
-                        <span class="label-visible">
-                            <span class="fake-radiobutton"></span>
-                            Yes
-                        </span>
-                    </label>
-
-                    <label class="radio-button">
-                        <input type="radio" name="radio">
+                        <input type="radio" name="admin" value="no" checked="checked">
                         <span class="label-visible">
                             <span class="fake-radiobutton"></span>
                             No
                         </span>
                     </label>
 
-                </div>
+                    <label class="radio-button">
+                        <input type="radio" name="admin" value="yes">
+                        <span class="label-visible">
+                            <span class="fake-radiobutton"></span>
+                            Yes
+                        </span>
+                    </label>
 
+                </div>
                 <div>
                     <button type="submit" class="btn">Submit</button>
                 </div>
             </form>
+            <div class="messages" id="messages">
+                
+            </div>
         </div>
 
         <div class="docker" id="docker-2">
             <form>
-                <div class="radio-div">
-                    <label>Vendor Type</label>
-                    <label class="radio-button">
-                        <input type="radio" name="radio" checked="checked">
-                        <span class="label-visible">
-                            <span class="fake-radiobutton"></span>
-                            Local
-                        </span>
-                    </label>
-
-                    <label class="radio-button">
-                        <input type="radio" name="radio">
-                        <span class="label-visible">
-                            <span class="fake-radiobutton"></span>
-                            Foreign
-                        </span>
-                    </label>
-
-                </div>
-
                 <div>
-                    <label for="">Year of Manufacture</label>
-                    <input type="date">
-                </div>
-
-                <div>
-                    <label for="">Meter Model</label>
-                    <select>
-                        <option></option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="">Meter Type</label>
-                    <select>
-                        <option></option>
-                    </select>
-                </div>
-
-
-                <div>
-                    <label for="">Meter Class</label>
-                    <select>
-                        <option></option>
-                    </select>
-                </div>
-                <div>
-                    <label for="">Meter Number</label>
+                    <label for="">First Name</label>
                     <input type="text">
                 </div>
 
                 <div>
-                    <label for="">CRIMP Seal number</label>
-                    <p> Seal <span><input type="text"> </span> </p>
-                </div>
-
-                <div>
-                    <label for="">Date of Routine Test</label>
-                    <input type="date">
+                    <label for="">Last Name</label>
+                    <input type="text">
                 </div>
                 <div>
-                    <label for="">Expiry Date</label>
-                    <input type="date">
-                </div>
-
-
-                <div>
-                    <label for="">Tariff Charge</label>
+                    <label for="">Staff ID</label>
                     <input type="text">
                 </div>
 
-                <div class="full">
-                    <label for="remarks">Observation/Remarks</label>
-                    <textarea></textarea>
-                </div>
-
-                <div id="last-submit-button">
-                    <button type="submit" class="btn">Submit</button>
+                <div id="remove-button">
+                    <button type="submit" class="btn">Search</button>
                 </div>
             </form>
         </div>

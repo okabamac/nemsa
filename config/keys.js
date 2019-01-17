@@ -1,3 +1,6 @@
- module.exports = {
-     MongoURI: 'mongodb+srv://okabamac:okabamac@cluster0-4myac.mongodb.net/test?retryWrites=true'
- };
+
+ if (process.env.NODE_ENV === 'production') {
+     module.exports = require('./keys_prod');
+ } else {
+     module.exports = require ('./keys_dev');
+ }

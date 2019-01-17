@@ -1,10 +1,4 @@
-// function generateSerial  () {
-//     const serial = Math.floor(Math.random() * 900000000000) + 100000000000;
-//    document.getElementById('serialInput').value = serial;
-//    }
-   
-//    const generateButton = document.getElementById('generateButton');
-//    generateButton.addEventListener('click', generateSerial);
+
 const routineTest = document.getElementById('routine-test');
 const typeTest = document.getElementById('type-test');
 const docker1 = document.getElementById('docker-1');
@@ -37,3 +31,27 @@ function toggleForm2 () {
           header.style.backgroundColor = 'white';
        }
    };
+
+document.getElementById('add_user').addEventListener('submit', e => {
+        e.preventDefault();
+        let error = document.getElementById('messages');
+        const form = document.getElementById('add_user');
+        const formData = new URLSearchParams(new FormData(form));
+        fetch('/addUser', {
+                method: "POST",
+                body: formData,
+            }).then(r => r.json().then(data => ({
+                status: r.status,
+                body: data
+            })))
+            .then(obj => {
+                if (obj.status === 200) {
+                    error.innerHTML = obj.body[0].msg;
+                    form.reset();
+                } else {
+                    error.innerHTML = obj.body[0].msg;
+                }
+            })
+            .catch(err => (console.log(err)));
+    });
+
