@@ -19,11 +19,11 @@
                 Test</button> <button class="btn" id="re-certification">Recertification</button></div>
 
         <div class="docker" id="docker-1">
-            <form method="POST" action="#">
+            <form method="POST" action="#" id="add-routine">
                 <div class="radio-div">
                     <label>Vendor</label>
                     <label class="radio-button">
-                        <input type="radio" name="radio" checked="checked">
+                        <input type="radio" name="radio" value="local" checked="checked">
                         <span class="label-visible">
                             <span class="fake-radiobutton"></span>
                             Local
@@ -31,7 +31,7 @@
                     </label>
 
                     <label class="radio-button">
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" value="foreign">
                         <span class="label-visible">
                             <span class="fake-radiobutton"></span>
                             Foreign
@@ -41,18 +41,18 @@
 
 
                 <div>
-                    <label for="vendor-name">Vendor Name</label>
-                    <input type="text" name="vendor-name">
+                    <label for="vendorName">Vendor Name</label>
+                    <input type="text" name="vendorName">
                 </div>
 
                 <div>
-                    <label for="vendor-email">Vendor Email Address</label>
-                    <input type="email" name="vendor-email">
+                    <label for="vendorEmail">Vendor Email Address</label>
+                    <input type="email" name="vendorEmail">
                 </div>
 
                 <div>
-                    <label for="vendor-phone">Vendor Phone Number</label>
-                    <input type="text" name="vendor-phone">
+                    <label for="vendorPhone">Vendor Phone Number</label>
+                    <input type="text" name="vendorPhone">
                 </div>
 
                 <div>
@@ -61,28 +61,28 @@
                 </div>
 
                 <div>
-                    <label for="meter-model">Meter Model</label>
-                    <select name="meter-model">
+                    <label for="meterModel">Meter Model</label>
+                    <select name="meterModel">
                         <option></option>
                     </select>
                 </div>
 
                 <div>
-                    <label for="meter-type">Meter Type</label>
-                    <select name="meter-type">
+                    <label for="meterType">Meter Type</label>
+                    <select name="meterType">
                         <option></option>
                     </select>
                 </div>
 
 
                 <div>
-                    <label for="meter-class">Meter Class</label>
-                    <select name="meter-class">
+                    <label for="meterClass">Meter Class</label>
+                    <select name="meterClass">
                         <option></option>
                     </select>
                 </div>
                 <div>
-                    <label for="meter-number">Meter Number</label>
+                    <label for="meterNumber">Meter Number</label>
                     <input type="number">
                 </div>
 
@@ -116,18 +116,21 @@
                     <button type="submit" class="btn">Submit</button>
                 </div>
             </form>
+            <div class="messages" id="messages">
+
+            </div>
         </div>
 
         <div class="docker" id="docker-2">
-            <form>
+            <form method="POST" action="#" id="add-type">
                 <div>
-                    <label for="vendor-name">Vendor Name</label>
-                    <input type="text" name="vendor-name">
+                    <label for="vendorName">Vendor Name</label>
+                    <input type="text" name="vendorName">
                 </div>
 
                 <div>
-                    <label for="country-of-manufacture">Country of Manufacture</label>
-                    <select>
+                    <label for="country">Country of Manufacture</label>
+                    <select name="country">
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Åland Islands</option>
                         <option value="AL">Albania</option>
@@ -381,58 +384,58 @@
                 </div>
 
                 <div>
-                    <label for="type-design">Type Design</label>
-                    <select name="type-design">
+                    <label for="typeDesign">Type Design</label>
+                    <select name="typeDesign">
                         <option value=""></option>
                     </select>
                 </div>
                 <div>
-                    <label for="meter-make">Meter Make</label>
-                    <select name="meter-make">
-                        <option value=""></option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="meter-rating">Meter Rating</label>
-                    <select name="meter-rating">
+                    <label for="meterMake">Meter Make</label>
+                    <select name="meterMake">
                         <option value=""></option>
                     </select>
                 </div>
 
                 <div>
-                    <label for="tcn">Test Certification Number</label>
-                    <input type="number" name="tcn">
+                    <label for="meterRating">Meter Rating</label>
+                    <select name="meterRating">
+                        <option value=""></option>
+                    </select>
                 </div>
 
                 <div>
-                    <label for="date-certified">Date Certified</label>
-                    <input type="date" name="date-certified">
+                    <label for="testCertificationNumber">Test Certification Number</label>
+                    <input type="number" name="testCertificationNumber">
                 </div>
 
                 <div>
-                    <label for="expd">Expiry Date</label>
-                    <input type="date" name="expd">
+                    <label for="dateCertified">Date Certified</label>
+                    <input type="date" name="dateCertified">
                 </div>
 
                 <div>
-                    <label for="vendor-email">Vendor Email Address</label>
-                    <input type="email" name="vendor-email">
+                    <label for="expDate">Expiry Date</label>
+                    <input type="date" name="expDate">
                 </div>
 
                 <div>
-                    <label for="vendor-phone">Vendor Phone Number</label>
-                    <input type="text" name="vendor-phone">
+                    <label for="vendorEmail">Vendor Email Address</label>
+                    <input type="email" name="vendorEmail">
                 </div>
 
                 <div>
-                    <label for="staff_id">ID officer that certified the meter</label>
-                    <input type="text" name="staff_id">
+                    <label for="vendorPhone">Vendor Phone Number</label>
+                    <input type="text" name="vendorPhone">
                 </div>
 
                 <div>
-                    <label for="staff_email">Officer's Email Address</label>
-                    <input type="email" name="staff_email">
+                    <label for="staffID">ID officer that certified the meter</label>
+                    <input type="text" name="staffID">
+                </div>
+
+                <div>
+                    <label for="staffEmail">Officer's Email Address</label>
+                    <input type="email" name="staffEmail">
                 </div>
 
                 <div class="full">
@@ -443,7 +446,7 @@
                 <div class="radio-div">
                     <label>Remark</label>
                     <label class="radio-button">
-                        <input type="radio" name="radio" checked="checked">
+                        <input type="radio" name="radio" value="good" checked="checked">
                         <span class="label-visible">
                             <span class="fake-radiobutton"></span>
                             Good
@@ -451,7 +454,7 @@
                     </label>
 
                     <label class="radio-button">
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" value="bad">
                         <span class="label-visible">
                             <span class="fake-radiobutton"></span>
                             Bad
@@ -463,18 +466,21 @@
                     <button type="submit" class="btn">Submit</button>
                 </div>
             </form>
+            <div class="messages" id="messages">
+
+            </div>
         </div>
 
 
         <div class="docker" id="docker-3">
-            <form method="POST" action="#" id="re-certification">
+            <form method="POST" action="#" id="add-reCertification">
                 <div>
                     <label for="disco">DISCO</label>
                     <input type="text" name="disco">
                 </div>
                 <div>
                     <label for="state">State</label>
-                    <select>
+                    <select name="state">
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Åland Islands</option>
                         <option value="AL">Albania</option>
@@ -728,40 +734,40 @@
                 </div>
 
                 <div>
-                    <label for="business-unit-name">Business Unit Name</label>
-                    <input type="text" name="business-unit-name">
+                    <label for="businessUnitName">Business Unit Name</label>
+                    <input type="text" name="businessUnitName">
                 </div>
 
                 <div>
-                    <label for="customer-name">Customer Name</label>
-                    <input type="text" name="customer-name">
+                    <label for="customerName">Customer Name</label>
+                    <input type="text" name="customerName">
                 </div>
 
                 <div class="address">
-                    <label for="customer-address">Customer Address</label>
-                    <textarea name="customer-address"></textarea>
+                    <label for="customerAddress">Customer Address</label>
+                    <textarea name="customerAddress"></textarea>
                 </div>
 
                 <div>
-                    <label for="customer-phone">Customer Phone Number</label>
-                    <input type="text" name="customer-phone">
-                </div>
-
-
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" name="email">
+                    <label for="customerPhone">Customer Phone Number</label>
+                    <input type="text" name="customerPhone">
                 </div>
 
 
                 <div>
-                    <label for="year-of-manufature">Year of Manufacture</label>
-                    <input type="date" name="year-of-manufacture">
+                    <label for="customerEmail">Customer Email</label>
+                    <input type="email" name="customerEmail">
+                </div>
+
+
+                <div>
+                    <label for="yom">Year of Manufacture</label>
+                    <input type="date" name="yom">
                 </div>
 
                 <div>
-                    <label for="">Country of Manufacture</label>
-                    <select>
+                    <label for="country">Country of Manufacture</label>
+                    <select name="country">
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Åland Islands</option>
                         <option value="AL">Albania</option>
@@ -1015,67 +1021,67 @@
                 </div>
 
                 <div>
-                    <label for="tariff-class">Tariff Class Name</label>
-                    <input type="text" name="tariff-class">
+                    <label for="tariffClass">Tariff Class Name</label>
+                    <input type="text" name="tariffClass">
                 </div>
 
                 <div>
-                    <label for="meter-type">Meter Type</label>
-                    <select name="meter-type" id=""></select>
+                    <label for="meterType">Meter Type</label>
+                    <select name="meterType" id=""></select>
                 </div>
 
                 <div>
-                    <label for="meter-class">Meter Class</label>
-                    <select name="meter-class">
+                    <label for="meterClass">Meter Class</label>
+                    <select name="meterClass">
 
                     </select>
                 </div>
 
                 <div>
-                    <label for="meter-serial-number">Meter Serial Number</label>
-                    <input type="text" name="meter-serial-number">
+                    <label for="meterSerialNumber">Meter Serial Number</label>
+                    <input type="text" name="meterSerialNumber">
                 </div>
 
 
                 <div>
-                    <label for="meter-model">Meter Model</label>
-                    <select name="meter-model"></select>
+                    <label for="meterModel">Meter Model</label>
+                    <select name="meterModel"></select>
                 </div>
 
                 <div class="double-row">
                     <label for="crimp-seal-number">CRIMP Seal Number</label>
-                    <p><input type="number" name="seal-1"></p>
-                    <p><input type="number" name="seal-2"></p>
+                    <p><input type="number" name="seal1"></p>
+                    <p><input type="number" name="seal2"></p>
                 </div>
 
                 <div>
-                    <label for="dort">Date Meter was Routine Tested</label>
-                    <input type="date" name="dort">
+                    <label for="dateRoutineTest">Date Meter was Routine Tested</label>
+                    <input type="date" name="dateRoutineTest">
                 </div>
 
                 <div>
-                    <label for="rotexpd">Routine Tested Meter Expiry Date</label>
-                    <input type="date" name="rotexpd">
+                    <label for="routineTestExpDate">Routine Tested Meter Expiry Date</label>
+                    <input type="date" name="routineTestExpDate">
                 </div>
 
                 <div>
-                    <label for="dolr">Date of Last Recertification</label>
-                    <input type="date" name="dolr">
+                    <label for="dateLastRecertification">Date of Last Recertification</label>
+                    <input type="date" name="dateLastRecertification">
                 </div>
 
                 <div>
-                    <label for="expdar">Expiry Date After Recertification</label>
-                    <input type="date" name="expdar">
+                    <label for="expDateAfterRecertification">Expiry Date After Recertification</label>
+                    <input type="date" name="expDateAfterRecertification">
                 </div>
 
                 <div>
-                    <label for="tariff-charges-vat">Tariff Charges(VAT inclusive)</label>
-                    <input type="number">
+                    <label for="tariffCharges">Tariff Charges(VAT inclusive)</label>
+                    <input type="number" name="tariffCharges">
                 </div>
 
                 <div>
-                    <label for="test-measurement">Test Measurement Error</label>
-                    <input type="number" name="test-measurement">
+                    <label for="testMeasurement">Test Measurement Error</label>
+                    <input type="number" name="testMeasurement">
                 </div>
 
                 <div class="last-observation">
@@ -1087,8 +1093,12 @@
                     <button type="submit" class="btn">Submit</button>
                 </div>
             </form>
-        </div>
 
+            <div class="messages" id="messages">
+
+            </div>
+        </div>
+       
     </div>
 </main>
 <script type="text/javascript" src="/main/office-forms.js"></script>

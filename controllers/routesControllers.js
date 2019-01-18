@@ -1,17 +1,22 @@
 const User = require('../models/User');
+const RoutineTest = require('../models/RoutineTest');
+const TypeTest = require('../models/TypeTest');
+const ReCertification = require('../models/ReCertification');
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-      cb(null, '/uploads/');
+    destination: function (req, file, cb) {
+        cb(null, '/uploads/');
     },
     filename: function (req, file, cb) {
-      cb(null, file.originalname);
+        cb(null, file.originalname);
     }
 });
 
-const upload = multer({storage}).single('avatar');
+const upload = multer({
+    storage
+}).single('avatar');
 
 const PagesControls = {
     getHomePage: function (req, res) {
@@ -36,62 +41,82 @@ const PagesControls = {
 
     addUser: function (req, res) {
         upload(req, res, (err) => {
-            if(err){
+            if (err) {
                 res.send({
                     msg: err
                 });
             } else {
-                    const errors = [];
-        const {
-            first_name,
-            last_name,
-            email,
-            staff_id,
-            password,
-            confirm_password,
-            avatar,
-            admin
-        } = req.body;
-        console.log(req.file);
-        if (password !== confirm_password) {
-            errors.push({
-                msg: 'Passwords do not match'
-            });
-        }
-        if (password.length < 6) {
-            errors.push({
-                msg: 'Password is too weak'
-            });
-        }
-        if (errors.length > 0) {
-            res.status(400).send(errors);
-        } else {
-            const user = new User();
-            user.first_name = first_name;
-            user.last_name = last_name;
-            user.email = email;
-            user.password = password;
-            // user.avatar = avatar;
-            user.staff_id = staff_id;
-            user.admin = admin;
-            bcrypt.genSalt(10, (err, salt) => bcrypt.hash(user.password, salt, (err, hash) => {
-                if (err) throw err;
-                user.password = hash;
-                user.save()
-                    .then(() => {
-                        res.status(200).send([{
-                            msg: `Staff with ID ${staff_id} has been added successfully`
-                        }]);
-                    })
-                    .catch(err => res.status(401).send({
-                        msg: err
+                const errors = [];
+                const {
+                    first_name,
+                    last_name,
+                    email,
+                    staff_id,
+                    password,
+                    confirm_password,
+                    avatar,
+                    admin
+                } = req.body;
+                console.log(req.file);
+                if (password !== confirm_password) {
+                    errors.push({
+                        msg: 'Passwords do not match'
+                    });
+                }
+                if (password.length < 6) {
+                    errors.push({
+                        msg: 'Password is too weak'
+                    });
+                }
+                if (errors.length > 0) {
+                    res.status(400).send(errors);
+                } else {
+                    const user = new User();
+                    user.first_name = first_name;
+                    user.last_name = last_name;
+                    user.email = email;
+                    user.password = password;
+                    // user.avatar = avatar;
+                    user.staff_id = staff_id;
+                    user.admin = admin;
+                    bcrypt.genSalt(10, (err, salt) => bcrypt.hash(user.password, salt, (err, hash) => {
+                        if (err) throw err;
+                        user.password = hash;
+                        user.save()
+                            .then(() => {
+                                res.status(200).send([{
+                                    msg: `Staff with ID ${staff_id} has been added successfully`
+                                }]);
+                            })
+                            .catch(err => res.status(401).send({
+                                msg: err
+                            }));
                     }));
-            }));
-        }
+                }
             }
         });
-    
-  }
+
+    },
+
+    routineTest: function (req, res) {
+        console.log(req.body);
+        res.status(200).send({
+            msg: 'Routine test added'
+        });
+    },
+    typeTest: function (req, res) {
+        console.log(req.body);
+        res.status(200).send({
+            msg: 'Routine test added'
+        });
+
+    },
+    reCertification: function (req, res) {
+        console.log(req.body);
+        res.status(200).send({
+            msg: 'Routine test added'
+        });
+    }
 
 };
 module.exports = PagesControls;
