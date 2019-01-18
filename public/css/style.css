@@ -253,7 +253,7 @@ main[role="dashboard"] {
 
 main[role="dashboard"] .container {
   width: 1200px;
-  height: 70%;
+  height: 1000px;
   top: 170px;
   padding: 0 2em;
   line-height: 1.6;
@@ -269,6 +269,10 @@ main[role="dashboard"] .container {
   margin-top: 10px;
   height: 30px;
   background-color: dodgerblue;
+}
+
+.toggle-buttons #add {
+  background-color: green;
 }
 
 #routine-test {
@@ -291,7 +295,7 @@ input[type="file"] {
 
 .container .docker form label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-weight: 400;
 }
 
@@ -321,8 +325,9 @@ fieldset {
 }
 
 textarea {
-  width: 300px;
-  height: 120px;
+  width: 230px;
+  height: 100px;
+  border: 2px solid #ccc;
 }
 
 .container .docker form .checkbox-div fieldset .local {
@@ -346,9 +351,13 @@ textarea {
   margin-top: 30px;
 }
 
+.double-row {
+  grid-row: 2/3;
+}
+
 #last-submit-button button {
   position: absolute;
-  margin-top: 120px;
+  margin-top: 100px;
 }
 
 #docker-2 {

@@ -14,7 +14,7 @@
 <main role="dashboard">
     <div class="container">
         <h2>Manage Users</h2>
-        <div class="toggle-buttons"><button class="btn" id="routine-test">Add User</button> <button class="btn" id="type-test">Remove
+        <div class="toggle-buttons"><button class="btn" id="add">Add User</button> <button class="btn" id="remove">Remove
                 User</button></div>
         <div class="docker" id="docker-1">
             <form action="/addUser" method="POST" encrypt="multipart/form-data" id="add_user">
@@ -52,6 +52,7 @@
 
                 <div class="radio-div">
                     <label>Administrator</label>
+
                     <label class="radio-button">
                         <input type="radio" name="admin" value="no" checked="checked">
                         <span class="label-visible">
@@ -74,7 +75,7 @@
                 </div>
             </form>
             <div class="messages" id="messages">
-                
+
             </div>
         </div>
 
@@ -101,3 +102,4 @@
         </div>
     </div>
 </main>
+<script type="text/javascript" src="/main/admin-forms.js"></script>

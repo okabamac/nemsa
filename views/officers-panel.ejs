@@ -7,18 +7,21 @@
         <li><a href="/" class="logout">Logout</a></li>
     </ul>
 </header>
+
 <div class="header" id="header">
     <img src="./images/nemsa_logo.png">
 </div>
+
 <main role="dashboard">
     <div class="container">
         <h2>Meter Verification/Testing</h2>
         <div class="toggle-buttons"><button class="btn" id="routine-test">Routine Test</button> <button class="btn" id="type-test">Type
                 Test</button> <button class="btn" id="re-certification">Recertification</button></div>
+
         <div class="docker" id="docker-1">
-            <form>
+            <form method="POST" action="#">
                 <div class="radio-div">
-                    <label>Vendor Type</label>
+                    <label>Vendor</label>
                     <label class="radio-button">
                         <input type="radio" name="radio" checked="checked">
                         <span class="label-visible">
@@ -34,63 +37,79 @@
                             Foreign
                         </span>
                     </label>
+                </div>
 
+
+                <div>
+                    <label for="vendor-name">Vendor Name</label>
+                    <input type="text" name="vendor-name">
                 </div>
 
                 <div>
-                    <label for="">Year of Manufacture</label>
-                    <input type="date">
+                    <label for="vendor-email">Vendor Email Address</label>
+                    <input type="email" name="vendor-email">
                 </div>
 
                 <div>
-                    <label for="">Meter Model</label>
-                    <select>
+                    <label for="vendor-phone">Vendor Phone Number</label>
+                    <input type="text" name="vendor-phone">
+                </div>
+
+                <div>
+                    <label for="yom">Year of Manufacture</label>
+                    <input type="date" name="yom">
+                </div>
+
+                <div>
+                    <label for="meter-model">Meter Model</label>
+                    <select name="meter-model">
                         <option></option>
                     </select>
                 </div>
 
                 <div>
-                    <label for="">Meter Type</label>
-                    <select>
+                    <label for="meter-type">Meter Type</label>
+                    <select name="meter-type">
                         <option></option>
                     </select>
                 </div>
 
 
                 <div>
-                    <label for="">Meter Class</label>
-                    <select>
+                    <label for="meter-class">Meter Class</label>
+                    <select name="meter-class">
                         <option></option>
                     </select>
                 </div>
                 <div>
-                    <label for="">Meter Number</label>
-                    <input type="text">
+                    <label for="meter-number">Meter Number</label>
+                    <input type="number">
                 </div>
 
-                <div>
+                <div class="double-row">
                     <label for="">CRIMP Seal number</label>
-                    <p> Seal <span><input type="text"> </span> </p>
+                    <p> Seal 1 <span><input type="number" name="seal-1"> </span> </p>
+                    <p> Seal 2 <span><input type="number" name="seal-2"> </span> </p>
                 </div>
 
                 <div>
-                    <label for="">Date of Routine Test</label>
-                    <input type="date">
+                    <label for="dort">Date of Routine Test</label>
+                    <input type="date" name="dort">
                 </div>
                 <div>
-                    <label for="">Expiry Date</label>
-                    <input type="date">
+                    <label for="expd">Expiry Date</label>
+                    <input type="date" name="expd">
                 </div>
 
 
                 <div>
-                    <label for="">Tariff Charge</label>
-                    <input type="text">
+                    <label for="tariff-charges">Tariff Charge</label>
+                    <input type="number" name="tariff-charges">
                 </div>
 
                 <div class="full">
-                    <label for="remarks">Observation/Remarks</label>
-                    <textarea></textarea>
+                    <label for="observation">Observation/Remarks</label>
+                    <textarea name="observation"></textarea>
                 </div>
 
                 <div id="last-submit-button">
@@ -102,12 +121,12 @@
         <div class="docker" id="docker-2">
             <form>
                 <div>
-                    <label for="">Vendor Name</label>
-                    <input type="text">
+                    <label for="vendor-name">Vendor Name</label>
+                    <input type="text" name="vendor-name">
                 </div>
 
                 <div>
-                    <label for="">Country of Manufacture</label>
+                    <label for="country-of-manufacture">Country of Manufacture</label>
                     <select>
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Åland Islands</option>
@@ -360,58 +379,65 @@
                         <option value="ZW">Zimbabwe</option>
                     </select>
                 </div>
+
                 <div>
-                    <label for="">Type Design</label>
-                    <input type="text">
+                    <label for="type-design">Type Design</label>
+                    <select name="type-design">
+                        <option value=""></option>
+                    </select>
                 </div>
                 <div>
-                    <label for="">Meter Make</label>
-                    <input type="text">
+                    <label for="meter-make">Meter Make</label>
+                    <select name="meter-make">
+                        <option value=""></option>
+                    </select>
                 </div>
 
                 <div>
-                    <label for="">Meter Rating</label>
-                    <input type="text">
+                    <label for="meter-rating">Meter Rating</label>
+                    <select name="meter-rating">
+                        <option value=""></option>
+                    </select>
                 </div>
 
                 <div>
-                    <label for="">Test Certification Number</label>
-                    <input type="text">
+                    <label for="tcn">Test Certification Number</label>
+                    <input type="number" name="tcn">
                 </div>
 
                 <div>
-                    <label for="">Date Certified</label>
-                    <input type="date">
+                    <label for="date-certified">Date Certified</label>
+                    <input type="date" name="date-certified">
                 </div>
 
                 <div>
-                    <label for="">Expiry Date</label>
-                    <input type="date">
+                    <label for="expd">Expiry Date</label>
+                    <input type="date" name="expd">
                 </div>
 
                 <div>
-                    <label for="">Vendor Email Address</label>
-                    <input type="email">
+                    <label for="vendor-email">Vendor Email Address</label>
+                    <input type="email" name="vendor-email">
                 </div>
 
                 <div>
-                    <label for="">Vendor Phone Number</label>
-                    <input type="text">
+                    <label for="vendor-phone">Vendor Phone Number</label>
+                    <input type="text" name="vendor-phone">
                 </div>
 
                 <div>
-                    <label for="">Name of officer that certified the meter</label>
-                    <input type="text">
+                    <label for="staff_id">ID officer that certified the meter</label>
+                    <input type="text" name="staff_id">
                 </div>
 
                 <div>
-                    <label for="">Officer's Email Address</label>
-                    <input type="email">
+                    <label for="staff_email">Officer's Email Address</label>
+                    <input type="email" name="staff_email">
                 </div>
 
                 <div class="full">
-                    <label for="">Observation</label>
-                    <textarea></textarea>
+                    <label for="observation">Observation</label>
+                    <textarea name="observation"></textarea>
                 </div>
 
                 <div class="radio-div">
@@ -441,10 +467,296 @@
 
 
         <div class="docker" id="docker-3">
-            <form>
+            <form method="POST" action="#" id="re-certification">
                 <div>
-                    <label for="">Vendor Name</label>
-                    <input type="text">
+                    <label for="disco">DISCO</label>
+                    <input type="text" name="disco">
+                </div>
+                <div>
+                    <label for="state">State</label>
+                    <select>
+                        <option value="AF">Afghanistan</option>
+                        <option value="AX">Åland Islands</option>
+                        <option value="AL">Albania</option>
+                        <option value="DZ">Algeria</option>
+                        <option value="AS">American Samoa</option>
+                        <option value="AD">Andorra</option>
+                        <option value="AO">Angola</option>
+                        <option value="AI">Anguilla</option>
+                        <option value="AQ">Antarctica</option>
+                        <option value="AG">Antigua and Barbuda</option>
+                        <option value="AR">Argentina</option>
+                        <option value="AM">Armenia</option>
+                        <option value="AW">Aruba</option>
+                        <option value="AU">Australia</option>
+                        <option value="AT">Austria</option>
+                        <option value="AZ">Azerbaijan</option>
+                        <option value="BS">Bahamas</option>
+                        <option value="BH">Bahrain</option>
+                        <option value="BD">Bangladesh</option>
+                        <option value="BB">Barbados</option>
+                        <option value="BY">Belarus</option>
+                        <option value="BE">Belgium</option>
+                        <option value="BZ">Belize</option>
+                        <option value="BJ">Benin</option>
+                        <option value="BM">Bermuda</option>
+                        <option value="BT">Bhutan</option>
+                        <option value="BO">Bolivia, Plurinational State of</option>
+                        <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+                        <option value="BA">Bosnia and Herzegovina</option>
+                        <option value="BW">Botswana</option>
+                        <option value="BV">Bouvet Island</option>
+                        <option value="BR">Brazil</option>
+                        <option value="IO">British Indian Ocean Territory</option>
+                        <option value="BN">Brunei Darussalam</option>
+                        <option value="BG">Bulgaria</option>
+                        <option value="BF">Burkina Faso</option>
+                        <option value="BI">Burundi</option>
+                        <option value="KH">Cambodia</option>
+                        <option value="CM">Cameroon</option>
+                        <option value="CA">Canada</option>
+                        <option value="CV">Cape Verde</option>
+                        <option value="KY">Cayman Islands</option>
+                        <option value="CF">Central African Republic</option>
+                        <option value="TD">Chad</option>
+                        <option value="CL">Chile</option>
+                        <option value="CN">China</option>
+                        <option value="CX">Christmas Island</option>
+                        <option value="CC">Cocos (Keeling) Islands</option>
+                        <option value="CO">Colombia</option>
+                        <option value="KM">Comoros</option>
+                        <option value="CG">Congo</option>
+                        <option value="CD">Congo, the Democratic Republic of the</option>
+                        <option value="CK">Cook Islands</option>
+                        <option value="CR">Costa Rica</option>
+                        <option value="CI">Côte d'Ivoire</option>
+                        <option value="HR">Croatia</option>
+                        <option value="CU">Cuba</option>
+                        <option value="CW">Curaçao</option>
+                        <option value="CY">Cyprus</option>
+                        <option value="CZ">Czech Republic</option>
+                        <option value="DK">Denmark</option>
+                        <option value="DJ">Djibouti</option>
+                        <option value="DM">Dominica</option>
+                        <option value="DO">Dominican Republic</option>
+                        <option value="EC">Ecuador</option>
+                        <option value="EG">Egypt</option>
+                        <option value="SV">El Salvador</option>
+                        <option value="GQ">Equatorial Guinea</option>
+                        <option value="ER">Eritrea</option>
+                        <option value="EE">Estonia</option>
+                        <option value="ET">Ethiopia</option>
+                        <option value="FK">Falkland Islands (Malvinas)</option>
+                        <option value="FO">Faroe Islands</option>
+                        <option value="FJ">Fiji</option>
+                        <option value="FI">Finland</option>
+                        <option value="FR">France</option>
+                        <option value="GF">French Guiana</option>
+                        <option value="PF">French Polynesia</option>
+                        <option value="TF">French Southern Territories</option>
+                        <option value="GA">Gabon</option>
+                        <option value="GM">Gambia</option>
+                        <option value="GE">Georgia</option>
+                        <option value="DE">Germany</option>
+                        <option value="GH">Ghana</option>
+                        <option value="GI">Gibraltar</option>
+                        <option value="GR">Greece</option>
+                        <option value="GL">Greenland</option>
+                        <option value="GD">Grenada</option>
+                        <option value="GP">Guadeloupe</option>
+                        <option value="GU">Guam</option>
+                        <option value="GT">Guatemala</option>
+                        <option value="GG">Guernsey</option>
+                        <option value="GN">Guinea</option>
+                        <option value="GW">Guinea-Bissau</option>
+                        <option value="GY">Guyana</option>
+                        <option value="HT">Haiti</option>
+                        <option value="HM">Heard Island and McDonald Islands</option>
+                        <option value="VA">Holy See (Vatican City State)</option>
+                        <option value="HN">Honduras</option>
+                        <option value="HK">Hong Kong</option>
+                        <option value="HU">Hungary</option>
+                        <option value="IS">Iceland</option>
+                        <option value="IN">India</option>
+                        <option value="ID">Indonesia</option>
+                        <option value="IR">Iran, Islamic Republic of</option>
+                        <option value="IQ">Iraq</option>
+                        <option value="IE">Ireland</option>
+                        <option value="IM">Isle of Man</option>
+                        <option value="IL">Israel</option>
+                        <option value="IT">Italy</option>
+                        <option value="JM">Jamaica</option>
+                        <option value="JP">Japan</option>
+                        <option value="JE">Jersey</option>
+                        <option value="JO">Jordan</option>
+                        <option value="KZ">Kazakhstan</option>
+                        <option value="KE">Kenya</option>
+                        <option value="KI">Kiribati</option>
+                        <option value="KP">Korea, Democratic People's Republic of</option>
+                        <option value="KR">Korea, Republic of</option>
+                        <option value="KW">Kuwait</option>
+                        <option value="KG">Kyrgyzstan</option>
+                        <option value="LA">Lao People's Democratic Republic</option>
+                        <option value="LV">Latvia</option>
+                        <option value="LB">Lebanon</option>
+                        <option value="LS">Lesotho</option>
+                        <option value="LR">Liberia</option>
+                        <option value="LY">Libya</option>
+                        <option value="LI">Liechtenstein</option>
+                        <option value="LT">Lithuania</option>
+                        <option value="LU">Luxembourg</option>
+                        <option value="MO">Macao</option>
+                        <option value="MK">Macedonia, the former Yugoslav Republic of</option>
+                        <option value="MG">Madagascar</option>
+                        <option value="MW">Malawi</option>
+                        <option value="MY">Malaysia</option>
+                        <option value="MV">Maldives</option>
+                        <option value="ML">Mali</option>
+                        <option value="MT">Malta</option>
+                        <option value="MH">Marshall Islands</option>
+                        <option value="MQ">Martinique</option>
+                        <option value="MR">Mauritania</option>
+                        <option value="MU">Mauritius</option>
+                        <option value="YT">Mayotte</option>
+                        <option value="MX">Mexico</option>
+                        <option value="FM">Micronesia, Federated States of</option>
+                        <option value="MD">Moldova, Republic of</option>
+                        <option value="MC">Monaco</option>
+                        <option value="MN">Mongolia</option>
+                        <option value="ME">Montenegro</option>
+                        <option value="MS">Montserrat</option>
+                        <option value="MA">Morocco</option>
+                        <option value="MZ">Mozambique</option>
+                        <option value="MM">Myanmar</option>
+                        <option value="NA">Namibia</option>
+                        <option value="NR">Nauru</option>
+                        <option value="NP">Nepal</option>
+                        <option value="NL">Netherlands</option>
+                        <option value="NC">New Caledonia</option>
+                        <option value="NZ">New Zealand</option>
+                        <option value="NI">Nicaragua</option>
+                        <option value="NE">Niger</option>
+                        <option value="NG">Nigeria</option>
+                        <option value="NU">Niue</option>
+                        <option value="NF">Norfolk Island</option>
+                        <option value="MP">Northern Mariana Islands</option>
+                        <option value="NO">Norway</option>
+                        <option value="OM">Oman</option>
+                        <option value="PK">Pakistan</option>
+                        <option value="PW">Palau</option>
+                        <option value="PS">Palestinian Territory, Occupied</option>
+                        <option value="PA">Panama</option>
+                        <option value="PG">Papua New Guinea</option>
+                        <option value="PY">Paraguay</option>
+                        <option value="PE">Peru</option>
+                        <option value="PH">Philippines</option>
+                        <option value="PN">Pitcairn</option>
+                        <option value="PL">Poland</option>
+                        <option value="PT">Portugal</option>
+                        <option value="PR">Puerto Rico</option>
+                        <option value="QA">Qatar</option>
+                        <option value="RE">Réunion</option>
+                        <option value="RO">Romania</option>
+                        <option value="RU">Russian Federation</option>
+                        <option value="RW">Rwanda</option>
+                        <option value="BL">Saint Barthélemy</option>
+                        <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+                        <option value="KN">Saint Kitts and Nevis</option>
+                        <option value="LC">Saint Lucia</option>
+                        <option value="MF">Saint Martin (French part)</option>
+                        <option value="PM">Saint Pierre and Miquelon</option>
+                        <option value="VC">Saint Vincent and the Grenadines</option>
+                        <option value="WS">Samoa</option>
+                        <option value="SM">San Marino</option>
+                        <option value="ST">Sao Tome and Principe</option>
+                        <option value="SA">Saudi Arabia</option>
+                        <option value="SN">Senegal</option>
+                        <option value="RS">Serbia</option>
+                        <option value="SC">Seychelles</option>
+                        <option value="SL">Sierra Leone</option>
+                        <option value="SG">Singapore</option>
+                        <option value="SX">Sint Maarten (Dutch part)</option>
+                        <option value="SK">Slovakia</option>
+                        <option value="SI">Slovenia</option>
+                        <option value="SB">Solomon Islands</option>
+                        <option value="SO">Somalia</option>
+                        <option value="ZA">South Africa</option>
+                        <option value="GS">South Georgia and the South Sandwich Islands</option>
+                        <option value="SS">South Sudan</option>
+                        <option value="ES">Spain</option>
+                        <option value="LK">Sri Lanka</option>
+                        <option value="SD">Sudan</option>
+                        <option value="SR">Suriname</option>
+                        <option value="SJ">Svalbard and Jan Mayen</option>
+                        <option value="SZ">Swaziland</option>
+                        <option value="SE">Sweden</option>
+                        <option value="CH">Switzerland</option>
+                        <option value="SY">Syrian Arab Republic</option>
+                        <option value="TW">Taiwan, Province of China</option>
+                        <option value="TJ">Tajikistan</option>
+                        <option value="TZ">Tanzania, United Republic of</option>
+                        <option value="TH">Thailand</option>
+                        <option value="TL">Timor-Leste</option>
+                        <option value="TG">Togo</option>
+                        <option value="TK">Tokelau</option>
+                        <option value="TO">Tonga</option>
+                        <option value="TT">Trinidad and Tobago</option>
+                        <option value="TN">Tunisia</option>
+                        <option value="TR">Turkey</option>
+                        <option value="TM">Turkmenistan</option>
+                        <option value="TC">Turks and Caicos Islands</option>
+                        <option value="TV">Tuvalu</option>
+                        <option value="UG">Uganda</option>
+                        <option value="UA">Ukraine</option>
+                        <option value="AE">United Arab Emirates</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="US">United States</option>
+                        <option value="UM">United States Minor Outlying Islands</option>
+                        <option value="UY">Uruguay</option>
+                        <option value="UZ">Uzbekistan</option>
+                        <option value="VU">Vanuatu</option>
+                        <option value="VE">Venezuela, Bolivarian Republic of</option>
+                        <option value="VN">Viet Nam</option>
+                        <option value="VG">Virgin Islands, British</option>
+                        <option value="VI">Virgin Islands, U.S.</option>
+                        <option value="WF">Wallis and Futuna</option>
+                        <option value="EH">Western Sahara</option>
+                        <option value="YE">Yemen</option>
+                        <option value="ZM">Zambia</option>
+                        <option value="ZW">Zimbabwe</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="business-unit-name">Business Unit Name</label>
+                    <input type="text" name="business-unit-name">
+                </div>
+
+                <div>
+                    <label for="customer-name">Customer Name</label>
+                    <input type="text" name="customer-name">
+                </div>
+
+                <div class="address">
+                    <label for="customer-address">Customer Address</label>
+                    <textarea name="customer-address"></textarea>
+                </div>
+
+                <div>
+                    <label for="customer-phone">Customer Phone Number</label>
+                    <input type="text" name="customer-phone">
+                </div>
+
+
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email">
+                </div>
+
+
+                <div>
+                    <label for="year-of-manufature">Year of Manufacture</label>
+                    <input type="date" name="year-of-manufacture">
                 </div>
 
                 <div>
@@ -701,77 +1013,74 @@
                         <option value="ZW">Zimbabwe</option>
                     </select>
                 </div>
+
                 <div>
-                    <label for="">Type Design</label>
-                    <input type="text">
-                </div>
-                <div>
-                    <label for="">Meter Make</label>
-                    <input type="text">
+                    <label for="tariff-class">Tariff Class Name</label>
+                    <input type="text" name="tariff-class">
                 </div>
 
                 <div>
-                    <label for="">Meter Rating</label>
-                    <input type="text">
+                    <label for="meter-type">Meter Type</label>
+                    <select name="meter-type" id=""></select>
                 </div>
 
                 <div>
-                    <label for="">Test Certification Number</label>
-                    <input type="text">
+                    <label for="meter-class">Meter Class</label>
+                    <select name="meter-class">
+
+                    </select>
                 </div>
 
                 <div>
-                    <label for="">Date Certified</label>
-                    <input type="date">
+                    <label for="meter-serial-number">Meter Serial Number</label>
+                    <input type="text" name="meter-serial-number">
+                </div>
+
+
+                <div>
+                    <label for="meter-model">Meter Model</label>
+                    <select name="meter-model"></select>
+                </div>
+
+                <div class="double-row">
+                    <label for="crimp-seal-number">CRIMP Seal Number</label>
+                    <p><input type="number" name="seal-1"></p>
+                    <p><input type="number" name="seal-2"></p>
                 </div>
 
                 <div>
-                    <label for="">Expiry Date</label>
-                    <input type="date">
+                    <label for="dort">Date Meter was Routine Tested</label>
+                    <input type="date" name="dort">
                 </div>
 
                 <div>
-                    <label for="">Vendor Email Address</label>
-                    <input type="email">
+                    <label for="rotexpd">Routine Tested Meter Expiry Date</label>
+                    <input type="date" name="rotexpd">
                 </div>
 
                 <div>
-                    <label for="">Vendor Phone Number</label>
-                    <input type="text">
+                    <label for="dolr">Date of Last Recertification</label>
+                    <input type="date" name="dolr">
                 </div>
 
                 <div>
-                    <label for="">Name of officer that certified the meter</label>
-                    <input type="text">
+                    <label for="expdar">Expiry Date After Recertification</label>
+                    <input type="date" name="expdar">
                 </div>
 
                 <div>
-                    <label for="">Officer's Email Address</label>
-                    <input type="email">
+                    <label for="tariff-charges-vat">Tariff Charges(VAT inclusive)</label>
+                    <input type="number">
                 </div>
 
-                <div class="full">
-                    <label for="">Observation</label>
-                    <textarea></textarea>
+                <div>
+                    <label for="test-measurement">Test Measurement Error</label>
+                    <input type="number" name="test-measurement">
                 </div>
 
-                <div class="radio-div">
-                    <label>Remark</label>
-                    <label class="radio-button">
-                        <input type="radio" name="radio" checked="checked">
-                        <span class="label-visible">
-                            <span class="fake-radiobutton"></span>
-                            Good
-                        </span>
-                    </label>
-
-                    <label class="radio-button">
-                        <input type="radio" name="radio">
-                        <span class="label-visible">
-                            <span class="fake-radiobutton"></span>
-                            Bad
-                        </span>
-                    </label>
+                <div class="last-observation">
+                    <label for="observation">Observation/Remarks</label>
+                    <textarea name="observation"></textarea>
                 </div>
 
                 <div id="last-submit-button">
@@ -782,3 +1091,4 @@
 
     </div>
 </main>
+<script type="text/javascript" src="/main/office-forms.js"></script>
