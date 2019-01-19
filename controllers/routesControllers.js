@@ -28,11 +28,15 @@ const PagesControls = {
     },
 
     login: function (req, res) {
-        res.render('officers-panel');
+        res.render('officers-panel', {
+            user: req.body.email
+        });
     },
 
     adminPanel: function (req, res) {
-        res.render('admin-panel');
+        res.render('admin-panel', {
+            user: "Administrator "
+        });
     },
 
     admin: function (req, res) {
@@ -99,23 +103,149 @@ const PagesControls = {
     },
 
     routineTest: function (req, res) {
-        console.log(req.body);
-        res.status(200).send({
-            msg: 'Routine test added'
-        });
+        const {
+            radio,
+            vendorName,
+            vendorEmail,
+            vendorPhone,
+            yom,
+            meterModel,
+            meterType,
+            meterClass,
+            seal1,
+            seal2,
+            dateRoutineTest,
+            expDate,
+            tariffCharges,
+            observation
+        } = req.body;
+        const routineTest = new RoutineTest();
+        routineTest.vendor = radio;
+        routineTest.vendorName = vendorName;
+        routineTest.vendorEmail = vendorEmail;
+        routineTest.vendorPhone = vendorPhone;
+        routineTest.yom = yom;
+        routineTest.meterModel = meterModel;
+        routineTest.meterType = meterType;
+        routineTest.meterClass = meterClass;
+        routineTest.dateRoutineTest = dateRoutineTest;
+        routineTest.expDate = expDate;
+        routineTest.tariffCharges = tariffCharges;
+        routineTest.observation = observation;
+        if (seal1 == "") {
+            routineTest.crimpSeal = seal2;
+        } else {
+            routineTest.crimpSeal = seal1;
+        }
+        routineTest.save()
+            .then(() => {
+                res.status(200).send({
+                    msg: `Routine Test has been added successfully`
+                });
+            })
+            .catch(err => res.status(401).send({
+                msg: err
+            }));
     },
     typeTest: function (req, res) {
-        console.log(req.body);
-        res.status(200).send({
-            msg: 'Routine test added'
-        });
-
+        const {
+            vendorName,
+            country,
+            typeDesign,
+            meterMake,
+            meterRating,
+            testCertificationNumber,
+            dateCertified,
+            expDate,
+            vendorEmail,
+            vendorPhone,
+            staffID,
+            staffEmail,
+            observation,
+            radio
+        } = req.body;
+        const typeTest = new TypeTest();
+        typeTest.vendorName = vendorName;
+        typeTest.country = country;
+        typeTest.typeDesign = typeDesign;
+        typeTest.meterMake = meterMake;
+        typeTest.meterRating = meterRating;
+        typeTest.testCertificationNumber = testCertificationNumber;
+        typeTest.dateCertified = dateCertified;
+        typeTest.expDate = expDate;
+        typeTest.vendorEmail = vendorEmail;
+        typeTest.vendorPhone = vendorPhone;
+        typeTest.staffID = staffID;
+        typeDesign.staffEmail = staffEmail;
+        typeTest.observation = observation;
+        typeTest.remark = radio;
+        typeTest.save()
+            .then(() => {
+                res.status(200).send({
+                    msg: `Type Test has been added successfully`
+                });
+            })
+            .catch(err => res.status(401).send({
+                msg: err
+            }));
     },
     reCertification: function (req, res) {
-        console.log(req.body);
-        res.status(200).send({
-            msg: 'Routine test added'
-        });
+        const {
+            disco,
+            state,
+            businessUnitName,
+            customerName,
+            customerAddress,
+            customerPhone,
+            customerEmail,
+            yom,
+            country,
+            tariffClass,
+            meterSerialNumber,
+            seal1,
+            seal2,
+            dateRoutineTest,
+            routineTestExpDate,
+            dateLastRecertification,
+            expDateAfterRecertification,
+            tariffCharges,
+            testMeasurement,
+            observation
+        } = req.body;
+
+        const reCertification = new ReCertification();
+        reCertification.disco = disco;
+        reCertification.state = state;
+        reCertification.businessUnitName = businessUnitName;
+        reCertification.customerName = customerName;
+        reCertification.customerAddress = customerAddress;
+        reCertification.customerPhone = customerPhone;
+        reCertification.customerEmail = customerEmail;
+        reCertification.yom = yom;
+        reCertification.country = country;
+        reCertification.tariffClass = tariffClass;
+        reCertification.meterSerialNumber = meterSerialNumber;
+        reCertification.dateRoutineTest = dateRoutineTest;
+        reCertification.routineTestExpDate = routineTestExpDate;
+        reCertification.dateLastRecertification = dateLastRecertification;
+        reCertification.expDateAfterRecertification = expDateAfterRecertification;
+        reCertification.tariffCharges = tariffCharges;
+        reCertification.testMeasurement = testMeasurement;
+        reCertification.observation = observation;
+        if (seal1 == "") {
+            crimpSeal = seal2;
+        } else {
+            crimpSeal = seal1;
+        }
+        reCertification.save()
+            .then(() => {
+                res.status(200).send({
+                    msg: `Recertification has been added successfully`
+                });
+            })
+            .catch(err => res.status(401).send({
+                msg: err
+            }));
     }
 
 };

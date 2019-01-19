@@ -13,7 +13,7 @@ const RoutineTestSchema = new Schema({
     vendorPhone: {
         type: String
     },
-    CrimpSeal: {
+    crimpSeal: {
         type: String
     },
     yom: {

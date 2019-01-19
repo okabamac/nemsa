@@ -1,5 +1,7 @@
 <header role="banner">
-    <h2>KM Isoh</h2>
+    <h2>
+        <%= user %>
+    </h2>
     <ul class='avatar-login'>
         <li class="avatar">
             <a href=""><img src="./images/avatar.png"></a>
@@ -87,24 +89,24 @@
                 </div>
 
                 <div class="double-row">
-                    <label for="">CRIMP Seal number</label>
-                    <p> Seal 1 <span><input type="number" name="seal-1"> </span> </p>
-                    <p> Seal 2 <span><input type="number" name="seal-2"> </span> </p>
+                    <label for="">CRIMP Seal Number</label>
+                    <p><span><input type="number" name="seal1" placeholder="Seal 1"> </span> </p>
+                    <p><span><input type="number" name="seal2" placeholder="Seal 2"> </span> </p>
                 </div>
 
                 <div>
-                    <label for="dort">Date of Routine Test</label>
-                    <input type="date" name="dort">
+                    <label for="dateRoutineTest">Date of Routine Test</label>
+                    <input type="date" name="dateRoutineTest">
                 </div>
                 <div>
-                    <label for="expd">Expiry Date</label>
-                    <input type="date" name="expd">
+                    <label for="expDate">Expiry Date</label>
+                    <input type="date" name="expDate">
                 </div>
 
 
                 <div>
-                    <label for="tariff-charges">Tariff Charge</label>
-                    <input type="number" name="tariff-charges">
+                    <label for="tariffCharges">Tariff Charge</label>
+                    <input type="number" name="tariffCharges">
                 </div>
 
                 <div class="full">
@@ -466,7 +468,7 @@
                     <button type="submit" class="btn">Submit</button>
                 </div>
             </form>
-            <div class="messages" id="messages">
+            <div class="messages" id="messages-2">
 
             </div>
         </div>
@@ -1050,8 +1052,8 @@
 
                 <div class="double-row">
                     <label for="crimp-seal-number">CRIMP Seal Number</label>
-                    <p><input type="number" name="seal1"></p>
-                    <p><input type="number" name="seal2"></p>
+                    <p><input type="number" name="seal1" placeholder="Seal 1"></p>
+                    <p><input type="number" name="seal2" placeholder="Seal 2"></p>
                 </div>
 
                 <div>
@@ -1094,11 +1096,11 @@
                 </div>
             </form>
 
-            <div class="messages" id="messages">
+            <div class="messages" id="messages-3">
 
             </div>
         </div>
-       
+
     </div>
 </main>
 <script type="text/javascript" src="/main/office-forms.js"></script>

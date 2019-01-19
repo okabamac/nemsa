@@ -40,6 +40,9 @@ const TypeTestSchema = new Schema({
     },
     observation: {
         type: String
+    },
+    remark: {
+        type: String
     }
 });
 

@@ -58,7 +58,7 @@ const addRoutine = document.getElementById("add-routine");
 if (addRoutine) {
   addRoutine.addEventListener("submit", e => {
     e.preventDefault();
-    let error = document.getElementById("messages");
+    let messages = document.getElementById("messages");
     const form = document.getElementById("add-routine");
     const formData = new URLSearchParams(new FormData(form));
     fetch("/routineTest", {
@@ -73,21 +73,20 @@ if (addRoutine) {
       )
       .then(obj => {
         if (obj.status === 200) {
-          error.innerHTML = obj.body[0].msg;
+          messages.innerHTML = obj.body.msg;
           form.reset();
         } else {
-          error.innerHTML = obj.body[0].msg;
+          messages.innerHTML = obj.body.msg;
         }
       })
       .catch(err => console.log(err));
   });
 }
-
 const addType = document.getElementById("add-type");
 if (addType) {
   addType.addEventListener("submit", e => {
     e.preventDefault();
-    let error = document.getElementById("messages");
+    let messages2 = document.getElementById("messages-2");
     const form = document.getElementById("add-type");
     const formData = new URLSearchParams(new FormData(form));
     fetch("/typeTest", {
@@ -102,10 +101,10 @@ if (addType) {
       )
       .then(obj => {
         if (obj.status === 200) {
-          error.innerHTML = obj.body[0].msg;
+          messages2.innerHTML = obj.body.msg;
           form.reset();
         } else {
-          error.innerHTML = obj.body[0].msg;
+          messages2.innerHTML = obj.body.msg;
         }
       })
       .catch(err => console.log(err));
@@ -116,7 +115,7 @@ const addReCertification = document.getElementById("add-reCertification");
 if (addReCertification) {
   addReCertification.addEventListener("submit", e => {
     e.preventDefault();
-    let error = document.getElementById("messages");
+    let messages3 = document.getElementById("messages-3");
     const form = document.getElementById("add-reCertification");
     const formData = new URLSearchParams(new FormData(form));
     fetch("/reCertification", {
@@ -131,10 +130,10 @@ if (addReCertification) {
       )
       .then(obj => {
         if (obj.status === 200) {
-          error.innerHTML = obj.body[0].msg;
+          messages3.innerHTML = obj.body.msg;
           form.reset();
         } else {
-          error.innerHTML = obj.body[0].msg;
+          messages3.innerHTML = obj.body.msg;
         }
       })
       .catch(err => console.log(err));
