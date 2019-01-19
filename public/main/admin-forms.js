@@ -38,7 +38,7 @@ if (add_user) {
     e.preventDefault();
     let error = document.getElementById("messages");
     const form = document.getElementById("add_user");
-    const formData = new URLSearchParams(new FormData(form));
+    const formData = new FormData(form);
     fetch("/addUser", {
       method: "POST",
       body: formData
@@ -51,10 +51,10 @@ if (add_user) {
       )
       .then(obj => {
         if (obj.status === 200) {
-          error.innerHTML = obj.body[0].msg;
+          error.innerHTML = obj.body.msg;
           form.reset();
         } else {
-          error.innerHTML = obj.body[0].msg;
+          error.innerHTML = obj.body.msg;
         }
       })
       .catch(err => console.log(err));
