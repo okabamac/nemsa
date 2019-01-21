@@ -38,7 +38,7 @@ if (add_user) {
     e.preventDefault();
     let error = document.getElementById("messages");
     const form = document.getElementById("add_user");
-    const formData = new FormData(form);
+    const formData =  new FormData(form);
     fetch("/addUser", {
       method: "POST",
       body: formData

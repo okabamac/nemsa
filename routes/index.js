@@ -4,13 +4,19 @@ const router = express.Router();
 
 
 router.get('/', PagesControls.getHomePage);
+router.get('/login', PagesControls.login);
+
+
 router.get('/admin-login', PagesControls.adminLogin);
-router.get('/admin', PagesControls.admin);
+router.get('/verify/:serial', PagesControls.verify);
+
+router.post('/login', PagesControls.officeDashboard);
+router.post('/admin-dashboard', PagesControls.adminDashboard);
+
 router.post('/addUser', PagesControls.addUser);
 router.post('/routineTest', PagesControls.routineTest);
 router.post('/typeTest', PagesControls.typeTest);
 router.post('/reCertification', PagesControls.reCertification);
-router.post('/login', PagesControls.login);
-router.post('/admin-panel', PagesControls.adminPanel);
+
 
 module.exports = router;

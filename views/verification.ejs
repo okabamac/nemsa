@@ -1,0 +1,25 @@
+<header role="banner" class="verify-header">
+    <ul class='avatar-login'>
+        <li><a href="/login" class="logout">Login</a></li>
+    </ul>
+</header>
+<div class="header">
+    <img src="./images/nemsa_logo.png">
+</div>
+
+<main role="dashboard">
+    <div class="container verification-container">
+        <h2>Meter Verification Portal</h2>
+        <div>
+            <form method="GET" id="search">
+                <div class="search-div">
+                    <input type="text" required placeholder="Enter Serial Number..." name="serialNumber">
+                    <button type="submit"> <i class="fa fa-search fa-lg fa-fw" aria-hidden="true"></i></button>
+                </div>
+            </form>
+            <div class="messages" id="messages">
+            </div>
+        </div>
+    </div>
+</main>
+<script type="text/javascript" src="/main/verifications.js"></script>

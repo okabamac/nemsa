@@ -22,27 +22,35 @@ const upload = multer({
 
 const PagesControls = {
     getHomePage: function (req, res) {
-        res.render('login');
+        res.render('verification');
     },
 
+    login: function (req, res) {
+        res.render('login');
+    },
     adminLogin: function (req, res) {
         res.render('admin-login');
     },
 
-    login: function (req, res) {
+    officeDashboard: function (req, res) {
         res.render('officers-panel', {
             user: req.body.email
         });
     },
 
-    adminPanel: function (req, res) {
+    adminDashboard: function (req, res) {
         res.render('admin-panel', {
             user: "Administrator "
         });
     },
 
-    admin: function (req, res) {
-        res.render('admin-panel');
+    verify: function (req, res) {
+        console.log(req.params);
+        res.send({
+            id: 122369,
+            name: "Okaba Mac",
+            email: "markokaba99@gmail.com"
+        });
     },
 
     addUser: function (req, res) {
@@ -101,19 +109,37 @@ const PagesControls = {
         //         }
         //     }
         // });
-
-        upload(req, res, function (err) {
-            if (err instanceof multer.MulterError) {
-                console.log(err);
-            } else if (err) {
-                res.send({
-                    msg: `There is an error: ${err}`
+                //   const {
+                //     firstName,
+                //     lastName,
+                //     staffEmail,
+                //     staffID,
+                //     password,
+                //     confirmPassword,
+                //     avatar,
+                //     admin
+                // } = req.body;
+                const staffEmail = req.body.staffEmail;
+                console.log(staffEmail);
+        User.findOne({email: staffEmail}, function (err, existingUser){
+            if (existingUser === null ) {
+                upload(req, res, function (err) {
+                    if (err instanceof multer.MulterError) {
+                        console.log(err);
+                    } else if (err) {
+                        res.send({
+                            msg: `There is an error: ${err}`
+                        });
+                    } else {
+                        res.send({
+                            msg: 'Successful'
+                        });
+                    }
                 });
             } else {
-                console.log(req.file);
                 res.send({
-                    msg: 'Successful'
-                });
+                    msg: 'Email is already taken'
+                })
             }
         });
     },

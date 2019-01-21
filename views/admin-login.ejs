@@ -1,11 +1,16 @@
-<nav role="login">
-    <h2>For administrative purposes</h2>
-</nav>
+<header role="banner">
+    <h2>
+        Administration
+    </h2>
+    <ul class='avatar-login'>
+        <li><a href="/" class="logout"> <i class="fa fa-home fa-lg fa-fw"></i> </a></li>
+    </ul>
+</header>
 <div class="header">
     <img src="./images/nemsa_logo1.png">
     <div>
-    <h5>NIGERIAN ELECTRICITY MANAGEMENT SERVICES AGENCY</h5>
-</div>
+        <h5>NIGERIAN ELECTRICITY MANAGEMENT SERVICES AGENCY</h5>
+    </div>
 </div>
 <div class="overlay-bg">
 </div>
@@ -14,7 +19,7 @@
     <div class="overlay"></div>
     <div id="sign-in-form">
 
-        <form action="/admin-panel" method="POST">
+        <form action="/admin-dashboard" method="POST">
             <legend>Sign in to your account</legend>
             <div>
                 <label for="email"></label>
@@ -30,7 +35,7 @@
             <div>
                 <button type="submit" class="btn">LOGIN</button>
             </div>
-            <p class="instructions">Click <a href="/">here</a> for officers</p>
+            <p class="instructions">Click <a href="/login">here</a> for office purposes</p>
         </form>
 
     </div>
