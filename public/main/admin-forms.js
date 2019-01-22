@@ -51,10 +51,10 @@ if (add_user) {
       )
       .then(obj => {
         if (obj.status === 200) {
-          error.innerHTML = obj.body.msg;
+          error.innerHTML = obj.body[0].msg;
           form.reset();
         } else {
-          error.innerHTML = obj.body.msg;
+          error.innerHTML = obj.body[0].msg;
         }
       })
       .catch(err => console.log(err));
