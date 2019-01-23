@@ -343,9 +343,7 @@ main[role="dashboard"] .verification-container form .search-div button:hover {
   margin-top: 10px;
   height: 30px;
   background-color: dodgerblue;
-  -webkit-box-shadow: 0px 0.8px 0.8px #645f64;
-  -moz-box-shadow: 0px 0.8px 0.8px #807780;
-  box-shadow: 0px 0.8px 0.8px #868286;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .toggle-buttons button:hover {
