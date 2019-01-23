@@ -2,6 +2,8 @@ const search = document.getElementById("search");
 if (search) {
     search.addEventListener("submit", e => {
         e.preventDefault();
+        let messages = document.getElementById("messages");
+        messages.innerHTML = "";
         const loader = document.getElementById('loader');
         loader.style.display = 'block';
         const form = document.getElementById("search");
@@ -35,7 +37,7 @@ if (search) {
                       </tbody>
                       </table>`;
                     loader.style.display = 'none';
-                document.getElementById('messages').innerHTML = result;
+                messages.innerHTML = result;
         }).catch(function (err) {
             console.log(err);
         });

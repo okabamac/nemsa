@@ -41,6 +41,7 @@ const add_user = document.getElementById("add_user");
 if (add_user) {
   add_user.addEventListener("submit", e => {
     e.preventDefault();
+    document.getElementById('messages').innerHTML = "";
     const loader = document.getElementsByClassName("loader");
     loader[0].style.display = 'block';
     let error = document.getElementById("messages");

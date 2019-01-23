@@ -58,9 +58,10 @@ const addRoutine = document.getElementById("add-routine");
 if (addRoutine) {
   addRoutine.addEventListener("submit", e => {
     e.preventDefault();
+    let messages1 = document.getElementById("messages-1");
+    messages1.innerHTML = "";
     const loader = document.getElementsByClassName("loader");
     loader[0].style.display = 'block';
-    let messages1 = document.getElementById("messages-1");
     const form = document.getElementById("add-routine");
     const formData = new URLSearchParams(new FormData(form));
     fetch("/routineTest", {
@@ -90,9 +91,10 @@ const addType = document.getElementById("add-type");
 if (addType) {
   addType.addEventListener("submit", e => {
     e.preventDefault();
+    let messages2 = document.getElementById("messages-2");
+    messages2.innerHTML = "";
     const loader = document.getElementsByClassName("loader");
     loader[1].style.display = 'block';
-    let messages2 = document.getElementById("messages-2");
     const form = document.getElementById("add-type");
     const formData = new URLSearchParams(new FormData(form));
     fetch("/typeTest", {
@@ -123,9 +125,10 @@ const addReCertification = document.getElementById("add-reCertification");
 if (addReCertification) {
   addReCertification.addEventListener("submit", e => {
     e.preventDefault();
+    let messages3 = document.getElementById("messages-3");
+    messages3.innerHTML = "";
     const loader = document.getElementsByClassName("loader");
     loader[2].style.display = 'block';
-    let messages3 = document.getElementById("messages-3");
     const form = document.getElementById("add-reCertification");
     const formData = new URLSearchParams(new FormData(form));
     fetch("/reCertification", {

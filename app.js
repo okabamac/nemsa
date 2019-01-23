@@ -2,7 +2,6 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const flash = require('connect-flash');
 const session = require('express-session');
 
 
@@ -31,14 +30,6 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
-
-app.use(flash());
-//Global vars
-app.use((req, res, next) => {
-    res.locals.success_msg = req.flash('success_msg');
-    res.locals.error_msg = req.flash('error_msg');
-    next();
-});
 
 app.use('/', require('./routes/index'));
 
