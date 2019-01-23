@@ -26,10 +26,14 @@ const PagesControls = {
     },
 
     login: function (req, res) {
-        res.render("login");
+        res.render("login", {
+            message: ""
+        });
     },
     adminLogin: function (req, res) {
-        res.render("admin-login");
+        res.render("admin-login", {
+            message: ""
+        });
     },
 
     officeDashboard: function (req, res) {
@@ -43,14 +47,14 @@ const PagesControls = {
                             user: existingUser.firstName + ' ' + existingUser.lastName
                         });
                     } else {
-                        res.render("admin-login", {
-                            msg: "Invalid credentials"
+                        res.render("login", {
+                            message: "Invalid credentials"
                         });
                     }
                 });
             } else {
-                res.render("admin-login", {
-                    msg: "Invalid credentials"
+                res.render("login", {
+                    message: "Invalid credentials"
                 });
             }
         });
@@ -71,13 +75,13 @@ const PagesControls = {
                         });
                     } else {
                         res.render("admin-login", {
-                            msg: "Invalid credentials"
+                            message: "Invalid credentials"
                         });
                     }
                 });
             } else {
                 res.render("admin-login", {
-                    msg: "Invalid credentials"
+                    message: "Invalid credentials"
                 });
             }
         });

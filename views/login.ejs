@@ -15,25 +15,29 @@
 <main role='login'>
     <div class="overlay"></div>
     <div id="sign-in-form">
-
-        <form action="/login" method="POST">
-            <legend>Sign in to your account</legend>
-            <div>
-                <label for="email"></label>
-                <input type="email" required placeholder="Email" name="email">
-                <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
-            </div>
-            <div>
-                <label for="password"></label>
-                <input type="password" required placeholder="Password" name="password">
-                <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
-            </div>
-            <div id="message"></div>
-            <div>
-                <button type="submit" class="btn">LOGIN</button>
-            </div>
+        <div>
+            <form action="/login" method="POST">
+                <legend>Sign in to your account</legend>
+                <div>
+                    <label for="email"></label>
+                    <input type="email" required placeholder="Email" name="email">
+                    <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <label for="password"></label>
+                    <input type="password" required placeholder="Password" name="password">
+                    <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <button type="submit" class="btn">LOGIN</button>
+                </div>
+            </form>
+        </div>
+        <div>
+            <p class="access-message">
+                <%= message %>
+            </p>
             <p class="instructions">Administration? Click <a href="/admin-login">here</a></p>
-        </form>
-
+        </div>
     </div>
 </main>

@@ -136,7 +136,7 @@ main #sign-in-form {
   animation-duration: 3s;
   animation-delay: 0.5s;
   animation-fill-mode: forwards;
-  color: #fff;
+  /* color: #fff; */
   -webkit-box-shadow: 0px 10px 13px -7px #000000,
     10px 10px 20px 10px rgba(0, 0, 0, 0);
   box-shadow: 0px 10px 13px -7px #000000, 10px 10px 20px 10px rgba(0, 0, 0, 0);
@@ -151,7 +151,11 @@ main #sign-in-form {
     opacity: 1;
   }
 }
-
+main #sign-in-form {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(1, 1fr);
+}
 #sign-in-form form {
   color: #000;
   display: grid;
@@ -196,7 +200,10 @@ legend {
   font-size: 20px;
   color: rgb(31, 160, 61);
 }
-
+.instructions {
+  color: #000;
+  margin-bottom: -10px;
+}
 .fa-search {
   cursor: pointer;
 }
@@ -236,15 +243,14 @@ input:-webkit-autofill:active {
   border: 1px solid rgba(81, 203, 238, 1);
 }
 
-#sign-in-form .instructions {
-  position: absolute;
-  bottom: 4px;
-}
-
 input {
   cursor: pointer;
 }
-
+.access-message {
+  width: 100%;
+  color: red;
+  height: 30px;
+}
 main[role="dashboard"] {
   position: absolute;
   display: flex;
@@ -392,7 +398,7 @@ fieldset {
   grid-row: 7/8;
 }
 .container .docker form .cert-btn {
- margin-top: 80px;
+  margin-top: 80px;
 }
 textarea {
   width: 210px;
