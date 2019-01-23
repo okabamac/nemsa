@@ -58,7 +58,9 @@ const addRoutine = document.getElementById("add-routine");
 if (addRoutine) {
   addRoutine.addEventListener("submit", e => {
     e.preventDefault();
-    let messages = document.getElementById("messages");
+    const loader = document.getElementsByClassName("loader");
+    loader[0].style.display = 'block';
+    let messages1 = document.getElementById("messages-1");
     const form = document.getElementById("add-routine");
     const formData = new URLSearchParams(new FormData(form));
     fetch("/routineTest", {
@@ -73,10 +75,12 @@ if (addRoutine) {
       )
       .then(obj => {
         if (obj.status === 200) {
-          messages.innerHTML = obj.body.msg;
+          loader[0].style.display = 'none';
+          messages1.innerHTML = obj.body.msg;
           form.reset();
         } else {
-          messages.innerHTML = obj.body.msg;
+          loader[0].style.display = 'none';
+          messages1.innerHTML = obj.body.msg;
         }
       })
       .catch(err => console.log(err));
@@ -86,6 +90,8 @@ const addType = document.getElementById("add-type");
 if (addType) {
   addType.addEventListener("submit", e => {
     e.preventDefault();
+    const loader = document.getElementsByClassName("loader");
+    loader[1].style.display = 'block';
     let messages2 = document.getElementById("messages-2");
     const form = document.getElementById("add-type");
     const formData = new URLSearchParams(new FormData(form));
@@ -101,9 +107,11 @@ if (addType) {
       )
       .then(obj => {
         if (obj.status === 200) {
+          loader[1].style.display = 'none';
           messages2.innerHTML = obj.body.msg;
           form.reset();
         } else {
+          loader[1].style.display = 'none';
           messages2.innerHTML = obj.body.msg;
         }
       })
@@ -115,6 +123,8 @@ const addReCertification = document.getElementById("add-reCertification");
 if (addReCertification) {
   addReCertification.addEventListener("submit", e => {
     e.preventDefault();
+    const loader = document.getElementsByClassName("loader");
+    loader[2].style.display = 'block';
     let messages3 = document.getElementById("messages-3");
     const form = document.getElementById("add-reCertification");
     const formData = new URLSearchParams(new FormData(form));
@@ -130,9 +140,11 @@ if (addReCertification) {
       )
       .then(obj => {
         if (obj.status === 200) {
+          loader[2].style.display = 'none';
           messages3.innerHTML = obj.body.msg;
           form.reset();
         } else {
+          loader[2].style.display = 'none';
           messages3.innerHTML = obj.body.msg;
         }
       })

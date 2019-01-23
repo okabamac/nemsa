@@ -84,7 +84,6 @@ const PagesControls = {
     },
 
     verify: function (req, res) {
-        console.log(req.params);
         res.send({
             id: 122369,
             name: "Okaba Mac",

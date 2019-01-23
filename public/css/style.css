@@ -13,7 +13,7 @@ body {
 .overlay-bg {
   position: absolute;
   width: 100vw;
-  background: #7CC68D;
+  background: #7cc68d;
   height: 100%;
   z-index: -99;
 }
@@ -44,16 +44,15 @@ header[role="banner"] {
   height: 54px;
   z-index: 999;
   top: 0;
-  background-color: #7CC68D;
+  background-color: #7cc68d;
 }
 
 header[role="banner"] h2 {
   position: absolute;
   top: 12px;
-  left: 35px;
+  left: 26px;
   color: #fff;
 }
-
 
 header[role="banner"] ul {
   display: flex;
@@ -81,14 +80,6 @@ header[role="banner"] ul li .logout {
   text-decoration: none;
 }
 
-/* header[role="banner"] ul li .logout::after {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 600;
-  content: "\f2f5";
-  margin-left: 2px;
-} */
-
-
 .header {
   position: fixed;
   top: 54px;
@@ -101,13 +92,13 @@ header[role="banner"] ul li .logout {
 }
 
 .verify-header {
-  background-color: #7CC68D !important;
+  background-color: #7cc68d !important;
 }
 
 .header img {
-  max-width: 40vw;
-  top: 5px;
-  height: 90px;
+  max-width: 35vw;
+  margin-top: 9px;
+  height: 6.1em;
   display: inline-block;
 }
 
@@ -119,7 +110,7 @@ header[role="banner"] ul li .logout {
   position: absolute;
   text-align: center;
   margin-left: 1px;
-  font-size: 20px;
+  font-size: 1.1em;
   hyphens: auto;
 }
 
@@ -132,7 +123,7 @@ main[role="login"] {
 main #sign-in-form {
   z-index: 3;
   position: relative;
-  top: 25vh;
+  top: 30vh;
   margin: 0 auto;
   max-width: 400px;
   border-radius: 4px;
@@ -157,7 +148,7 @@ main #sign-in-form {
   }
 
   100% {
-    opacity: 1
+    opacity: 1;
   }
 }
 
@@ -180,7 +171,7 @@ main #sign-in-form {
   padding: 0.6em;
   height: 52px;
   border: none;
-  transition: .3s;
+  transition: 0.3s;
   padding-left: 40px;
   border-bottom: 2px solid #ccc;
   outline: none;
@@ -197,13 +188,13 @@ main #sign-in-form {
   top: 19px;
   padding: 9px 8px;
   color: #61b374;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 legend {
   text-decoration: underline;
   font-size: 20px;
-  color: rgb(31, 160, 61)
+  color: rgb(31, 160, 61);
 }
 
 .fa-search {
@@ -232,8 +223,6 @@ input:-webkit-autofill:active {
   outline-style: none;
   cursor: pointer;
 }
-
-
 
 #sign-in-form button {
   width: 100%;
@@ -266,8 +255,8 @@ main[role="dashboard"] {
 
 main[role="dashboard"] .container {
   width: 1200px;
-  height: 1000px;
-  top: 170px;
+  height: 1500px;
+  top: 190px;
   padding: 0 2em;
   line-height: 1.6;
   color: #333;
@@ -293,15 +282,15 @@ main[role="dashboard"] .verification-container form {
 }
 
 main[role="dashboard"] .verification-container form div {
-  width: 58%;
+  width: 65%;
   position: relative;
   height: inherit;
 }
 
 main[role="dashboard"] .verification-container form div input {
-  width: 75%;
+  width: 80%;
   height: inherit;
-  border: 1px solid #7CC68D;
+  border: 1px solid #7cc68d;
   font-size: 15px;
   padding: 10px;
   border-radius: 20px;
@@ -315,7 +304,7 @@ main[role="dashboard"] .verification-container form .search-div input:focus {
 main[role="dashboard"] .verification-container form .search-div button {
   width: 10%;
   cursor: pointer;
-  margin-left: -50px;
+  margin-left: -9.8%;
   position: absolute;
   height: inherit;
   outline: none;
@@ -325,7 +314,7 @@ main[role="dashboard"] .verification-container form .search-div button {
 }
 
 main[role="dashboard"] .verification-container form .search-div button:hover {
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   transform: scale(1.3, 1.3);
   -webkit-transform: scale(1.3, 1.3);
   -moz-transform: scale(1.3, 1.3);
@@ -336,10 +325,13 @@ main[role="dashboard"] .verification-container form .search-div button:hover {
   margin-top: 10px;
   height: 30px;
   background-color: dodgerblue;
+  -webkit-box-shadow: 0px 0.8px 0.8px #645f64;
+  -moz-box-shadow: 0px 0.8px 0.8px #807780;
+  box-shadow: 0px 0.8px 0.8px #868286;
 }
 
 .toggle-buttons button:hover {
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   transform: scale(1.1, 1.1);
   -webkit-transform: scale(1.1, 1.1);
   -moz-transform: scale(1.1, 1.1);
@@ -377,14 +369,13 @@ input[type="file"] {
 .container .docker form select {
   width: 80%;
   height: 30px;
-  transition: .3s;
+  transition: 0.3s;
   border: none;
   margin-bottom: 10px;
   border-bottom: 2px solid #ccc;
   outline: none;
   border-radius: 5px;
 }
-
 
 fieldset {
   border: 0;
@@ -397,10 +388,15 @@ fieldset {
 .container .docker form .full {
   grid-column: 1/2;
 }
-
+.container .docker form .last-observation {
+  grid-row: 7/8;
+}
+.container .docker form .cert-btn {
+ margin-top: 80px;
+}
 textarea {
-  width: 230px;
-  height: 100px;
+  width: 210px;
+  height: 90px;
   border: 2px solid #ccc;
 }
 
@@ -431,7 +427,7 @@ textarea {
 
 #last-submit-button button {
   position: absolute;
-  margin-top: 100px;
+  margin-top: 95px;
 }
 
 #docker-2 {
@@ -506,24 +502,32 @@ textarea {
   border-radius: 50%;
 }
 
-input[type="radio"]:checked+span .fake-radiobutton:after,
-input[type="checkbox"]:checked+span .fake-checkbox:after {
+input[type="radio"]:checked + span .fake-radiobutton:after,
+input[type="checkbox"]:checked + span .fake-checkbox:after {
   display: block;
 }
 
-.container .docker .messages {
+.container .docker .messages-div {
   display: block;
   position: relative;
   color: rgb(219, 29, 29);
   width: 100%;
-  margin-top: 40px 0;
+  margin-top: 40px;
   font-size: 16px;
-  height: 50px;
+}
+
+.container .messages-div {
+  display: block;
   position: relative;
+  width: 100%;
+  margin-top: 40px;
+  font-size: 16px;
 }
 
 [type="date"] {
-  background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+  background: #fff
+    url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
+    97% 50% no-repeat;
 }
 
 [type="date"]::-webkit-inner-spin-button {
@@ -552,22 +556,147 @@ input[type="checkbox"]:checked+span .fake-checkbox:after {
   color: green;
 }
 
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-th {
-  background: #61b374;
-  color: #fff;
-}
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+.loader {
+  display: none;
+  position: relative;
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  margin: 0 auto;
+  border-top: 16px solid green;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+table tr {
+  border: 1px solid #ddd;
+  padding: 0.35em;
+}
+th {
+  background-color: rgb(54, 146, 75);
+}
+table th,
+table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 1000px) {
+  .container .docker form {
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0.6em;
+  }
+}
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    background-color: rgb(54, 146, 75);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border: none;
+    display: block;
+    margin-bottom: 0.625em;
+  }
+
+  table td {
+    border: none;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+  main #sign-in-form {
+    max-width: 300px;
+    height: 370px;
+  }
+
+  .header .logo {
+    max-width: 70vw;
+  }
+
+  .container .docker form {
+    grid-gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0.6em;
+  }
+  .container .docker form .address {
+    grid-row: 4/5;
+  }
+  .container .docker form .last-observation {
+    grid-row: 12/13;
+  }
 }
