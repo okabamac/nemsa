@@ -18,5 +18,7 @@ router.post('/routineTest', PagesControls.routineTest);
 router.post('/typeTest', PagesControls.typeTest);
 router.post('/reCertification', PagesControls.reCertification);
 
+router.get('/image/:id', PagesControls.getImage);
+
 
 module.exports = router;

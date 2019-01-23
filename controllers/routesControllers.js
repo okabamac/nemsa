@@ -44,7 +44,8 @@ const PagesControls = {
                 bcrypt.compare(req.body.password, existingUser.password, function (err, response) {
                     if (response == true) {
                         res.render("officers-panel", {
-                            user: existingUser.firstName + ' ' + existingUser.lastName
+                            user: existingUser.firstName + ' ' + existingUser.lastName,
+                            id: existingUser._id
                         });
                     } else {
                         res.render("login", {
@@ -68,10 +69,10 @@ const PagesControls = {
             if (existingUser !== null) {
                 bcrypt.compare(req.body.password, existingUser.password, function (err, response) {
                     if (response == true) {
-                        console.log(existingUser.avatar);
                         res.render("admin-panel", {
                             user: existingUser.firstName + ' ' + existingUser.lastName,
-                            avatar: existingUser.avatar.data
+                            id: existingUser._id
+
                         });
                     } else {
                         res.render("admin-login", {
@@ -95,6 +96,15 @@ const PagesControls = {
         });
     },
 
+
+    getImage: function(req, res) {
+        User.findById(req.params.id,(err,data)=>{
+            if(!err){
+                res.contentType(data.avatar.contentType);
+                res.send(data.avatar.data);
+            }
+        });
+    },
     addUser: function (req, res) {
         upload(req, res, function (err) {
             if (err instanceof multer.MulterError) {
