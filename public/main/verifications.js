@@ -1,3 +1,10 @@
+const dateConvert = (date) => {
+date = new Date(date).toUTCString();
+date = date.split(' ').slice(0, 4).join(' ');
+return date;
+};
+
+
 const search = document.getElementById("search");
 if (search) {
     search.addEventListener("submit", e => {
@@ -9,37 +16,52 @@ if (search) {
         const form = document.getElementById("search");
         const formData = new FormData(form);
         const searchParam = formData.getAll('serialNumber');
-        fetch(`/verify/${searchParam}`, {}).then((response) => response.json()).then(function (data) {
-            let result = ``;
-                const {
-                    id,
-                    name,
-                    email
-                } = data;
-                result +=
-                    `<table>
+        fetch(`/verify/${searchParam}`, {}).then(r =>
+                r.json().then(data => ({
+                    status: r.status,
+                    body: data
+                }))
+            )
+            .then(obj => {
+                if (obj.status === 200) {
+                    loader.style.display = 'none';
+                    let result = ``;
+                    const {
+                       meterSerialNumber, meterClass, vendorName, dateRoutineTest, expDate
+                    } = obj.body.meter;
+                    const routineTestDate = dateConvert(dateRoutineTest);
+                    const expiryDate = dateConvert(expDate);
+                    result +=
+                        `<table>
                     <caption>Meter Details</caption>
                     <thead>
                       <tr>
-                        <th scope="col">Serial Number</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Period</th>
-                        <th scope="col">Due Date</th>
+                        <th scope="col">Meter Number</th>
+                        <th scope="col">Meter Class</th>
+                        <th scope="col">Vendor Name</th>
+                        <th scope="col">Date of Routine Test</th>
+                        <th scope="col">Expiry Date</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td data-label="Serial Number">3Ph- 3412</td>
-                        <td data-label="Amount">$90</td>
-                        <td data-label="Period">03/01/2016 - 03/31/2016</td>
-                        <td data-label="Due Date">04/01/2016</td>
+                        <td data-label="Meter Number">${meterSerialNumber}</td>
+                        <td data-label="Meter Class">${meterClass}</td>
+                        <td data-label="Vendor Name">${vendorName}</td>
+                        <td data-label="Date of Routine Test">${routineTestDate}</td>
+                        <td data-label="Expiry Date">${expiryDate}</td>
                       </tr>
                       </tbody>
                       </table>`;
                     loader.style.display = 'none';
-                messages.innerHTML = result;
-        }).catch(function (err) {
-            console.log(err);
-        });
+                    messages.style.color = '#333';
+                    messages.innerHTML = result;
+                } else {
+                    loader.style.display = 'none';
+                    messages.style.color = 'red';
+                    messages.innerHTML = obj.body.message;
+                }
+            })
+            .catch(err => console.log(err));
     });
 }

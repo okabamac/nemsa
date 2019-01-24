@@ -72,14 +72,6 @@ const PagesControls = {
         })(req, res, next);
     },
 
-    verify: (req, res) => {
-        res.send({
-            id: 122369,
-            name: 'Okaba Mac',
-            email: 'markokaba99@gmail.com'
-        });
-    },
-
 
     getImage: (req, res) => {
         User.findById(req.params.id, (err, data) => {
@@ -173,6 +165,7 @@ const PagesControls = {
             meterModel,
             meterType,
             meterClass,
+            meterSerialNumber,
             seal1,
             seal2,
             dateRoutineTest,
@@ -189,6 +182,7 @@ const PagesControls = {
         routineTest.meterModel = meterModel;
         routineTest.meterType = meterType;
         routineTest.meterClass = meterClass;
+        routineTest.meterSerialNumber = meterSerialNumber;
         routineTest.dateRoutineTest = dateRoutineTest;
         routineTest.expDate = expDate;
         routineTest.tariffCharges = tariffCharges;
@@ -316,6 +310,22 @@ const PagesControls = {
                     msg: err
                 })
             );
-    }
+    },
+
+    verify: (req, res) => {
+        RoutineTest.findOne({
+            meterSerialNumber: req.params.serial
+        }).then(meter => {
+            if (meter) {
+                return res.status(200).send({
+                    meter
+                });
+            } else {
+                return res.status(400).send({
+                    message: 'This meter does not exist in our database, please contact the nearest DISCO'
+                });
+            }
+        }).catch(err => console.log(err));
+    },
 };
 module.exports = PagesControls;

@@ -28,7 +28,7 @@ const RoutineTestSchema = new Schema({
     meterClass: {
         type: String
     },
-    meterNumber: {
+    meterSerialNumber: {
         type: String
     },
     dateRoutineTest: {
