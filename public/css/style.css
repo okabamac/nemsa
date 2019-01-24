@@ -66,11 +66,13 @@ header[role="banner"] ul li {
 }
 
 header[role="banner"] ul li a img {
-  height: 50ox;
-  width: 50px;
+  height: 45px;
+  width: 45px;
   top: 8px;
   position: relative;
-  border-radius: 50%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
 }
 
 header[role="banner"] ul li .logout {
@@ -106,7 +108,7 @@ header[role="banner"] ul li .logout {
   display: inline-block;
   word-wrap: break-word;
   top: 29px;
-  max-width: 340px;
+  max-width: 370px;
   position: absolute;
   text-align: center;
   margin-left: 1px;

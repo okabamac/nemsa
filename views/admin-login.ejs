@@ -19,7 +19,7 @@
     <div class="overlay"></div>
     <div id="sign-in-form">
         <div>
-            <form action="/admin-dashboard" method="POST">
+            <form action="/loginAdmin" method="POST">
                 <legend>Sign in to your account</legend>
                 <div>
                     <label for="email"></label>
@@ -38,7 +38,7 @@
         </div>
         <div>
             <p class="access-message">
-                <%= message %>
+                <% include ./partials/messages %>
             </p>
             <p class="instructions">Click <a href="/login">here</a> for office purposes</p>
         </div>

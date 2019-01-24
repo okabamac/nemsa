@@ -1,112 +1,96 @@
-const User = require("../models/User");
-const RoutineTest = require("../models/RoutineTest");
-const TypeTest = require("../models/TypeTest");
-const ReCertification = require("../models/ReCertification");
-const bcrypt = require("bcryptjs");
+const User = require('../models/User');
+const RoutineTest = require('../models/RoutineTest');
+const TypeTest = require('../models/TypeTest');
+const ReCertification = require('../models/ReCertification');
+const bcrypt = require('bcryptjs');
 const fs = require('fs');
-const path = require("path");
+const path = require('path');
+const passport = require('passport');
 
-const multer = require("multer");
+const multer = require('multer');
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, path.resolve(__dirname + "/../uploads"));
+    destination: (req, file, cb) => {
+        cb(null, path.resolve(__dirname + '/../uploads'));
     },
     filename: (req, file, cb) => {
-        cb(null, file.fieldname + "-" + Date.now() + "-" + file.originalname);
+        cb(null, file.fieldname + '-' + Date.now() + '-' + file.originalname);
     }
 });
 
 const upload = multer({
     storage: storage
-}).single("avatar");
+}).single('avatar');
 
 const PagesControls = {
-    getHomePage: function (req, res) {
-        res.render("verification");
+    getHomePage: (req, res) => {
+        res.render('verification');
     },
 
-    login: function (req, res) {
-        res.render("login", {
-            message: ""
+    loginOffice: (req, res) => {
+        req.logout();
+        res.render('login', {
+            message: ''
         });
     },
-    adminLogin: function (req, res) {
-        res.render("admin-login", {
-            message: ""
+    loginAdmin: (req, res) => {
+        req.logout();
+        res.render('admin-login', {
+            message: ''
         });
     },
-
-    officeDashboard: function (req, res) {
-        User.findOne({
-            staffEmail: req.body.email,
-        }, function (err, existingUser) {
-            if (existingUser !== null) {
-                bcrypt.compare(req.body.password, existingUser.password, function (err, response) {
-                    if (response == true) {
-                        res.render("officers-panel", {
-                            user: existingUser.firstName + ' ' + existingUser.lastName,
-                            id: existingUser._id
-                        });
-                    } else {
-                        res.render("login", {
-                            message: "Invalid credentials"
-                        });
-                    }
-                });
-            } else {
-                res.render("login", {
-                    message: "Invalid credentials"
-                });
-            }
+    officerHome: (req, res) => {
+        res.render('officers-panel', {
+            user: req.user.firstName + ' ' + req.user.lastName,
+            id: req.user._id
         });
     },
 
-    adminDashboard: function (req, res) {
-        User.findOne({
-            staffEmail: req.body.email,
-            admin: 'yes'
-        }, function (err, existingUser) {
-            if (existingUser !== null) {
-                bcrypt.compare(req.body.password, existingUser.password, function (err, response) {
-                    if (response == true) {
-                        res.render("admin-panel", {
-                            user: existingUser.firstName + ' ' + existingUser.lastName,
-                            id: existingUser._id
-
-                        });
-                    } else {
-                        res.render("admin-login", {
-                            message: "Invalid credentials"
-                        });
-                    }
-                });
-            } else {
-                res.render("admin-login", {
-                    message: "Invalid credentials"
-                });
-            }
-        });
+    adminHome: (req, res) => {
+        if (req.user.admin == 'yes') {
+            res.render('admin-panel', {
+                user: req.user.firstName + ' ' + req.user.lastName,
+                id: req.user._id
+            });
+        } else {
+            res.render('admin-login');
+        }
     },
 
-    verify: function (req, res) {
+    officerLoginPost: (req, res, next) => {
+        passport.authenticate('local', {
+            successRedirect: '/officersDashboard',
+            failureRedirect: '/login',
+            failureFlash: true
+        })(req, res, next);
+    },
+
+    adminLoginPost: (req, res, next) => {
+        passport.authenticate('local', {
+            successRedirect: '/adminDashboard',
+            failureRedirect: '/adminLogin',
+            failureFlash: true
+        })(req, res, next);
+    },
+
+    verify: (req, res) => {
         res.send({
             id: 122369,
-            name: "Okaba Mac",
-            email: "markokaba99@gmail.com"
+            name: 'Okaba Mac',
+            email: 'markokaba99@gmail.com'
         });
     },
 
 
-    getImage: function(req, res) {
-        User.findById(req.params.id,(err,data)=>{
-            if(!err){
+    getImage: (req, res) => {
+        User.findById(req.params.id, (err, data) => {
+            if (!err) {
                 res.contentType(data.avatar.contentType);
                 res.send(data.avatar.data);
             }
         });
     },
-    addUser: function (req, res) {
-        upload(req, res, function (err) {
+    addUser: (req, res) => {
+        upload(req, res, (err) => {
             if (err instanceof multer.MulterError) {
                 console.log(err);
             } else if (err) {
@@ -127,16 +111,16 @@ const PagesControls = {
                 const errors = [];
                 User.findOne({
                     staffEmail: staffEmail
-                }, function (err, existingUser) {
+                }, (err, existingUser) => {
                     if (existingUser === null) {
                         if (password !== confirmPassword) {
                             errors.push({
-                                msg: "Passwords do not match"
+                                msg: 'Passwords do not match'
                             });
                         }
                         if (password.length < 6) {
                             errors.push({
-                                msg: "Password is too weak"
+                                msg: 'Password is too weak'
                             });
                         }
                         if (errors.length > 0) {
@@ -171,7 +155,7 @@ const PagesControls = {
                         );
                     } else {
                         res.status(400).send([{
-                            msg: "Email is not available"
+                            msg: 'Email is not available'
                         }]);
                     }
                 });
@@ -179,7 +163,7 @@ const PagesControls = {
         });
     },
 
-    routineTest: function (req, res) {
+    routineTest: (req, res) => {
         const {
             radio,
             vendorName,
@@ -209,7 +193,7 @@ const PagesControls = {
         routineTest.expDate = expDate;
         routineTest.tariffCharges = tariffCharges;
         routineTest.observation = observation;
-        if (seal1 == "") {
+        if (seal1 == '') {
             routineTest.crimpSeal = seal2;
         } else {
             routineTest.crimpSeal = seal1;
@@ -227,7 +211,7 @@ const PagesControls = {
                 })
             );
     },
-    typeTest: function (req, res) {
+    typeTest: (req, res) => {
         const {
             vendorName,
             country,
@@ -272,7 +256,7 @@ const PagesControls = {
                 })
             );
     },
-    reCertification: function (req, res) {
+    reCertification: (req, res) => {
         const {
             disco,
             state,
@@ -315,7 +299,7 @@ const PagesControls = {
         reCertification.tariffCharges = tariffCharges;
         reCertification.testMeasurement = testMeasurement;
         reCertification.observation = observation;
-        if (seal1 == "") {
+        if (seal1 == '') {
             crimpSeal = seal2;
         } else {
             crimpSeal = seal1;
