@@ -38,7 +38,7 @@ if (search) {
             )
             .then(obj => {
                 if (obj.status === 200) {
-                    loader.style.display = 'none';
+                    loader.style.display = 'block';
                     let result = ``;
                     const {
                        meterSerialNumber, meterClass, vendorName, dateRoutineTest, expDate

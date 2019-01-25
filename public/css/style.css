@@ -548,7 +548,9 @@ input[type="checkbox"]:checked+span .fake-checkbox:after {
   color: rgb(219, 29, 29);
   width: 100%;
   margin-top: 40px;
+  padding: 0;
   font-size: 16px;
+  text-align: left;
 }
 
 .container .messages-div {
@@ -655,7 +657,8 @@ table {
   border-collapse: collapse;
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 90%;
+  margin: 0;
   table-layout: fixed;
 }
 
@@ -666,7 +669,6 @@ table caption {
 
 table tr {
   border: 1px solid #ddd;
-  padding: 0.35em;
 }
 
 th {
@@ -675,13 +677,13 @@ th {
 
 table th,
 table td {
-  padding: 0.625em;
+  padding: 0.6em;
   text-align: center;
 }
 
 table th {
-  font-size: 0.85em;
-  letter-spacing: 0.1em;
+  font-size: 0.7em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -752,7 +754,7 @@ table th {
     max-width: 70vw;
   }
   main[role="dashboard"] .container {
-  padding: 0.8em;
+  padding: 0.4em 0.6em;
   }
   .container .docker form {
     grid-gap: 10px;

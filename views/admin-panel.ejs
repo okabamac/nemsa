@@ -16,7 +16,7 @@
 <main role="dashboard">
     <div class="container">
         <h2>Manage Users</h2>
-        <div class="toggle-buttons"><button class="btn" id="add">Add User</button> <button class="btn" id="remove">Remove
+        <div class="toggle-buttons"><button class="btn" id="add">Add User</button> <button class="btn" id="remove">Edit
                 User</button></div>
         <div class="docker" id="docker-1">
             <form action="/addUser" method="POST" encrypt="multipart/form-data" id="add_user">
@@ -79,25 +79,25 @@
                 </div>
             </form>
             <div class="messages-div">
-                <div id="messages"></div>
+                <div id="messages-1"></div>
                 <div class="loader" id="loader">Loading...</div>
             </div>
         </div>
 
         <div class="docker" id="docker-2">
-            <form>
+            <form action="/editUser" method="POST" id="edit_user">
                 <div>
-                    <label for="">First Name</label>
-                    <input type="text">
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName">
                 </div>
 
                 <div>
-                    <label for="">Last Name</label>
-                    <input type="text">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName">
                 </div>
                 <div>
-                    <label for="">Staff ID</label>
-                    <input type="text">
+                    <label for="staffID">Staff ID</label>
+                    <input type="text" name="staffID">
                 </div>
 
                 <div id="remove-button">
@@ -105,7 +105,7 @@
                 </div>
             </form>
             <div class="messages-div">
-                <div id="messages"></div>
+                <div id="messages-2"></div>
                 <div class="loader" id="loader">Loading...</div>
             </div>
         </div>

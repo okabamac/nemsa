@@ -1,54 +1,54 @@
-const docker1 = document.getElementById("docker-1");
-const docker2 = document.getElementById("docker-2");
+const docker1 = document.getElementById('docker-1');
+const docker2 = document.getElementById('docker-2');
 const addUser = document.getElementById('add');
 const remove_user = document.getElementById('remove');
 
-addUser.addEventListener("click", toggleAddUserForm);
+addUser.addEventListener('click', toggleAddUserForm);
 
-remove_user.addEventListener("click", toggleRemoveUserForm);
+remove_user.addEventListener('click', toggleRemoveUserForm);
 
 function toggleAddUserForm() {
-  docker1.style.display = "block";
-  docker2.style.display = "none";
-  addUser.style.backgroundColor = "green";
-  remove_user.style.backgroundColor = "dodgerblue";
+  docker1.style.display = 'block';
+  docker2.style.display = 'none';
+  addUser.style.backgroundColor = 'green';
+  remove_user.style.backgroundColor = 'dodgerblue';
 }
 
 function toggleRemoveUserForm() {
-  docker2.style.display = "block";
-  docker1.style.display = "none";
-  remove_user.style.backgroundColor = "green";
-  addUser.style.backgroundColor = "dodgerblue";
+  docker2.style.display = 'block';
+  docker1.style.display = 'none';
+  remove_user.style.backgroundColor = 'green';
+  addUser.style.backgroundColor = 'dodgerblue';
 
 }
 
 window.onscroll = function (ev) {
-  let header = document.getElementById("header");
+  let header = document.getElementById('header');
   if (window.scrollY >= 60) {
     if (header) {
-      header.style.display = "none";
+      header.style.display = 'none';
     }
 
   } else {
     if (header) {
-      header.style.display = "block";
+      header.style.display = 'block';
     }
 
   }
 };
 
-const add_user = document.getElementById("add_user");
+const add_user = document.getElementById('add_user');
 if (add_user) {
-  add_user.addEventListener("submit", e => {
+  add_user.addEventListener('submit', e => {
     e.preventDefault();
-    document.getElementById('messages').innerHTML = "";
-    const loader = document.getElementsByClassName("loader");
+   let message1 = document.getElementById('messages-1');
+    message1.innerHTML = '';
+    const loader = document.getElementsByClassName('loader');
     loader[0].style.display = 'block';
-    let error = document.getElementById("messages");
-    const form = document.getElementById("add_user");
+    const form = document.getElementById('add_user');
     const formData = new FormData(form);
-    fetch("/addUser", {
-        method: "POST",
+    fetch('/addUser', {
+        method: 'POST',
         body: formData
       })
       .then(r =>
@@ -60,11 +60,74 @@ if (add_user) {
       .then(obj => {
         if (obj.status === 200) {
           loader[0].style.display = 'none';
-          error.innerHTML = obj.body[0].msg;
+          message1.innerHTML = obj.body[0].msg;
           form.reset();
         } else {
           loader[0].style.display = 'none';
-          error.innerHTML = obj.body[0].msg;
+          message1.innerHTML = obj.body[0].msg;
+        }
+      })
+      .catch(err => console.log(err));
+  });
+}
+
+const edit_user = document.getElementById('edit_user');
+if (edit_user) {
+  edit_user.addEventListener('submit', e => {
+    e.preventDefault();
+    let message2 = document.getElementById('messages-2');
+    message2.innerHTML = '';
+    const loader = document.getElementsByClassName('loader');
+    loader[1].style.display = 'block';
+    const form = document.getElementById('edit_user');
+    const formData = new URLSearchParams(new FormData(form));
+    
+    fetch('/editUser', {
+      method: 'POST',
+        body: formData
+      })
+      .then(r =>
+        r.json().then(data => ({
+          status: r.status,
+          body: data
+        }))
+      )
+      .then(obj => {
+        if (obj.status === 200) {
+          loader[1].style.display = 'block';
+          let result = ``;
+          const {
+             firstName, lastName, staffEmail, staffID, admin
+          } = obj.body.staff;
+          result +=
+              `<table>
+          <caption>Staff Details</caption>
+          <thead>
+            <tr>
+              <th scope='col'>First Name</th>
+              <th scope='col'>Last Name</th>
+              <th scope='col'>Email</th>
+              <th scope='col'>ID</th>
+              <th scope='col'>Administrator</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label='First Name'>${firstName}</td>
+              <td data-label='Last Name'>${lastName}</td>
+              <td data-label='Email'>${staffEmail}</td>
+              <td data-label='ID'>${staffID}</td>
+              <td data-label='Administrator'>${admin}</td>
+            </tr>
+            </tbody>
+            </table>`;
+          loader[1].style.display = 'none';
+          message2.style.color = '#333';
+          message2.innerHTML = result;
+        } else {
+          message2.style.color = 'red';
+          loader[1].style.display = 'none';
+          message2.innerHTML = obj.body.message;
         }
       })
       .catch(err => console.log(err));

@@ -155,6 +155,20 @@ const PagesControls = {
         });
     },
 
+    editUser: (req, res) => {
+        User.findOne({firstName: req.body.firstName, lastName: req.body.lastName, staffID: req.body.staffID}).then((staff) =>{
+            if(staff !== null){
+                return res.status(200).send({
+                    staff
+                });
+            } else {
+                return res.status(400).send({
+                    message: 'One of the fields is incorrect or this staff does not exist'
+                });
+            }
+        }).catch((err) => console.log(err));
+    },
+
     routineTest: (req, res) => {
         const {
             radio,

@@ -17,7 +17,7 @@ router.post('/loginOffice', PagesControls.officerLoginPost);
 router.post('/loginAdmin', PagesControls.adminLoginPost);
 
 router.post('/addUser',  PagesControls.addUser);
-
+router.post('/editUser', PagesControls.editUser);
 
 router.post('/routineTest', PagesControls.routineTest);
 router.post('/typeTest', PagesControls.typeTest);
