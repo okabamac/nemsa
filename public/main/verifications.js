@@ -4,6 +4,20 @@ date = date.split(' ').slice(0, 4).join(' ');
 return date;
 };
 
+window.onscroll = function (ev) {
+    let header = document.getElementById("header");
+    if (window.scrollY >= 60) {
+      if (header) {
+        header.style.display = "none";
+      }
+  
+    } else {
+      if (header) {
+        header.style.display = "block";
+      }
+  
+    }
+  };
 
 const search = document.getElementById("search");
 if (search) {

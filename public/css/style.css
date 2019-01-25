@@ -88,9 +88,10 @@ header[role="banner"] ul li .logout {
   width: 100%;
   z-index: 99;
   padding-bottom: 15px;
-  -webkit-box-shadow: 0px 0.8px 0.8px #645f64;
+  /* -webkit-box-shadow: 0px 0.8px 0.8px #645f64;
   -moz-box-shadow: 0px 0.8px 0.8px #807780;
-  box-shadow: 0px 0.8px 0.8px #868286;
+  box-shadow: 0px 0.8px 0.8px #868286; */
+  box-shadow: rgb(240, 241, 247) 0 1px 0 0;
 }
 
 .verify-header {
@@ -261,10 +262,6 @@ select:-webkit-autofill:active {
 #sign-in-form button:hover {
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   border: 1px solid rgba(81, 203, 238, 1);
-}
-
-input {
-  cursor: pointer;
 }
 
 .access-message {

@@ -39,16 +39,17 @@ function toggleForm3() {
   docker2.style.display = "none";
 }
 
+
 window.onscroll = function (ev) {
   let header = document.getElementById("header");
   if (window.scrollY >= 60) {
     if (header) {
-      header.style.backgroundColor = "#7CC68D";
+      header.style.display = "none";
     }
 
   } else {
     if (header) {
-      header.style.backgroundColor = "white";
+      header.style.display = "block";
     }
 
   }
