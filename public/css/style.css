@@ -658,7 +658,7 @@ table {
   margin: 0;
   padding: 0;
   width: 90%;
-  margin: 0;
+  margin: auto;
   table-layout: fixed;
 }
 
