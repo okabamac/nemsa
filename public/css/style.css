@@ -382,9 +382,7 @@ input[type="file"] {
   outline: 0;
   opacity: 0.6;
 }
-button:active {
-  background: none;
-}
+
 .container .docker form {
   transition: 2s;
   margin-top: 40px;
