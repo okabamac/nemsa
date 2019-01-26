@@ -26,7 +26,7 @@ body {
   z-index: -96;
 }
 
-nav[role="login"] {
+nav[role='login'] {
   position: fixed;
   top: 0;
   width: 100%;
@@ -38,7 +38,7 @@ nav[role="login"] {
   display: inline-block;
 }
 
-header[role="banner"] {
+header[role='banner'] {
   position: fixed;
   width: 100%;
   height: 54px;
@@ -47,25 +47,25 @@ header[role="banner"] {
   background-color: #7cc68d;
 }
 
-header[role="banner"] h3 {
+header[role='banner'] h3 {
   position: absolute;
   top: 12px;
   left: 26px;
   color: #fff;
 }
 
-header[role="banner"] ul {
+header[role='banner'] ul {
   display: flex;
   float: right;
   position: relative;
 }
 
-header[role="banner"] ul li {
+header[role='banner'] ul li {
   display: inline;
   margin-right: 10px;
 }
 
-header[role="banner"] ul li a img {
+header[role='banner'] ul li a img {
   height: 42px;
   width: 42px;
   top: 10px;
@@ -75,7 +75,7 @@ header[role="banner"] ul li a img {
   padding: 5px;
 }
 
-header[role="banner"] ul li .logout {
+header[role='banner'] ul li .logout {
   color: darkgreen;
   top: 15px;
   position: relative;
@@ -116,7 +116,7 @@ header[role="banner"] ul li .logout {
   hyphens: auto;
 }
 
-main[role="login"] {
+main[role='login'] {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -263,13 +263,13 @@ select:-webkit-autofill:active {
   border: 1px solid rgba(81, 203, 238, 1);
 }
 
-.access-message {
+/* .access-message {
   width: 100%;
   color: red;
   height: 30px;
-}
+} */
 
-main[role="dashboard"] {
+main[role='dashboard'] {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -277,7 +277,7 @@ main[role="dashboard"] {
   height: 100vh;
 }
 
-main[role="dashboard"] .container {
+main[role='dashboard'] .container {
   width: 1200px;
   height: 1500px;
   top: 190px;
@@ -290,13 +290,13 @@ main[role="dashboard"] .container {
   box-shadow: 0px 10px 13px -7px #000000, 10px 10px 20px 10px rgba(0, 0, 0, 0);
 }
 
-main[role="dashboard"] .verification-container {
+main[role='dashboard'] .verification-container {
   height: 70% !important;
   position: relative;
   text-align: center;
 }
 
-main[role="dashboard"] .verification-container form {
+main[role='dashboard'] .verification-container form {
   width: 100%;
   margin-top: 20px;
   height: 45px;
@@ -306,13 +306,13 @@ main[role="dashboard"] .verification-container form {
   justify-content: center;
 }
 
-main[role="dashboard"] .verification-container form div {
+main[role='dashboard'] .verification-container form div {
   width: 65%;
   position: relative;
   height: inherit;
 }
 
-main[role="dashboard"] .verification-container form div input {
+main[role='dashboard'] .verification-container form div input {
   width: 80%;
   height: inherit;
   border: 1px solid #7cc68d;
@@ -320,12 +320,12 @@ main[role="dashboard"] .verification-container form div input {
   border-radius: 20px;
 }
 
-main[role="dashboard"] .verification-container form .search-div input:focus {
+main[role='dashboard'] .verification-container form .search-div input:focus {
   outline: none;
   border: 2px solid #61b374;
 }
 
-main[role="dashboard"] .verification-container form .search-div button {
+main[role='dashboard'] .verification-container form .search-div button {
   width: 10%;
   cursor: pointer;
   margin-left: -9.8%;
@@ -339,13 +339,13 @@ main[role="dashboard"] .verification-container form .search-div button {
   transform: scale(1.2)
 }
 
-main[role="dashboard"] .verification-container form .search-div button:hover {
+main[role='dashboard'] .verification-container form .search-div button:hover {
   transform: scale(1.4);
   -webkit-transform: scale(1.4);
   -moz-transform: scale(1.4);
 }
 
-main[role="dashboard"] .verification-container .footer {
+main[role='dashboard'] .verification-container .footer {
   position: absolute;
   left: 0;
   right: 0;
@@ -375,13 +375,43 @@ main[role="dashboard"] .verification-container .footer {
 #routine-test {
   background-color: green;
 }
-
-input[type="file"] {
+input[type='file'] {
   border: none;
   outline: 0;
   opacity: 0.6;
 }
 
+input[type='email'] {
+  text-transform: lowercase;
+}
+
+.btn-edit, .btn-save {
+  width: 60px;
+  height: 20px;
+  background-color: #61b374;
+  border-radius: 3px;
+  margin-right: 5px;
+  border-style: none;
+  box-shadow: rgb(240, 241, 247) 0 1px 0 0;
+  color: #ffffff;
+  outline-style: none;
+  cursor: pointer;
+}
+.delete {
+  width: 100px;
+  height: 30px;
+  background-color: #d60c0c;
+  border-radius: 6px;
+  float: right;
+  margin-top: 40px;
+  right: 60px;
+  border-style: none;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  color: #ffffff;
+  outline-style: none;
+  cursor: pointer;
+}
 .container .docker form {
   transition: 2s;
   margin-top: 40px;
@@ -443,7 +473,7 @@ textarea {
   display: inline-block;
 }
 
-.container .docker form button[type="submit"] {
+.container .docker form button[type='submit'] {
   width: 150px;
   position: absolute;
   margin-top: 70px;
@@ -518,7 +548,7 @@ textarea {
 
 .fake-radiobutton:after,
 .fake-checkbox:after {
-  content: "";
+  content: '';
   display: none;
   position: absolute;
   top: 50%;
@@ -537,8 +567,8 @@ textarea {
   border-radius: 50%;
 }
 
-input[type="radio"]:checked+span .fake-radiobutton:after,
-input[type="checkbox"]:checked+span .fake-checkbox:after {
+input[type='radio']:checked+span .fake-radiobutton:after,
+input[type='checkbox']:checked+span .fake-checkbox:after {
   display: block;
 }
 
@@ -561,15 +591,15 @@ input[type="checkbox"]:checked+span .fake-checkbox:after {
   font-size: 16px;
 }
 
-[type="date"] {
+[type='date'] {
   background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
 }
 
-[type="date"]::-webkit-inner-spin-button {
+[type='date']::-webkit-inner-spin-button {
   display: none;
 }
 
-[type="date"]::-webkit-calendar-picker-indicator {
+[type='date']::-webkit-calendar-picker-indicator {
   opacity: 0;
   cursor: pointer;
 }
@@ -672,7 +702,8 @@ table tr {
 }
 
 th {
-  background-color: rgb(54, 146, 75);
+  background-color: rgb(69, 160, 90);
+  color: #fff;
 }
 
 table th,
@@ -753,7 +784,7 @@ table th {
   .header .logo {
     max-width: 70vw;
   }
-  main[role="dashboard"] .container {
+  main[role='dashboard'] .container {
   padding: 0.4em 0.6em;
   }
   .container .docker form {
@@ -770,7 +801,7 @@ table th {
     grid-row: 12/13;
   }
 
-  main[role="dashboard"] .verification-container form div {
+  main[role='dashboard'] .verification-container form div {
     width: 85%;
   }
 

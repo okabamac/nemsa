@@ -76,6 +76,6 @@ if (search) {
                     messages.innerHTML = obj.body.message;
                 }
             })
-            .catch(err => console.log(err));
+            .catch(() => messages.innerHTML = 'Please try again later');
     });
 }

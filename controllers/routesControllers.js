@@ -21,6 +21,7 @@ const upload = multer({
     storage: storage
 }).single('avatar');
 
+
 const PagesControls = {
     getHomePage: (req, res) => {
         res.render('verification');
@@ -156,8 +157,12 @@ const PagesControls = {
     },
 
     editUser: (req, res) => {
-        User.findOne({firstName: req.body.firstName, lastName: req.body.lastName, staffID: req.body.staffID}).then((staff) =>{
-            if(staff !== null){
+        User.findOne({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            staffID: req.body.staffID
+        }).then((staff) => {
+            if (staff !== null) {
                 return res.status(200).send({
                     staff
                 });

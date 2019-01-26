@@ -37,11 +37,17 @@ window.onscroll = function (ev) {
   }
 };
 
+
+const capitalize = (string) => {
+  string.value = string.value.split(' ').map(eachWord =>
+    eachWord.charAt(0).toUpperCase() + eachWord.slice(1).toLowerCase()
+  ).join(' ');
+};
 const add_user = document.getElementById('add_user');
 if (add_user) {
   add_user.addEventListener('submit', e => {
     e.preventDefault();
-   let message1 = document.getElementById('messages-1');
+    let message1 = document.getElementById('messages-1');
     message1.innerHTML = '';
     const loader = document.getElementsByClassName('loader');
     loader[0].style.display = 'block';
@@ -81,9 +87,9 @@ if (edit_user) {
     loader[1].style.display = 'block';
     const form = document.getElementById('edit_user');
     const formData = new URLSearchParams(new FormData(form));
-    
+
     fetch('/editUser', {
-      method: 'POST',
+        method: 'POST',
         body: formData
       })
       .then(r =>
@@ -97,10 +103,14 @@ if (edit_user) {
           loader[1].style.display = 'block';
           let result = ``;
           const {
-             firstName, lastName, staffEmail, staffID, admin
+            firstName,
+            lastName,
+            staffEmail,
+            staffID,
+            admin
           } = obj.body.staff;
           result +=
-              `<table>
+            `<table>
           <caption>Staff Details</caption>
           <thead>
             <tr>
@@ -109,18 +119,21 @@ if (edit_user) {
               <th scope='col'>Email</th>
               <th scope='col'>ID</th>
               <th scope='col'>Administrator</th>
+              <th scope='col'>Modify</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td data-label='First Name'>${firstName}</td>
-              <td data-label='Last Name'>${lastName}</td>
-              <td data-label='Email'>${staffEmail}</td>
-              <td data-label='ID'>${staffID}</td>
-              <td data-label='Administrator'>${admin}</td>
+              <td data-label='First Name' contenteditable='true'>${firstName}</td>
+              <td data-label='Last Name' contenteditable='true'>${lastName}</td>
+              <td data-label='Email' contenteditable='true'>${staffEmail}</td>
+              <td data-label='ID' contenteditable='true'>${staffID}</td>
+              <td data-label='Administrator' contenteditable='true'>${admin}</td>
+              <td data-label='Modify'><button class='btn-edit'>Edit</button> <button class='btn-save'>Save</button></td>
             </tr>
             </tbody>
             </table>`;
+          result += `<button class='delete'>Delete</button>`;
           loader[1].style.display = 'none';
           message2.style.color = '#333';
           message2.innerHTML = result;

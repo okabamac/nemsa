@@ -55,6 +55,13 @@ window.onscroll = function (ev) {
   }
 };
 
+const capitalize = (string) =>
+{
+    string.value = string.value.split(' ').map(eachWord=>
+      eachWord.charAt(0).toUpperCase() + eachWord.slice(1).toLowerCase()
+    ).join(' ');
+};
+
 const addRoutine = document.getElementById("add-routine");
 if (addRoutine) {
   addRoutine.addEventListener("submit", e => {

@@ -1,68 +1,68 @@
-<header role="banner">
+<header role='banner'>
     <h3>
         <%= user %>
     </h3>
     <ul class='avatar-login'>
-        <li class="avatar">
-            <a href=""><img src="/image/<%= id %>"></a>
+        <li class='avatar'>
+            <a href=''><img src='/image/<%= id %>'></a>
         </li>
-        <li><a href="/adminLogin" class="logout">Logout</a></li>
+        <li><a href='/adminLogin' class='logout'>Logout</a></li>
     </ul>
 </header>
-<div class="header"  id="header">
-    <img class="logo" src="./images/nemsa_logo.png">
+<div class='header' id='header'>
+    <img class='logo' src='./images/nemsa_logo.png'>
 </div>
 
-<main role="dashboard">
-    <div class="container">
+<main role='dashboard'>
+    <div class='container'>
         <h2>Manage Users</h2>
-        <div class="toggle-buttons"><button class="btn" id="add">Add User</button> <button class="btn" id="remove">Edit
+        <div class='toggle-buttons'><button class='btn' id='add'>Add User</button> <button class='btn' id='remove'>Edit
                 User</button></div>
-        <div class="docker" id="docker-1">
-            <form action="/addUser" method="POST" encrypt="multipart/form-data" id="add_user">
+        <div class='docker' id='docker-1'>
+            <form action='/addUser' method='POST' encrypt='multipart/form-data' id='add_user'>
                 <div>
-                    <label for="firstName">First Name</label>
-                    <input type="text" name="firstName" required>
+                    <label for='firstName'>First Name</label>
+                    <input type='text' name='firstName'  onkeyup='capitalize(this)' required>
                 </div>
 
                 <div>
-                    <label for="lastName">Last Name</label>
-                    <input type="text" name="lastName" required>
+                    <label for='lastName'>Last Name</label>
+                    <input type='text' name='lastName' onkeyup='capitalize(this)' required>
                 </div>
 
                 <div>
-                    <label for="staffID">Staff ID</label>
-                    <input type="text" name="staffID" required>
+                    <label for='staffID'>Staff ID</label>
+                    <input type='text' name='staffID' required>
                 </div>
                 <div>
-                    <label for="staffEmail">Staff Email</label>
-                    <input type="text" name="staffEmail" required>
+                    <label for='staffEmail'>Staff Email</label>
+                    <input type='email' name='staffEmail' required>
                 </div>
 
                 <div>
-                    <label for="password">Password</label>
-                    <input type="password" name="password" required>
+                    <label for='password'>Password</label>
+                    <input type='password' name='password' required>
                 </div>
                 <div>
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" name="confirmPassword" required>
+                    <label for='confirmPassword'>Confirm Password</label>
+                    <input type='password' name='confirmPassword' required>
                 </div>
 
-                <div class="radio-div">
+                <div class='radio-div'>
                     <label>Administrator</label>
 
-                    <label class="radio-button">
-                        <input type="radio" name="admin" value="no" checked="checked">
-                        <span class="label-visible">
-                            <span class="fake-radiobutton"></span>
+                    <label class='radio-button'>
+                        <input type='radio' name='admin' value='no' checked='checked'>
+                        <span class='label-visible'>
+                            <span class='fake-radiobutton'></span>
                             No
                         </span>
                     </label>
 
-                    <label class="radio-button">
-                        <input type="radio" name="admin" value="yes">
-                        <span class="label-visible">
-                            <span class="fake-radiobutton"></span>
+                    <label class='radio-button'>
+                        <input type='radio' name='admin' value='yes'>
+                        <span class='label-visible'>
+                            <span class='fake-radiobutton'></span>
                             Yes
                         </span>
                     </label>
@@ -70,45 +70,45 @@
                 </div>
 
                 <div>
-                    <label for="avatar">Upload Image</label>
-                    <input type="file" name="avatar" accept="image/jpeg, image/png" required />
+                    <label for='avatar'>Upload Image</label>
+                    <input type='file' name='avatar' accept='image/jpeg, image/png' required />
                 </div>
 
                 <div>
-                    <button type="submit" class="btn">Submit</button>
+                    <button type='submit' class='btn'>Submit</button>
                 </div>
             </form>
-            <div class="messages-div">
-                <div id="messages-1"></div>
-                <div class="loader" id="loader">Loading...</div>
+            <div class='messages-div'>
+                <div id='messages-1'></div>
+                <div class='loader' id='loader'>Loading...</div>
             </div>
         </div>
 
-        <div class="docker" id="docker-2">
-            <form action="/editUser" method="POST" id="edit_user">
+        <div class='docker' id='docker-2'>
+            <form action='/editUser' method='POST' id='edit_user'>
                 <div>
-                    <label for="firstName">First Name</label>
-                    <input type="text" name="firstName">
+                    <label for='firstName'>First Name</label>
+                    <input type='text' name='firstName' onkeyup='capitalize(this)'>
                 </div>
 
                 <div>
-                    <label for="lastName">Last Name</label>
-                    <input type="text" name="lastName">
+                    <label for='lastName'>Last Name</label>
+                    <input type='text' name='lastName' onkeyup='capitalize(this)'>
                 </div>
                 <div>
-                    <label for="staffID">Staff ID</label>
-                    <input type="text" name="staffID">
+                    <label for='staffID'>Staff ID</label>
+                    <input type='text' name='staffID'>
                 </div>
 
-                <div id="remove-button">
-                    <button type="submit" class="btn">Search</button>
+                <div id='remove-button'>
+                    <button type='submit' class='btn'>Search</button>
                 </div>
             </form>
-            <div class="messages-div">
-                <div id="messages-2"></div>
-                <div class="loader" id="loader">Loading...</div>
+            <div class='messages-div'>
+                <div id='messages-2'></div>
+                <div class='loader' id='loader'>Loading...</div>
             </div>
         </div>
     </div>
 </main>
-<script type="text/javascript" src="/main/admin-forms.js"></script>
+<script type='text/javascript' src='/main/admin-forms.js'></script>
