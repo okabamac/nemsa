@@ -129,7 +129,7 @@ if (edit_user) {
               <td data-label='Email' contenteditable='true'>${staffEmail}</td>
               <td data-label='ID' contenteditable='true'>${staffID}</td>
               <td data-label='Administrator' contenteditable='true'>${admin}</td>
-              <td data-label='Modify'><button class='btn-edit'>Edit</button> <button class='btn-save'>Save</button></td>
+              <td data-label='Modify'><button class='btn-save'>Save</button></td>
             </tr>
             </tbody>
             </table>`;

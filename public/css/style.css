@@ -385,7 +385,7 @@ input[type='email'] {
   text-transform: lowercase;
 }
 
-.btn-edit, .btn-save {
+ .btn-save {
   width: 60px;
   height: 20px;
   background-color: #61b374;
