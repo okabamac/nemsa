@@ -31,7 +31,6 @@ nav[role='login'] {
   top: 0;
   width: 100%;
   height: 40px;
-  background-color: #7cc68d;
   border-bottom: 1px solid #e5ecf0;
   z-index: 4;
   text-align: center;
@@ -44,12 +43,12 @@ header[role='banner'] {
   height: 54px;
   z-index: 999;
   top: 0;
-  background-color: #7cc68d;
+  background: conic-gradient(from 360deg, #7cc68d, rgb(18, 160, 105));
 }
 
 header[role='banner'] h3 {
   position: absolute;
-  top: 12px;
+  top: 15px;
   left: 26px;
   color: #fff;
 }
@@ -77,7 +76,7 @@ header[role='banner'] ul li a img {
 
 header[role='banner'] ul li .logout {
   color: darkgreen;
-  top: 15px;
+  top: 18px;
   position: relative;
   text-decoration: none;
 }
@@ -391,12 +390,14 @@ input[type='email'] {
   background-color: #61b374;
   border-radius: 3px;
   border-style: none;
-  box-shadow: rgb(240, 241, 247) 0 1px 0 0;
+  box-shadow: 0 0.875rem 1.75rem rgba(0,0,0,.15), 0 0.625rem 0.625rem rgba(0,0,0,.12);
+  transition: all .25s cubic-bezier(.25,.8,.25,1);
+  transition: .25s linear;
   color: #ffffff;
   outline-style: none;
   cursor: pointer;
 }
-.delete {
+.btn-delete {
   width: 100px;
   height: 30px;
   background-color: #d60c0c;
@@ -692,7 +693,7 @@ table {
 }
 
 table caption {
-  font-size: 1.5em;
+  font-size: 1.2em;
   margin: 0.5em 0 0.75em;
 }
 
@@ -707,7 +708,7 @@ th {
 
 table th,
 table td {
-  padding: 0.6em;
+  padding: 0.5em;
   text-align: center;
 }
 
@@ -715,6 +716,9 @@ table th {
   font-size: 0.7em;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+td {
+  font-size: 0.78em;
 }
 
 @media screen and (max-width: 1000px) {

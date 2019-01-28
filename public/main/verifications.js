@@ -76,6 +76,10 @@ if (search) {
                     messages.innerHTML = obj.body.message;
                 }
             })
-            .catch(() => messages.innerHTML = 'Please try again later');
+            .catch(() =>{
+              loader.style.display = 'none';
+              messages.style.color = 'red';
+              messages.innerHTML = 'Please try again later';
+            });
     });
 }

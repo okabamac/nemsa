@@ -1,23 +1,23 @@
 const docker1 = document.getElementById('docker-1');
 const docker2 = document.getElementById('docker-2');
 const addUser = document.getElementById('add');
-const remove_user = document.getElementById('remove');
+const modify = document.getElementById('modify');
 
 addUser.addEventListener('click', toggleAddUserForm);
 
-remove_user.addEventListener('click', toggleRemoveUserForm);
+modify.addEventListener('click', toggleRemoveUserForm);
 
 function toggleAddUserForm() {
   docker1.style.display = 'block';
   docker2.style.display = 'none';
   addUser.style.backgroundColor = 'green';
-  remove_user.style.backgroundColor = 'dodgerblue';
+  modify.style.backgroundColor = 'dodgerblue';
 }
 
 function toggleRemoveUserForm() {
   docker2.style.display = 'block';
   docker1.style.display = 'none';
-  remove_user.style.backgroundColor = 'green';
+  modify.style.backgroundColor = 'green';
   addUser.style.backgroundColor = 'dodgerblue';
 
 }
@@ -133,7 +133,7 @@ if (edit_user) {
             </tr>
             </tbody>
             </table>`;
-          result += `<button class='delete'>Delete</button>`;
+          result += `<button class='btn-delete'>Delete</button>`;
           loader[1].style.display = 'none';
           message2.style.color = '#333';
           message2.innerHTML = result;
@@ -143,6 +143,10 @@ if (edit_user) {
           message2.innerHTML = obj.body.message;
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        message2.style.color = 'red';
+        loader[1].style.display = 'none';
+        message2.innerHTML = 'Please try again';
+      });
   });
 }
