@@ -43,6 +43,7 @@ header[role='banner'] {
   height: 54px;
   z-index: 999;
   top: 0;
+  background: #7cc68d;
   background: conic-gradient(from 360deg, #7cc68d, rgb(18, 160, 105));
 }
 
