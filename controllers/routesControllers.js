@@ -53,7 +53,9 @@ const PagesControls = {
                 id: req.user._id
             });
         } else {
-            res.render('admin-login');
+            res.render('admin-login', {
+                message: 'Sorry, you do not have access'
+            });
         }
     },
 
@@ -192,6 +194,7 @@ const PagesControls = {
             tariffCharges,
             observation
         } = req.body;
+
         const routineTest = new RoutineTest();
         routineTest.vendor = radio;
         routineTest.vendorName = vendorName;

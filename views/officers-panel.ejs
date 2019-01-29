@@ -44,35 +44,42 @@
 
                 <div>
                     <label for='vendorName'>Vendor Name</label>
-                    <input type='text' name='vendorName' onkeyup='capitalize(this)'>
+                    <input type='text' name='vendorName' onkeyup='capitalize(this)' required>
                 </div>
 
                 <div>
                     <label for='vendorEmail'>Vendor Email Address</label>
-                    <input type='email' name='vendorEmail'>
+                    <input type='email' name='vendorEmail' required>
                 </div>
 
                 <div>
                     <label for='vendorPhone'>Vendor Phone Number</label>
-                    <input type='text' name='vendorPhone'>
+                    <input type='text' name='vendorPhone' required>
                 </div>
 
                 <div>
                     <label for='yom'>Year of Manufacture</label>
-                    <input type='date' name='yom'>
+                    <input type='date' name='yom' required>
                 </div>
 
                 <div>
                     <label for='meterModel'>Meter Model</label>
                     <select name='meterModel'>
-                        <option></option>
+                        <option value="E336">E336</option>
+                        <option value="E316">E316</option>
+                        <option value="ZMG410CR4.000B.02 ">ZMG410CR4.000B.02</option>
+                        <option value="MT880">MT880</option>
+                        <option value="MK10E">MK10E</option>
+                        <option value="ACE661B040">ACE661B040</option>
                     </select>
                 </div>
 
                 <div>
                     <label for='meterType'>Meter Type</label>
                     <select name='meterType'>
-                        <option></option>
+                        <option value="4WIRE">4WIRE</option>
+                        <option value="2WIRE">2WIRE</option>
+                        <option value="3PHASE4WIRE">3PHASE4WIRE</option>
                     </select>
                 </div>
 
@@ -80,12 +87,14 @@
                 <div>
                     <label for='meterClass'>Meter Class</label>
                     <select name='meterClass'>
-                        <option></option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='0.5S'>0.5S</option>
                     </select>
                 </div>
                 <div>
                     <label for='meterSerialNumber'>Meter Number</label>
-                    <input type='number' name='meterSerialNumber'>
+                    <input type='number' name='meterSerialNumber' required>
                 </div>
 
                 <div class='double-row'>
@@ -96,17 +105,17 @@
 
                 <div>
                     <label for='dateRoutineTest'>Date of Routine Test</label>
-                    <input type='date' name='dateRoutineTest'>
+                    <input type='date' name='dateRoutineTest' id="dateRoutineTest" required>
                 </div>
                 <div>
                     <label for='expDate'>Expiry Date</label>
-                    <input type='date' name='expDate'>
+                    <input type='date' name='expDate' id="expDate" readonly>
                 </div>
 
 
                 <div>
                     <label for='tariffCharges'>Tariff Charge</label>
-                    <input type='number' name='tariffCharges'>
+                    <input type='text' name='tariffCharges'>
                 </div>
 
                 <div class='full'>
@@ -818,13 +827,19 @@
 
                 <div>
                     <label for='meterType'>Meter Type</label>
-                    <select name='meterType' id=''></select>
+                    <select name='meterType'>
+                        <option value="4WIRE">4WIRE</option>
+                        <option value="2WIRE">2WIRE</option>
+                        <option value="3PHASE4WIRE">3PHASE4WIRE</option>
+                    </select>
                 </div>
 
                 <div>
                     <label for='meterClass'>Meter Class</label>
                     <select name='meterClass'>
-
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='0.5S'>0.5S</option>
                     </select>
                 </div>
 
@@ -836,7 +851,15 @@
 
                 <div>
                     <label for='meterModel'>Meter Model</label>
-                    <select name='meterModel'></select>
+                    <select name='meterModel'>
+                        <option value="E336">E336</option>
+                        <option value="E316">E316</option>
+                        <option value="ZMG410CR4.000B.02 ">ZMG410CR4.000B.02</option>
+                        <option value="MT880">MT880</option>
+                        <option value="MK10E">MK10E</option>
+                        <option value="4WIRE">4WIRE</option>
+                        <option value="ACE661B040">ACE661B040</option>
+                    </select>
                 </div>
 
                 <div class='double-row'>

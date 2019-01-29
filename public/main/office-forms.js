@@ -55,13 +55,39 @@ window.onscroll = function (ev) {
   }
 };
 
-const capitalize = (string) =>
-{
-    string.value = string.value.split(' ').map(eachWord=>
-      eachWord.charAt(0).toUpperCase() + eachWord.slice(1).toLowerCase()
-    ).join(' ');
+const capitalize = (string) => {
+  string.value = string.value.split(' ').map(eachWord =>
+    eachWord.charAt(0).toUpperCase() + eachWord.slice(1).toLowerCase()
+  ).join(' ');
 };
 
+const addYearsToDate = (input, addYears) => {
+ const yearAdded = input.setFullYear(input.getFullYear() + addYears);
+  const expDate = document.getElementById('expDate');
+  const monthFunc = (m) => {
+    let newMonth = m + 1;
+    if (newMonth<10){
+      return ('0' + newMonth);
+    }
+    return newMonth;
+  };
+  const dayFunc = (d) => {
+    if(d<10) {
+      return '0'+ d;
+    }
+    return d;
+  };
+  const year = new Date(yearAdded).getFullYear();
+  const month =  new Date(yearAdded).getMonth();
+  const day =  new Date(yearAdded).getDay();
+  expDate.value = `${year}-${monthFunc(month)}-${dayFunc(day)}`;
+};
+const dateRoutineTest = document.getElementById('dateRoutineTest');
+if (dateRoutineTest) {
+  dateRoutineTest.addEventListener('input', e => {
+    addYearsToDate(new Date(e.target.value), 10);
+  });
+}
 const addRoutine = document.getElementById("add-routine");
 if (addRoutine) {
   addRoutine.addEventListener("submit", e => {
@@ -86,13 +112,14 @@ if (addRoutine) {
         if (obj.status === 200) {
           loader[0].style.display = 'none';
           messages1.innerHTML = obj.body.msg;
-          form.reset();
         } else {
           loader[0].style.display = 'none';
           messages1.innerHTML = obj.body.msg;
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        messages1.innerHTML = 'Please try again';
+      });
   });
 }
 const addType = document.getElementById("add-type");
@@ -119,13 +146,14 @@ if (addType) {
         if (obj.status === 200) {
           loader[1].style.display = 'none';
           messages2.innerHTML = obj.body.msg;
-          form.reset();
         } else {
           loader[1].style.display = 'none';
           messages2.innerHTML = obj.body.msg;
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        messages2.innerHTML = 'Please try again';
+      });
   });
 }
 
@@ -153,12 +181,13 @@ if (addReCertification) {
         if (obj.status === 200) {
           loader[2].style.display = 'none';
           messages3.innerHTML = obj.body.msg;
-          form.reset();
         } else {
           loader[2].style.display = 'none';
           messages3.innerHTML = obj.body.msg;
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        messages3.innerHTML = 'Please try again';
+      });
   });
 }
