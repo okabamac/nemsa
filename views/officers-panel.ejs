@@ -1,6 +1,6 @@
 <header role='banner'>
     <h3>
-        <%= user %>
+        <%= userName %>
     </h3>
     <ul class='avatar-login'>
         <li class='avatar'>
@@ -441,13 +441,13 @@
                 </div>
 
                 <div>
-                    <label for='staffID'>ID officer that certified the meter</label>
-                    <input type='text' name='staffID'>
+                    <label for='staffID'>Certifying Officer ID</label>
+                    <input type='text' name='staffID' readonly value="<%= userID %>" >
                 </div>
 
                 <div>
                     <label for='staffEmail'>Officer's Email Address</label>
-                    <input type='email' name='staffEmail'>
+                    <input type='email' name='staffEmail' readonly value="<%= userEmail %>" >
                 </div>
 
                 <div class='full'>

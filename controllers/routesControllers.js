@@ -41,7 +41,9 @@ const PagesControls = {
     },
     officerHome: (req, res) => {
         res.render('officers-panel', {
-            user: req.user.firstName + ' ' + req.user.lastName,
+            userName: req.user.firstName + ' ' + req.user.lastName,
+            userEmail: req.user.staffEmail,
+            userID: req.user.staffID,
             id: req.user._id
         });
     },
@@ -49,7 +51,7 @@ const PagesControls = {
     adminHome: (req, res) => {
         if (req.user.admin == 'yes') {
             res.render('admin-panel', {
-                user: req.user.firstName + ' ' + req.user.lastName,
+                userName: req.user.firstName + ' ' + req.user.lastName,
                 id: req.user._id
             });
         } else {
