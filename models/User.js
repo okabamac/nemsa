@@ -24,7 +24,6 @@ const UserSchema = new Schema({
     avatar: {
         data: Buffer,
         contentType: String,
-        required: true
     },
     admin: {
         type: String,
