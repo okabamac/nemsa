@@ -3,25 +3,32 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     firstName: {
         type: String,
+        required: true
     },
     lastName: {
         type: String,
+        required: true
     },
     staffEmail: {
         type: String,
+        required: true
     },
     staffID: {
         type: String,
+        required: true
     },
     password: {
         type: String,
+        required: true
     },
     avatar: {
         data: Buffer,
-        contentType: String
+        contentType: String,
+        required: true
     },
     admin: {
         type: String,
+        required: true
     },
     date: {
         type: Date,

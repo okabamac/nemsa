@@ -85,7 +85,7 @@ const addYearsToDate = (input, addYears) => {
 const dateRoutineTest = document.getElementById('dateRoutineTest');
 if (dateRoutineTest) {
   dateRoutineTest.addEventListener('input', e => {
-    addYearsToDate(new Date(e.target.value), 10);
+    addYearsToDate(new Date(e.target.value), 3);
   });
 }
 const addRoutine = document.getElementById("add-routine");

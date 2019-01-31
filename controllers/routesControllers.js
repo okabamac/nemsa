@@ -6,6 +6,8 @@ const bcrypt = require('bcryptjs');
 const fs = require('fs');
 const path = require('path');
 const passport = require('passport');
+const { check, validationResult } = require('express-validator/check');
+
 
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -95,6 +97,7 @@ const PagesControls = {
                     msg: `There is an error: ${err}`
                 });
             } else {
+                    
                 const {
                     firstName,
                     lastName,
@@ -104,8 +107,6 @@ const PagesControls = {
                     confirmPassword,
                     admin
                 } = req.body;
-
-                const errors = [];
                 User.findOne({
                     staffEmail: staffEmail
                 }, (err, existingUser) => {
@@ -345,9 +346,29 @@ const PagesControls = {
                     meter
                 });
             } else {
-                return res.status(400).send({
-                    message: 'This meter does not exist in our database, please contact the nearest DISCO'
-                });
+               TypeTest.findOne({
+                   meterSerialNumber: req.params.serial
+               }).then(meter => {
+                   if (meter) {
+                       return res.status(200).send({
+                           meter
+                       });
+                   } else {
+                       ReCertification.findOne({
+                           meterSerialNumber: req.params.serial
+                       }).then(meter => {
+                           if (meter) {
+                               return res.status(200).send({
+                                   meter
+                               });
+                           } else {
+                            return res.status(400).send({
+                                message: 'This meter does not exist in our database, please contact the nearest DISCO'
+                            });
+                           }
+                       }).catch(err => console.log(err));
+                   }
+               }).catch(err => console.log(err));
             }
         }).catch(err => console.log(err));
     },
