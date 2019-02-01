@@ -37,7 +37,6 @@ const UserControls = {
                     msg: `There is an error: ${err.message}`
                 });
             } else {
-                console.log(req.file);
                 userSchema
                     .validate(req.body, {
                         abortEarly: false
@@ -50,7 +49,6 @@ const UserControls = {
                             staffEmail,
                             staffID,
                             password,
-                            confirmPassword,
                             admin
                         } = validatedCredentials;
                         
@@ -59,6 +57,7 @@ const UserControls = {
                     staffEmail: staffEmail
                 }, (err, existingUser) => {
                     if (existingUser === null) {
+                        
                         // Creating one user.
                         let user = new User({
                             name: {
@@ -81,22 +80,22 @@ const UserControls = {
                                 user
                                     .save()
                                     .then(() => {
-                                        res.status(200).send([{
+                                       return res.status(200).send({
                                             msg: `Staff with ID ${staffID} has been added successfully`
-                                        }]);
+                                        });
                                     })
                                     .catch(err => {
                                         console.log(err);
-                                        res.status(401).send([{
+                                       res.status(401).send({
                                             msg: err
-                                        }]);
+                                        });
                                     });
                             })
                         );
                     } else {
-                      return res.status(400).send([{
+                      return res.status(400).send({
                             msg: 'Email is not available'
-                        }]);
+                        });
                     }
                 });
 
