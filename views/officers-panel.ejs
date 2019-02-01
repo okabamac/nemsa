@@ -23,7 +23,7 @@
         <div class='docker' id='docker-1'>
             <form method='POST' action='#' id='add-routine'>
                 <div class='radio-div'>
-                    <label>Vendor</label>
+                    <label>Vendor Type</label>
                     <label class='radio-button'>
                         <input type='radio' name='radio' value='local' checked='checked'>
                         <span class='label-visible'>
@@ -406,7 +406,17 @@
 
                 <div>
                     <label for='tariffCharges'>Tariff Charge</label>
-                    <input type='text' name='tariffCharges' required>
+                    <input type='text' name='tariffCharge' required>
+                </div>
+
+                <div>
+                    <label for='staffID'>Certifying Officer ID</label>
+                    <input type='text' name='staffID' readonly value="<%= userID %>">
+                </div>
+
+                <div>
+                    <label for='staffEmail'>Officer's Email Address</label>
+                    <input type='email' name='staffEmail' readonly value="<%= userEmail %>">
                 </div>
 
                 <div class='full'>
@@ -701,7 +711,7 @@
 
                 <div>
                     <label for='meterRating'>Meter Rating</label>
-                    <select name='meterRating'required>
+                    <select name='meterRating' required>
                         <option value=''></option>
                     </select>
                 </div>

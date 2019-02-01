@@ -1,47 +1,72 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const RoutineTestSchema = new Schema({
-    vendor: {
-        type: String
+    vendorType: {
+        type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
     },
     vendorName: {
         type: String,
+        required: true
     },
     vendorEmail: {
-        type: String
+        type: String,
+        required: true
     },
     vendorPhone: {
-        type: String
-    },
-    crimpSeal: {
-        type: String
+        type: String,
+        required: true
     },
     yom: {
-        type: Date
+        type: Date,
+        required: true
     },
     meterModel: {
-        type: String
+        type: String,
+        required: true
     },
     meterType: {
-        type: String
+        type: String,
+        required: true
     },
     meterClass: {
-        type: String
+        type: String,
+        required: true
     },
     meterSerialNumber: {
-        type: String
+        type: String,
+        required: true
     },
     dateRoutineTest: {
-        type: Date
+        type: Date,
+        required: true
     },
     expDate: {
-        type: Date
+        type: Date,
+        required: true
     },
     tariffCharge: {
-        type: String
+        type: String,
+        required: true
+    },
+    staffID: {
+        type: String,
+        required: true
+    },
+    staffEmail: {
+        type: String,
+        required: true
     },
     observation: {
         type: String
+    },
+    date: {
+        type: Date,
+        default: Date.now,
     }
 });
 
