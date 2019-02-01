@@ -66,11 +66,11 @@ if (add_user) {
       .then(obj => {
         if (obj.status === 200) {
           loader[0].style.display = 'none';
-          message1.innerHTML = obj.body[0].msg;
+          message1.innerHTML = obj.body.msg;
           form.reset();
         } else {
           loader[0].style.display = 'none';
-          message1.innerHTML = obj.body[0].msg;
+          message1.innerHTML = obj.body.msg;
         }
       })
       .catch(err => console.log(err));
@@ -103,8 +103,7 @@ if (edit_user) {
           loader[1].style.display = 'block';
           let result = ``;
           const {
-            firstName,
-            lastName,
+            name,
             staffEmail,
             staffID,
             admin
@@ -124,8 +123,8 @@ if (edit_user) {
           </thead>
           <tbody>
             <tr>
-              <td data-label='First Name' contenteditable='true'>${firstName}</td>
-              <td data-label='Last Name' contenteditable='true'>${lastName}</td>
+              <td data-label='First Name' contenteditable='true'>${name.first}</td>
+              <td data-label='Last Name' contenteditable='true'>${name.last}</td>
               <td data-label='Email' contenteditable='true'>${staffEmail}</td>
               <td data-label='ID' contenteditable='true'>${staffID}</td>
               <td data-label='Administrator' contenteditable='true'>${admin}</td>

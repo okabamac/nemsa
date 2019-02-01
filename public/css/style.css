@@ -270,6 +270,18 @@ select:-webkit-autofill:active {
   border: 1px solid rgba(81, 203, 238, 1);
 }
 
+
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+a:hover, a:active, a:focus, a:link, a:visited {
+  outline: 0;
+  outline: 0 !important;
+  outline-style:none;
+}
+
 .access-message {
   width: 100%;
   color: red;

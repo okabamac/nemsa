@@ -111,6 +111,7 @@ if (addRoutine) {
       .then(obj => {
         if (obj.status === 200) {
           loader[0].style.display = 'none';
+          console.log(obj.body);
           messages1.innerHTML = obj.body.msg;
         } else {
           loader[0].style.display = 'none';
