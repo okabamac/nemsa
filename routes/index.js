@@ -2,6 +2,7 @@ const LoginControls = require('../controllers/loginController');
 const VerificationControls = require('../controllers/verificationController');
 const UserControls = require('../controllers/userController');
 const TestControls = require('../controllers/testController');
+const ReportControls = require('../controllers/reportController');
 const express = require('express');
 const router = express.Router();
 const {
@@ -12,6 +13,7 @@ const {
 router.get('/', LoginControls.getHomePage);
 router.get('/login', LoginControls.loginOffice);
 router.get('/adminLogin', LoginControls.loginAdmin);
+router.get('/resetPassword', LoginControls.resetPassword);
 
 router.get('/verify/:serial', VerificationControls.verify);
 router.get('/image/:id', LoginControls.getImage);
@@ -30,6 +32,8 @@ router.post('/typeTest', TestControls.typeTest);
 router.post('/reCertification', TestControls.reCertification);
 
 
+router.post('/byState', ReportControls.byState);
+router.post('/byDate', ReportControls.byDate);
 
 
 module.exports = router;

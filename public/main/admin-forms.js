@@ -1,27 +1,69 @@
 const docker1 = document.getElementById('docker-1');
 const docker2 = document.getElementById('docker-2');
+const docker3 = document.getElementById('docker-3');
 const addUser = document.getElementById('add');
 const modify = document.getElementById('modify');
+const report = document.getElementById('report');
+
+
+const miniDocker1 = document.getElementById('mini-docker-1');
+const miniDocker2 = document.getElementById('mini-docker-2');
+const byState = document.querySelector('#byState');
+const byDate = document.querySelector('#byDate');
+
 
 addUser.addEventListener('click', toggleAddUserForm);
 
 modify.addEventListener('click', toggleRemoveUserForm);
 
+report.addEventListener('click', toggleReportForm);
+
+
+byState.addEventListener('click', toggleByStateForm);
+byDate.addEventListener('click', toggleByDateForm);
+
+
 function toggleAddUserForm() {
   docker1.style.display = 'block';
   docker2.style.display = 'none';
+  docker3.style.display = 'none';
   addUser.style.backgroundColor = 'green';
   modify.style.backgroundColor = 'dodgerblue';
+  report.style.backgroundColor = 'dodgerblue';
 }
 
 function toggleRemoveUserForm() {
   docker2.style.display = 'block';
   docker1.style.display = 'none';
+  docker3.style.display = 'none';
   modify.style.backgroundColor = 'green';
   addUser.style.backgroundColor = 'dodgerblue';
+  report.style.backgroundColor = 'dodgerblue';
 
 }
 
+function toggleReportForm() {
+  docker3.style.display = 'block';
+  docker1.style.display = 'none';
+  docker2.style.display = 'none';
+  modify.style.backgroundColor = 'dodgerblue';
+  addUser.style.backgroundColor = 'dodgerblue';
+  report.style.backgroundColor = 'green';
+
+}
+
+function toggleByStateForm() {
+  miniDocker1.style.display = 'block';
+  miniDocker2.style.display = 'none';
+  byState.style.backgroundColor = 'green';
+  byDate.style.backgroundColor = 'dodgerblue';
+}
+function toggleByDateForm() {
+  miniDocker1.style.display = 'none';
+  miniDocker2.style.display = 'block';
+  byState.style.backgroundColor = 'dodgerblue';
+  byDate.style.backgroundColor = 'green';
+}
 window.onscroll = function (ev) {
   let header = document.getElementById('header');
   if (window.scrollY >= 60) {
@@ -147,5 +189,73 @@ if (edit_user) {
         loader[1].style.display = 'none';
         message2.innerHTML = 'Please try again';
       });
+  });
+}
+
+const byStateForm = document.getElementById('byStateForm');
+if (byStateForm) {
+  byStateForm.addEventListener('submit', e => {
+    e.preventDefault();
+    let message11 = document.getElementById('messages-11');
+    message11.innerHTML = '';
+    const loader = document.getElementsByClassName('loader');
+    loader[2].style.display = 'block';
+    const form = document.getElementById('byStateForm');
+    const formData = new URLSearchParams(new FormData(form));
+    fetch('/byState', {
+        method: 'POST',
+        body: formData
+      })
+      .then(r =>
+        r.json().then(data => ({
+          status: r.status,
+          body: data
+        }))
+      )
+      .then(obj => {
+        if (obj.status === 200) {
+          loader[2].style.display = 'none';
+          message11.innerHTML = obj.body.msg;
+          form.reset();
+        } else {
+          loader[2].style.display = 'none';
+          message11.innerHTML = obj.body.msg;
+        }
+      })
+      .catch(err => console.log(err));
+  });
+}
+
+const byDateForm = document.getElementById('byDateForm');
+if (byDateForm) {
+  byDateForm.addEventListener('submit', e => {
+    e.preventDefault();
+    let message12 = document.getElementById('messages-12');
+    message12.innerHTML = '';
+    const loader = document.getElementsByClassName('loader');
+    loader[3].style.display = 'block';
+    const form = document.getElementById('byDateForm');
+    const formData = new URLSearchParams(new FormData(form));
+    fetch('/byDate', {
+        method: 'POST',
+        body: formData
+      })
+      .then(r =>
+        r.json().then(data => ({
+          status: r.status,
+          body: data
+        }))
+      )
+      .then(obj => {
+        if (obj.status === 200) {
+          loader[3].style.display = 'none';
+          message12.innerHTML = obj.body.msg;
+          form.reset();
+        } else {
+          loader[3].style.display = 'none';
+          message12.innerHTML = obj.body.msg;
+        }
+      })
+      .catch(err => console.log(err));
   });
 }

@@ -25,6 +25,10 @@ const RoutineTestSchema = new Schema({
         type: Date,
         required: true
     },
+    state: {
+        type: String,
+        required: true
+    },
     meterModel: {
         type: String,
         required: true

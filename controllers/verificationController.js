@@ -2,9 +2,6 @@
 const RoutineTest = require('../models/RoutineTest');
 const TypeTest = require('../models/TypeTest');
 const ReCertification = require('../models/ReCertification');
-const {
-    userSchema
-} = require('./validation');
 
 const Verification = {
     

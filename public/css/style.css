@@ -71,7 +71,7 @@ header[role='banner'] ul li a img {
   top: 10px;
   position: relative;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 50%;
   padding: 5px;
 }
 
@@ -127,7 +127,7 @@ main #sign-in-form {
   position: relative;
   top: 30vh;
   margin: 0 auto;
-  max-width: 370px;
+  max-width: 350px;
   border-radius: 4px;
   height: 400px;
   transition: transform 0.5s linear;
@@ -381,6 +381,14 @@ main[role='dashboard'] .verification-container .footer {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
+.report-div {
+  position: relative;
+  margin: 10px 0 0 218px;
+  display: grid;
+  width: 200px;
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
 .toggle-buttons button:hover {
   transform: scale(1.1);
   -webkit-transform: scale(1.1);
@@ -391,6 +399,9 @@ main[role='dashboard'] .verification-container .footer {
   background-color: green;
 }
 
+#byState {
+  background-color: green;
+}
 #routine-test {
   background-color: green;
 }
@@ -461,6 +472,14 @@ input[type='email'] {
   border-radius: 5px;
 }
 
+  .container .mini-docker .btn {
+    width: 100px;
+    margin-top: 35px;
+  }
+
+  .container .mini-docker #mini-docker-1 select {
+    width: 200px;
+  }
 fieldset {
   border: 0;
 }
@@ -523,6 +542,25 @@ textarea {
   transition: 0.3s;
 }
 
+
+#mini-docker-1 {
+  position: absolute;
+  top: 40px;
+  display: none;
+  transition: 0.3s;
+}
+
+#mini-docker-2 {
+  position: absolute;
+  top: 40px;
+  display: none;
+  transition: 0.3s;
+}
+
+#mini-docker-2 .btn {
+  position: relative;
+  margin-top: 25px;
+}
 .radio-button,
 .checkbox {
   position: relative;
@@ -649,7 +687,7 @@ input[type='checkbox']:checked+span .fake-checkbox:after {
 
 .loader {
   display: none;
-  color: #008040;
+  color: #099e42;
   font-size: 10px;
   margin: 0 auto;
   position: relative;
@@ -671,7 +709,7 @@ input[type='checkbox']:checked+span .fake-checkbox:after {
 .loader:before {
   left: -1.75em;
   -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
+  animation-delay: -0.25s;
 }
 
 .loader:after {
@@ -704,8 +742,10 @@ input[type='checkbox']:checked+span .fake-checkbox:after {
   }
 }
 
-
-
+.reports-loader {
+  position: absolute;
+  margin-top: 500px;
+}
 table {
   border: 1px solid #ccc;
   border-collapse: collapse;
@@ -844,5 +884,9 @@ td {
 
   .header div {
     font-size: 1em;
+  }
+
+  .report-div {
+    grid-template-columns: repeat(1, 1fr);
   }
 }

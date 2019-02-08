@@ -20,6 +20,13 @@ const LoginControls = {
             message: ''
         });
     },
+
+    resetPassword: (req, res) => {
+        req.logout();
+        res.render('reset-password', {
+            message: ''
+        });
+    },
     officerHome: (req, res) => {
         res.render('officers-panel', {
             userName: req.user.name.first + ' ' + req.user.name.last,
