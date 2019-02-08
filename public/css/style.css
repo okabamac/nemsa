@@ -471,15 +471,21 @@ input[type='email'] {
   outline: none;
   border-radius: 5px;
 }
-
+.container .mini-docker {
+  position: relative;
+  margin-top: -20px;
+}
   .container .mini-docker .btn {
     width: 100px;
     margin-top: 35px;
   }
-
-  .container .mini-docker #mini-docker-1 select {
+  .container .mini-docker #mini-docker-1 {
+    width: 100%;
+  }
+  .container .mini-docker #mini-docker-1 select, .container .mini-docker #mini-docker-2 select {
     width: 200px;
   }
+
 fieldset {
   border: 0;
 }
