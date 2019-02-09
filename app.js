@@ -57,17 +57,15 @@ app.use((req, res, next) => {
 
 app.use('/', require('./routes/index'));
 
-
-
 if (app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
         res.status(err.code || 500)
             .send({
-                status: 'error',
+                status: 'Error',
                 message: 'Please try again later'
             });
     });
-};
+}
 
 process.on('uncaughtException', (err) => {
     console.error('There was an uncaught error', err)

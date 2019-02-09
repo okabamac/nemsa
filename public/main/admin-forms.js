@@ -202,6 +202,7 @@ if (byStateForm) {
     loader[2].style.display = 'block';
     const form = document.getElementById('byStateForm');
     const formData = new URLSearchParams(new FormData(form));
+    message11.innerHTML = "";
     fetch('/byState', {
         method: 'POST',
         body: formData
@@ -215,11 +216,30 @@ if (byStateForm) {
       .then(obj => {
         if (obj.status === 200) {
           loader[2].style.display = 'none';
-          message11.innerHTML = obj.body.msg;
-          form.reset();
+          if(obj.body.data.length != 0) {
+            const table = new Tabulator("#messages-11", {
+              height:"311px",
+              data:obj.body.data,           //load row data from array
+              layout:"fitDataFill",     //fit columns to width of table
+              pagination:"local",       //paginate the data
+              paginationSize:9,         //allow 7 rows per page of data
+              // movableColumns:true,      //allow column order to be changed
+              resizableRows:true,       //allow row order to be changed
+              columns:[                 //define the table columns
+                {title:"Meter Number", field:"meterSerialNumber", width:200, editor:"input"},
+                {title: "Seal Number", field:"_id",  width:200, editor:"input"},
+                {title:"Vendor Name", field:"vendorName", width:200, editor:"input"},
+                {title:"Date of Test", field:"dateRoutineTest", width:200, editor:"input"},
+                {title:"Expiry Date", field:"expDate", width:200, editor:"input"},
+              ],
+            });
+            message11.style.color = '#333';
+          } else {
+            message11.innerHTML = 'There is no available data for the chosen state';
+          }
         } else {
           loader[2].style.display = 'none';
-          message11.innerHTML = obj.body.msg;
+          message11.innerHTML = obj.body[0].msg;
         }
       })
       .catch(err => console.log(err));
@@ -236,6 +256,7 @@ if (byDateForm) {
     loader[3].style.display = 'block';
     const form = document.getElementById('byDateForm');
     const formData = new URLSearchParams(new FormData(form));
+    message12.innerHTML = "";
     fetch('/byDate', {
         method: 'POST',
         body: formData
@@ -249,11 +270,30 @@ if (byDateForm) {
       .then(obj => {
         if (obj.status === 200) {
           loader[3].style.display = 'none';
-          message12.innerHTML = obj.body.msg;
-          form.reset();
+          if(obj.body.data.length != 0) {
+            const table = new Tabulator("#messages-12", {
+              height:"311px",
+              data:obj.body.data,           //load row data from array
+              layout:"fitDataFill",     //fit columns to width of table
+              pagination:"local",       //paginate the data
+              paginationSize:9,         //allow 7 rows per page of data
+              // movableColumns:true,      //allow column order to be changed
+              resizableRows:true,       //allow row order to be changed
+              columns:[                 //define the table columns
+                {title:"Meter Number", field:"meterSerialNumber", width:200, editor:"input"},
+                {title: "Seal Number", field:"_id",  width:200, editor:"input"},
+                {title:"Vendor Name", field:"vendorName", width:200, editor:"input"},
+                {title:"Date of Test", field:"dateRoutineTest", width:200, editor:"input"},
+                {title:"Expiry Date", field:"expDate", width:200, editor:"input"},
+              ],
+            });
+            message12.style.color = '#333';
+          } else {
+            message12.innerHTML = 'There is no available data for the chosen state';
+          }
         } else {
           loader[3].style.display = 'none';
-          message12.innerHTML = obj.body.msg;
+          message12.innerHTML = obj.body[0].msg;
         }
       })
       .catch(err => console.log(err));

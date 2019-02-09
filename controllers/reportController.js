@@ -1,13 +1,20 @@
 const RoutineTest = require('../models/RoutineTest');
 const ReportControls = {
     byState: (req, res) => {
-        console.log(req.body);
         RoutineTest.find({
             state: req.body.state
-        }).then((data) => {  
-            console.log(data);
-        }).catch(err => console.log(err));
+        }).then((data) => { 
+          res.status(200).send({
+              data
+          });
+        }).catch((err) => {
+            console.log(err);
+            res.status(400).send({
+                msg: 'Please try again later'
+            });
+        });
     },
+
     byDate: (req, res) => {
         console.log(req.body);
         RoutineTest.find({
@@ -16,8 +23,15 @@ const ReportControls = {
                 $lt: `${req.body.to}`
             }
         }).then((data) => {
-            console.log(data);
-        }).catch(err => console.log(err));
+            res.status(200).send({
+                data
+            });
+        }).catch((err) => {
+            console.log(err);
+            res.status(400).send({
+                msg: 'Please try again later'
+            });
+        });
     }
 };
 

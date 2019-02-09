@@ -267,7 +267,6 @@ select:-webkit-autofill:active {
 
 #sign-in-form button:hover {
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-  border: 1px solid rgba(81, 203, 238, 1);
 }
 
 
@@ -287,7 +286,11 @@ a:hover, a:active, a:focus, a:link, a:visited {
   color: red;
   height: 30px;
 }
-
+#particles-js {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
 main[role='dashboard'] {
   position: absolute;
   display: flex;
@@ -303,7 +306,9 @@ main[role='dashboard'] .container {
   padding: 0 2em;
   line-height: 1.6;
   color: #333;
+  z-index: 800;
   position: relative;
+  background: #fff;
   -webkit-box-shadow: 0px 10px 13px -7px #000000,
     10px 10px 20px 10px rgba(0, 0, 0, 0);
   box-shadow: 0px 10px 13px -7px #000000, 10px 10px 20px 10px rgba(0, 0, 0, 0);
@@ -566,6 +571,27 @@ textarea {
 #mini-docker-2 .btn {
   position: relative;
   margin-top: 25px;
+}
+#messages-11, #messages-12 {
+  position: relative;
+  width: 60vw;
+  height: 311px;
+}
+#messages-11 .tabulator-header, #messages-12 .tabulator-header {
+  background-color:rgb(29, 167, 63);
+  color:rgb(20, 18, 18);
+}
+
+/*Allow column header names to wrap lines*/
+#messages-11 .tabulator-header .tabulator-col,
+#messages-11 .tabulator-header .tabulator-col-row-handle, #messages-12 .tabulator-header .tabulator-col,
+#messages-12 .tabulator-header .tabulator-col-row-handle {
+  white-space: normal;
+}
+
+/*Color the table rows*/
+#messages-11 .tabulator-tableHolder .tabulator-table .tabulator-row, #messages-12 .tabulator-tableHolder .tabulator-table .tabulator-row{
+  color:#333;
 }
 .radio-button,
 .checkbox {
