@@ -187,20 +187,20 @@ if (edit_user) {
         } else {
           message2.style.color = 'red';
           loader[1].style.display = 'none';
-          message2.innerHTML = obj.body[1].message;
+          message2.innerHTML = obj.body.message;
         }
       })
       .catch(err => {
         message2.style.color = 'red';
         loader[1].style.display = 'none';
-        message2.innerHTML = 'Please try again';
+        message2.innerHTML = 'Please try again later';
       });
   });
 }
 
 const byStateForm = document.getElementById('byStateForm');
-let table;
 if (byStateForm) {
+  let table;
   byStateForm.addEventListener('submit', e => {
     e.preventDefault();
     const downloadBtns = document.querySelectorAll('div#downloadBtns');
@@ -281,9 +281,7 @@ if (byStateForm) {
         message11.innerHTML = 'Please try again later';
       });
   });
-}
-
-csvBtn1 = document.getElementById('csvBtn1');
+  csvBtn1 = document.getElementById('csvBtn1');
 if (csvBtn1) {
   csvBtn1.addEventListener('click', () => {
     table.download("csv", "data.csv");
@@ -293,11 +291,13 @@ if (csvBtn1) {
 pdfBtn1 = document.getElementById('csvBtn1');
 if (pdfBtn1) {
   pdfBtn1.addEventListener('click', () => {
+    console.log('zzzzzzzzzzzzzzzzzzzzzzz');
     table.download("pdf", "data.pdf", {
       orientation:"portrait", //set page orientation to portrait
       title:"Example Report", //add title to report
   });
   });
+}
 }
 
 const byDateForm = document.getElementById('byDateForm');
