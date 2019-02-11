@@ -196,13 +196,13 @@ const byStateForm = document.getElementById('byStateForm');
 if (byStateForm) {
   byStateForm.addEventListener('submit', e => {
     e.preventDefault();
+    const downloadBtns = document.querySelectorAll('div#downloadBtns');
     let message11 = document.getElementById('messages-11');
-    message11.innerHTML = '';
+    message11.style.display = 'none';
     const loader = document.getElementsByClassName('loader');
     loader[2].style.display = 'block';
     const form = document.getElementById('byStateForm');
     const formData = new URLSearchParams(new FormData(form));
-    message11.innerHTML = "";
     fetch('/byState', {
         method: 'POST',
         body: formData
@@ -216,14 +216,16 @@ if (byStateForm) {
       .then(obj => {
         if (obj.status === 200) {
           loader[2].style.display = 'none';
-          if(obj.body.data.length != 0) {
+          message11.style.color = '#333';
+          message11.style.display = 'block';
+          downloadBtns[0].style.display = 'block';
             const table = new Tabulator("#messages-11", {
               height:"311px",
               data:obj.body.data,           //load row data from array
               layout:"fitDataFill",     //fit columns to width of table
               pagination:"local",       //paginate the data
               paginationSize:9,         //allow 7 rows per page of data
-              // movableColumns:true,      //allow column order to be changed
+              placeholder:"No Data Available", //display message to user on empty table
               resizableRows:true,       //allow row order to be changed
               columns:[                 //define the table columns
                 {title:"Meter Number", field:"meterSerialNumber", width:200, editor:"input"},
@@ -233,10 +235,6 @@ if (byStateForm) {
                 {title:"Expiry Date", field:"expDate", width:200, editor:"input"},
               ],
             });
-            message11.style.color = '#333';
-          } else {
-            message11.innerHTML = 'There is no available data for the chosen state';
-          }
         } else {
           loader[2].style.display = 'none';
           message11.innerHTML = obj.body[0].msg;
@@ -251,7 +249,7 @@ if (byDateForm) {
   byDateForm.addEventListener('submit', e => {
     e.preventDefault();
     let message12 = document.getElementById('messages-12');
-    message12.innerHTML = '';
+    message12.style.display = 'none';
     const loader = document.getElementsByClassName('loader');
     loader[3].style.display = 'block';
     const form = document.getElementById('byDateForm');
@@ -270,14 +268,16 @@ if (byDateForm) {
       .then(obj => {
         if (obj.status === 200) {
           loader[3].style.display = 'none';
-          if(obj.body.data.length != 0) {
+          message12.style.color = '#333';
+          message12.style.display = 'block';
+          downloadBtns[1].style.display = 'block';
             const table = new Tabulator("#messages-12", {
               height:"311px",
               data:obj.body.data,           //load row data from array
               layout:"fitDataFill",     //fit columns to width of table
               pagination:"local",       //paginate the data
               paginationSize:9,         //allow 7 rows per page of data
-              // movableColumns:true,      //allow column order to be changed
+              placeholder:"No Data Available", //display message to user on empty table
               resizableRows:true,       //allow row order to be changed
               columns:[                 //define the table columns
                 {title:"Meter Number", field:"meterSerialNumber", width:200, editor:"input"},
@@ -287,15 +287,19 @@ if (byDateForm) {
                 {title:"Expiry Date", field:"expDate", width:200, editor:"input"},
               ],
             });
-            message12.style.color = '#333';
-          } else {
-            message12.innerHTML = 'There is no available data for the chosen state';
-          }
         } else {
           loader[3].style.display = 'none';
           message12.innerHTML = obj.body[0].msg;
         }
       })
       .catch(err => console.log(err));
+  });
+}
+
+csvBtn1 = document.getElementById('csvBtn1');
+if (csvBtn1){
+  csvBtn1.addEventListener('click', () => {
+    //trigger download of data.csv file
+    table.download("csv", "data.csv");
   });
 }

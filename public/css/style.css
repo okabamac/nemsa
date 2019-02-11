@@ -266,7 +266,7 @@ select:-webkit-autofill:active {
 }
 
 #sign-in-form button:hover {
-  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  box-shadow: 0 0 5px rgb(29, 32, 32);
 }
 
 
@@ -381,6 +381,7 @@ main[role='dashboard'] .verification-container .footer {
   width: 100px;
   margin-top: 10px;
   height: 30px;
+  top: 10px;
   background-color: dodgerblue;
   transition: all ease-in .2s;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -572,13 +573,32 @@ textarea {
   position: relative;
   margin-top: 25px;
 }
+
+#downloadBtns {
+  position: relative;
+  top: 10px;
+  text-align: center;
+  display: none;
+  width: 70vw;
+  margin: auto;
+}
+
+#downloadBtns button {
+  width: 100px;
+  height: 30px;
+  background-color: dodgerblue;
+  transition: all ease-in .2s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
 #messages-11, #messages-12 {
   position: relative;
-  width: 60vw;
-  height: 311px;
+  width: 62vw;
+  margin: auto;
+  top: 20px;
+  height: auto;
 }
 #messages-11 .tabulator-header, #messages-12 .tabulator-header {
-  background-color:rgb(29, 167, 63);
+  background-color:  rgb(7, 7, 7);
   color:rgb(20, 18, 18);
 }
 
@@ -723,6 +743,7 @@ input[type='checkbox']:checked+span .fake-checkbox:after {
   font-size: 10px;
   margin: 0 auto;
   position: relative;
+  top: 20px;
   text-indent: -9999em;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
