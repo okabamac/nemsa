@@ -58,6 +58,7 @@ function toggleByStateForm() {
   byState.style.backgroundColor = 'green';
   byDate.style.backgroundColor = 'dodgerblue';
 }
+
 function toggleByDateForm() {
   miniDocker1.style.display = 'none';
   miniDocker2.style.display = 'block';
@@ -66,7 +67,7 @@ function toggleByDateForm() {
 }
 window.onscroll = function (ev) {
   let header = document.getElementById('header');
-  if (window.scrollY >= 60) {
+  if (window.scrollY >= 30) {
     if (header) {
       header.style.display = 'none';
     }
@@ -108,14 +109,19 @@ if (add_user) {
       .then(obj => {
         if (obj.status === 200) {
           loader[0].style.display = 'none';
-          message1.innerHTML = obj.body.msg;
+          message1.innerHTML = obj.body.message;
           form.reset();
         } else {
           loader[0].style.display = 'none';
-          message1.innerHTML = obj.body.msg;
+          message1.innerHTML = obj.body.message;
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        message1.style.color = 'red';
+        loader[0].style.display = 'none';
+        message1.innerHTML = 'Please try again later';
+      });
   });
 }
 
@@ -181,7 +187,7 @@ if (edit_user) {
         } else {
           message2.style.color = 'red';
           loader[1].style.display = 'none';
-          message2.innerHTML = obj.body.message;
+          message2.innerHTML = obj.body[1].message;
         }
       })
       .catch(err => {
@@ -193,6 +199,7 @@ if (edit_user) {
 }
 
 const byStateForm = document.getElementById('byStateForm');
+let table;
 if (byStateForm) {
   byStateForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -219,33 +226,84 @@ if (byStateForm) {
           message11.style.color = '#333';
           message11.style.display = 'block';
           downloadBtns[0].style.display = 'block';
-            const table = new Tabulator("#messages-11", {
-              height:"311px",
-              data:obj.body.data,           //load row data from array
-              layout:"fitDataFill",     //fit columns to width of table
-              pagination:"local",       //paginate the data
-              paginationSize:9,         //allow 7 rows per page of data
-              placeholder:"No Data Available", //display message to user on empty table
-              resizableRows:true,       //allow row order to be changed
-              columns:[                 //define the table columns
-                {title:"Meter Number", field:"meterSerialNumber", width:200, editor:"input"},
-                {title: "Seal Number", field:"_id",  width:200, editor:"input"},
-                {title:"Vendor Name", field:"vendorName", width:200, editor:"input"},
-                {title:"Date of Test", field:"dateRoutineTest", width:200, editor:"input"},
-                {title:"Expiry Date", field:"expDate", width:200, editor:"input"},
-              ],
-            });
+          table = new Tabulator("#messages-11", {
+            height: "311px",
+            data: obj.body.data, //load row data from array
+            layout: "fitDataFill", //fit columns to width of table
+            pagination: "local", //paginate the data
+            paginationSize: 9, //allow 7 rows per page of data
+            placeholder: "No Data Available", //display message to user on empty table
+            resizableRows: true, //allow row order to be changed
+            columns: [ //define the table columns
+              {
+                title: "Meter Number",
+                field: "meterSerialNumber",
+                width: 200,
+                
+              },
+              {
+                title: "Seal Number",
+                field: "_id",
+                width: 200,
+                
+              },
+              {
+                title: "Vendor Name",
+                field: "vendorName",
+                width: 200,
+                
+              },
+              {
+                title: "Date of Test",
+                field: "dateRoutineTest",
+                width: 200,
+                
+              },
+              {
+                title: "Expiry Date",
+                field: "expDate",
+                width: 200,
+                
+              },
+            ],
+          });
         } else {
           loader[2].style.display = 'none';
-          message11.innerHTML = obj.body[0].msg;
+          message11.style.color = 'red';
+          message11.innerHTML = 'Please try again later';
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        message11.style.display = 'block';
+        message11.style.color = 'red';
+        loader[2].style.display = 'none';
+        message11.innerHTML = 'Please try again later';
+      });
+  });
+}
+
+csvBtn1 = document.getElementById('csvBtn1');
+if (csvBtn1) {
+  csvBtn1.addEventListener('click', () => {
+    table.download("csv", "data.csv");
+  });
+}
+
+pdfBtn1 = document.getElementById('csvBtn1');
+if (pdfBtn1) {
+  pdfBtn1.addEventListener('click', () => {
+    table.download("pdf", "data.pdf", {
+      orientation:"portrait", //set page orientation to portrait
+      title:"Example Report", //add title to report
+  });
   });
 }
 
 const byDateForm = document.getElementById('byDateForm');
+
 if (byDateForm) {
+  let table2;
   byDateForm.addEventListener('submit', e => {
     e.preventDefault();
     let message12 = document.getElementById('messages-12');
@@ -271,35 +329,73 @@ if (byDateForm) {
           message12.style.color = '#333';
           message12.style.display = 'block';
           downloadBtns[1].style.display = 'block';
-            const table = new Tabulator("#messages-12", {
-              height:"311px",
-              data:obj.body.data,           //load row data from array
-              layout:"fitDataFill",     //fit columns to width of table
-              pagination:"local",       //paginate the data
-              paginationSize:9,         //allow 7 rows per page of data
-              placeholder:"No Data Available", //display message to user on empty table
-              resizableRows:true,       //allow row order to be changed
-              columns:[                 //define the table columns
-                {title:"Meter Number", field:"meterSerialNumber", width:200, editor:"input"},
-                {title: "Seal Number", field:"_id",  width:200, editor:"input"},
-                {title:"Vendor Name", field:"vendorName", width:200, editor:"input"},
-                {title:"Date of Test", field:"dateRoutineTest", width:200, editor:"input"},
-                {title:"Expiry Date", field:"expDate", width:200, editor:"input"},
-              ],
-            });
+        table2 = new Tabulator("#messages-12", {
+            height: "311px",
+            data: obj.body.data, //load row data from array
+            layout: "fitDataFill", //fit columns to width of table
+            pagination: "local", //paginate the data
+            paginationSize: 9, //allow 7 rows per page of data
+            placeholder: "No Data Available", //display message to user on empty table
+            resizableRows: true, //allow row order to be changed
+            columns: [ //define the table columns
+              {
+                title: "Meter Number",
+                field: "meterSerialNumber",
+                width: 200,
+                
+              },
+              {
+                title: "Seal Number",
+                field: "_id",
+                width: 200,
+                
+              },
+              {
+                title: "Vendor Name",
+                field: "vendorName",
+                width: 200,
+                
+              },
+              {
+                title: "Date of Test",
+                field: "dateRoutineTest",
+                width: 200,
+                
+              },
+              {
+                title: "Expiry Date",
+                field: "expDate",
+                width: 200,
+                
+              },
+            ],
+          });
         } else {
           loader[3].style.display = 'none';
-          message12.innerHTML = obj.body[0].msg;
+          message12.innerHTML = obj.body.message;
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        message12.style.display = 'block';
+        message12.style.color = 'red';
+        loader[3].style.display = 'none';
+        message12.innerHTML = 'Please try again later';
+      });
   });
 }
 
-csvBtn1 = document.getElementById('csvBtn1');
-if (csvBtn1){
-  csvBtn1.addEventListener('click', () => {
-    //trigger download of data.csv file
-    table.download("csv", "data.csv");
-  });
-}
+// csvBtn2 = document.getElementById('csvBtn1');
+// if (csvBtn2) {
+//   csvBtn2.addEventListener('click', () => {
+//     table2.download("csv", "data.csv");
+//   });
+// }
+
+// pdfBtn2 = document.getElementById('csvBtn1');
+// if (pdfBtn2) {
+//   table2.download("pdf", "data.pdf", {
+//     orientation:"portrait", //set page orientation to portrait
+//     title:"Example Report", //add title to report
+// });
+// }

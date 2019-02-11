@@ -30,11 +30,13 @@ const UserControls = {
             if (err instanceof multer.MulterError) {
                 console.log(err.message);
                return res.status(400).send({
-                    msg: `There is an error: ${err.message}`
+                    status: 'Error',
+                    message: `There is an error: ${err.message}`
                 });
             } else if (err) {
                return res.status(400).send({
-                    msg: `There is an error: ${err.message}`
+                    status: 'Error',
+                    message: `There is an error: ${err.message}`
                 });
             } else {
                 userSchema
@@ -81,34 +83,37 @@ const UserControls = {
                                     .save()
                                     .then(() => {
                                        return res.status(200).send({
-                                            msg: `Staff with ID ${staffID} has been added successfully`
+                                            message: `Staff with ID ${staffID} has been added successfully`
                                         });
                                     })
                                     .catch(err => {
                                         console.log(err);
                                        res.status(401).send({
-                                            msg: err
+                                            message: err
                                         });
                                     });
                             })
                         );
                     } else {
                       return res.status(400).send({
-                            msg: 'Email is not available'
+                            status: 'Error',
+                            message: 'Email is not available'
                         });
                     }
                 });
 
                         } else {
                             return res.status(400).send({
-                            msg: `Please upload an image`
+                            status: 'Error',
+                            message: `Please upload an image`
                         });
                         }
                     })
                     .catch(validationError => {
                         const errorMessage = validationError.details.map(d => d.message);
                         return res.status(400).send({
-                            msg: `${errorMessage[0]}`
+                            status: 'Error',
+                            message: `${errorMessage[0]}`
                         });
                     });
             }
@@ -129,6 +134,7 @@ const UserControls = {
                 });
             } else {
                 return res.status(400).send({
+                    status: 'Error',
                     message: 'One of the fields is incorrect or this staff does not exist'
                 });
             }

@@ -59,21 +59,21 @@ const TestControls = {
                 }).then(meter => {
                     if (meter !== null) {
                         return res.status(200).send({
-                            msg: `This meter number has already been registered`
+                            message: `This meter number has already been registered`
                         });
                     } else {
                         routineTest
                             .save()
                             .then(() => {
-                               // msg: `Seal NEMSA\/${state.replace(/\s/g,'')}\/${meter._id} generated successfully` 
+                               // message: `Seal NEMSA\/${state.replace(/\s/g,'')}\/${meter._id} generated successfully` 
                                 return res.status(200).send({
-                                    msg: `Routine Test has been added successfully`
+                                    message: `Routine Test has been added successfully`
                                 });
                             })
                             .catch(err => {
                                     console.log(err);
                                     res.status(401).send({
-                                        msg: 'Please try again'
+                                        message: 'Please try again'
                                     });
                                 }
 
@@ -81,13 +81,13 @@ const TestControls = {
                     }
                 }).catch(err =>
                     res.status(401).send({
-                        msg: 'Please try again later'
+                        message: 'Please try again later'
                     }));
 
             }).catch(validationError => {
                 const errorMessage = validationError.details.map(d => d.message);
                 return res.status(400).send({
-                    msg: `${errorMessage[0]}`
+                    message: `${errorMessage[0]}`
                 });
             });
 
@@ -135,20 +135,20 @@ const TestControls = {
                 }).then(meter => {
                     if (meter !== null) {
                         return res.status(200).send({
-                            msg: `This meter number has already been registered`
+                            message: `This meter number has already been registered`
                         });
                     } else {
                         typeTest
                             .save()
                             .then(() => {
                                 return res.status(200).send({
-                                    msg: `Type Test has been added successfully`
+                                    message: `Type Test has been added successfully`
                                 });
                             })
                             .catch(err => {
                                     console.log(err);
                                     res.status(401).send({
-                                        msg: 'Please try again'
+                                        message: 'Please try again'
                                     });
                                 }
 
@@ -156,13 +156,13 @@ const TestControls = {
                     }
                 }).catch(err =>
                     res.status(401).send({
-                        msg: 'Please try again later'
+                        message: 'Please try again later'
                     }));
 
             }).catch(validationError => {
                 const errorMessage = validationError.details.map(d => d.message);
                 return res.status(400).send({
-                    msg: `${errorMessage[0]}`
+                    message: `${errorMessage[0]}`
                 });
             });
 
@@ -218,20 +218,22 @@ const TestControls = {
                 }).then(meter => {
                     if (meter !== null) {
                         return res.status(200).send({
-                            msg: `This meter number has already been registered`
+                            status: 'Error',
+                            message: `This meter number has already been registered`
                         });
                     } else {
                         reCertification
                             .save()
                             .then(() => {
                                 return res.status(200).send({
-                                    msg: `Recertification has been done successfully`
+                                    message: `Recertification has been done successfully`
                                 });
                             })
                             .catch(err => {
                                     console.log(err);
                                     res.status(401).send({
-                                        msg: 'Please try again'
+                                        status: 'Error',
+                                        message: 'Please try again'
                                     });
                                 }
 
@@ -239,13 +241,15 @@ const TestControls = {
                     }
                 }).catch(err =>
                     res.status(401).send({
-                        msg: 'Please try again later'
+                        status: 'Error',
+                        message: 'Please try again later'
                     }));
 
             }).catch(validationError => {
                 const errorMessage = validationError.details.map(d => d.message);
                 return res.status(400).send({
-                    msg: `${errorMessage[0]}`
+                    status: 'Error',
+                    message: `${errorMessage[0]}`
                 });
             });
 

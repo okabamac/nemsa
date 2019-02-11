@@ -31,6 +31,7 @@ const Verification = {
                                 });
                             } else {
                                 return res.status(400).send({
+                                    status: 'Error',
                                     message: 'This meter does not exist in our database, please contact the nearest DISCO'
                                 });
                             }

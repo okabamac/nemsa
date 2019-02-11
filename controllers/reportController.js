@@ -10,7 +10,8 @@ const ReportControls = {
         }).catch((err) => {
             console.log(err);
             res.status(400).send({
-                msg: 'Please try again later'
+                status: 'Error',
+                message: 'Please try again later'
             });
         });
     },
@@ -29,7 +30,8 @@ const ReportControls = {
         }).catch((err) => {
             console.log(err);
             res.status(400).send({
-                msg: 'Please try again later'
+                status: 'Error',
+                message: 'Please try again later'
             });
         });
     }
