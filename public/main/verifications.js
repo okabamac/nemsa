@@ -41,7 +41,7 @@ if (search) {
                     loader.style.display = 'block';
                     let result = ``;
                     const {
-                       meterSerialNumber, meterClass, vendorName, dateRoutineTest, expDate
+                       meterSerialNumber, seal, meterClass, dateRoutineTest, expDate
                     } = obj.body.meter;
                     const routineTestDate = dateConvert(dateRoutineTest);
                     const expiryDate = dateConvert(expDate);
@@ -51,8 +51,8 @@ if (search) {
                     <thead>
                       <tr>
                         <th scope="col">Meter Number</th>
+                        <th scope="col">Seal</th>
                         <th scope="col">Meter Class</th>
-                        <th scope="col">Vendor Name</th>
                         <th scope="col">Date of Routine Test</th>
                         <th scope="col">Expiry Date</th>
                       </tr>
@@ -60,8 +60,8 @@ if (search) {
                     <tbody>
                       <tr>
                         <td data-label="Meter Number">${meterSerialNumber}</td>
+                        <td data-label="Seal">${seal}</td>
                         <td data-label="Meter Class">${meterClass}</td>
-                        <td data-label="Vendor Name">${vendorName}</td>
                         <td data-label="Date of Routine Test">${routineTestDate}</td>
                         <td data-label="Expiry Date">${expiryDate}</td>
                       </tr>

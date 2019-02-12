@@ -22,6 +22,11 @@ report.addEventListener('click', toggleReportForm);
 byState.addEventListener('click', toggleByStateForm);
 byDate.addEventListener('click', toggleByDateForm);
 
+const dateConvert = (date) => {
+  date = new Date(date).toUTCString();
+  date = date.split(' ').slice(0, 4).join(' ');
+  return date;
+};
 
 function toggleAddUserForm() {
   docker1.style.display = 'block';
@@ -232,7 +237,7 @@ if (byStateForm) {
             data: obj.body.data, //load row data from array
             layout: "fitDataFill", //fit columns to width of table
             pagination: "local", //paginate the data
-            paginationSize: 9, //allow 7 rows per page of data
+            paginationSize: 7, //allow 7 rows per page of data
             placeholder: "No Data Available", //display message to user on empty table
             resizableRows: true, //allow row order to be changed
             columns: [ //define the table columns
@@ -244,7 +249,7 @@ if (byStateForm) {
               },
               {
                 title: "Seal Number",
-                field: "_id",
+                field: "seal",
                 width: 200,
 
               },
@@ -258,12 +263,14 @@ if (byStateForm) {
                 title: "Date of Test",
                 field: "dateRoutineTest",
                 width: 200,
+                formatter: dateConvert
 
               },
               {
                 title: "Expiry Date",
                 field: "expDate",
                 width: 200,
+                formatter: dateConvert
 
               },
             ],
@@ -367,12 +374,14 @@ if (byDateForm) {
                 title: "Date of Test",
                 field: "dateRoutineTest",
                 width: 200,
+                formatter: dateConvert
 
               },
               {
                 title: "Expiry Date",
                 field: "expDate",
                 width: 200,
+                formatter: dateConvert
 
               },
             ],
