@@ -111,13 +111,15 @@ if (addRoutine) {
       .then(obj => {
         if (obj.status === 200) {
           loader[0].style.display = 'none';
-          messages1.innerHTML = obj.body[1].message;
+          messages1.innerHTML = obj.body.message;
         } else {
           loader[0].style.display = 'none';
-          messages1.innerHTML = obj.body[1].message;
+          messages1.innerHTML = obj.body.message;
         }
       })
       .catch(err => {
+        console.log(err);
+        loader[0].style.display = 'none';
         messages1.innerHTML = 'Please try again';
       });
   });
@@ -145,10 +147,10 @@ if (addType) {
       .then(obj => {
         if (obj.status === 200) {
           loader[1].style.display = 'none';
-          messages2.innerHTML = obj.body[1].message;
+          messages2.innerHTML = obj.body.message;
         } else {
           loader[1].style.display = 'none';
-          messages2.innerHTML = obj.body[1].message;
+          messages2.innerHTML = obj.body.message;
         }
       })
       .catch(err => {
@@ -180,10 +182,10 @@ if (addReCertification) {
       .then(obj => {
         if (obj.status === 200) {
           loader[2].style.display = 'none';
-          messages3.innerHTML = obj.body[1].message;
+          messages3.innerHTML = obj.body.message;
         } else {
           loader[2].style.display = 'none';
-          messages3.innerHTML = obj.body[1].message;
+          messages3.innerHTML = obj.body.message;
         }
       })
       .catch(err => {

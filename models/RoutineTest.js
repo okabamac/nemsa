@@ -65,6 +65,10 @@ const RoutineTestSchema = new Schema({
         type: String,
         required: true
     },
+    seal: {
+        type: String,
+        required: true
+    },
     observation: {
         type: String
     },

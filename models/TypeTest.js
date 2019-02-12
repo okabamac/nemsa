@@ -38,6 +38,10 @@ const TypeTestSchema = new Schema({
     staffEmail: {
         type: String
     },
+    seal: {
+        type: String,
+        required: true
+    },
     observation: {
         type: String
     },

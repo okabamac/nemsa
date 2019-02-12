@@ -4,67 +4,68 @@ const RecertificationSchema = new Schema({
     disco: {
         type: String,
     },
-    state:  {
+    state: {
         type: String,
     },
-    businessUnitName:  {
+    businessUnitName: {
         type: String,
     },
-    customerName:  {
+    customerName: {
         type: String,
     },
-    crimpSeal:  {
+    seal: {
+        type: String,
+        required: true
+    },
+    customerAddress: {
         type: String,
     },
-    customerAddress:  {
+    customerPhoneNumber: {
         type: String,
     },
-    customerPhoneNumber:  {
+    customerEmail: {
         type: String,
     },
-    customerEmail:  {
-        type: String,
-    },
-    yom:  {
+    yom: {
         type: Date,
     },
-    country:  {
+    country: {
         type: String,
     },
-    tariffClassName:  {
+    tariffClassName: {
         type: String,
     },
-    meterType:  {
+    meterType: {
         type: String,
     },
-    meterClass:  {
+    meterClass: {
         type: String,
     },
-    meterSerialNumber:  {
+    meterSerialNumber: {
         type: String,
     },
-    meterModel:  {
+    meterModel: {
         type: String,
     },
-    dateRoutineTest:  {
+    dateRoutineTest: {
         type: Date,
     },
-    expDate:  {
+    expDate: {
         type: Date,
     },
-    dateLastRecertification:  {
+    dateLastRecertification: {
         type: Date,
     },
-    expdateAfterRecertification:  {
+    expdateAfterRecertification: {
         type: Date,
     },
-    tariffCharges:  {
+    tariffCharges: {
         type: String,
     },
-    testMeasurement:  {
+    testMeasurement: {
         type: String,
     },
-    observation:  {
+    observation: {
         type: String,
     },
 });

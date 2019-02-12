@@ -30,7 +30,7 @@ const routineTestSchema = Joi.object().keys({
     state: Joi.string().min(3).max(30).required(),
     meterModel: Joi.string().min(3).max(30).required(),
     meterType: Joi.string().min(3).max(30).required(),
-    meterClass: Joi.string().min(3).max(30).required(),
+    meterClass: Joi.string().min(1).max(30).required(),
     meterSerialNumber: Joi.string().min(3).max(30).required(),
     dateRoutineTest: Joi.date().iso(),
     expDate: Joi.date().iso(),

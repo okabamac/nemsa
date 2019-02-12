@@ -204,6 +204,7 @@ if (byStateForm) {
   byStateForm.addEventListener('submit', e => {
     e.preventDefault();
     const downloadBtns = document.querySelectorAll('div#downloadBtns');
+    downloadBtns[0].style.display = 'none';
     let message11 = document.getElementById('messages-11');
     message11.style.display = 'none';
     const loader = document.getElementsByClassName('loader');
@@ -239,31 +240,31 @@ if (byStateForm) {
                 title: "Meter Number",
                 field: "meterSerialNumber",
                 width: 200,
-                
+
               },
               {
                 title: "Seal Number",
                 field: "_id",
                 width: 200,
-                
+
               },
               {
                 title: "Vendor Name",
                 field: "vendorName",
                 width: 200,
-                
+
               },
               {
                 title: "Date of Test",
                 field: "dateRoutineTest",
                 width: 200,
-                
+
               },
               {
                 title: "Expiry Date",
                 field: "expDate",
                 width: 200,
-                
+
               },
             ],
           });
@@ -281,23 +282,27 @@ if (byStateForm) {
         message11.innerHTML = 'Please try again later';
       });
   });
+    pdfBtn1 = document.getElementById('pdfBtn1');
+    if (pdfBtn1) {
+      pdfBtn1.addEventListener('click', () => {
+       table.download("pdf", "data.pdf", {
+         orientation: "portrait", //set page orientation to portrait
+         title: "Dynamics Quotation Report", //add title to report
+         jsPDF: {
+           unit: "in", //set units to inches
+         },
+           margin: {
+             top: 60
+           }
+       });
+      });
+    }
   csvBtn1 = document.getElementById('csvBtn1');
-if (csvBtn1) {
-  csvBtn1.addEventListener('click', () => {
-    table.download("csv", "data.csv");
-  });
-}
-
-pdfBtn1 = document.getElementById('csvBtn1');
-if (pdfBtn1) {
-  pdfBtn1.addEventListener('click', () => {
-    console.log('zzzzzzzzzzzzzzzzzzzzzzz');
-    table.download("pdf", "data.pdf", {
-      orientation:"portrait", //set page orientation to portrait
-      title:"Example Report", //add title to report
-  });
-  });
-}
+  if (csvBtn1) {
+    csvBtn1.addEventListener('click', () => {
+      table.download("csv", "data.csv");
+    });
+  }
 }
 
 const byDateForm = document.getElementById('byDateForm');
@@ -308,6 +313,8 @@ if (byDateForm) {
     e.preventDefault();
     let message12 = document.getElementById('messages-12');
     message12.style.display = 'none';
+    const downloadBtns = document.querySelectorAll('div#downloadBtns');
+    downloadBtns[1].style.display = 'none';
     const loader = document.getElementsByClassName('loader');
     loader[3].style.display = 'block';
     const form = document.getElementById('byDateForm');
@@ -329,7 +336,7 @@ if (byDateForm) {
           message12.style.color = '#333';
           message12.style.display = 'block';
           downloadBtns[1].style.display = 'block';
-        table2 = new Tabulator("#messages-12", {
+          table2 = new Tabulator("#messages-12", {
             height: "311px",
             data: obj.body.data, //load row data from array
             layout: "fitDataFill", //fit columns to width of table
@@ -342,31 +349,31 @@ if (byDateForm) {
                 title: "Meter Number",
                 field: "meterSerialNumber",
                 width: 200,
-                
+
               },
               {
                 title: "Seal Number",
                 field: "_id",
                 width: 200,
-                
+
               },
               {
                 title: "Vendor Name",
                 field: "vendorName",
                 width: 200,
-                
+
               },
               {
                 title: "Date of Test",
                 field: "dateRoutineTest",
                 width: 200,
-                
+
               },
               {
                 title: "Expiry Date",
                 field: "expDate",
                 width: 200,
-                
+
               },
             ],
           });
@@ -383,19 +390,25 @@ if (byDateForm) {
         message12.innerHTML = 'Please try again later';
       });
   });
+ pdfBtn2 = document.getElementById('pdfBtn2');
+ if (pdfBtn2) {
+   pdfBtn2.addEventListener('click', () => {
+     table2.download("pdf", "data.pdf", {
+       orientation: "portrait", //set page orientation to portrait
+       title: "Dynamics Quotation Report", //add title to report
+       jsPDF: {
+         unit: "in", //set units to inches
+       },
+       margin: {
+         top: 60
+       }
+     });
+   });
+ }
+ csvBtn2 = document.getElementById('csvBtn2');
+ if (csvBtn2) {
+   csvBtn2.addEventListener('click', () => {
+     table2.download("csv", "data.csv");
+   });
+ }
 }
-
-// csvBtn2 = document.getElementById('csvBtn1');
-// if (csvBtn2) {
-//   csvBtn2.addEventListener('click', () => {
-//     table2.download("csv", "data.csv");
-//   });
-// }
-
-// pdfBtn2 = document.getElementById('csvBtn1');
-// if (pdfBtn2) {
-//   table2.download("pdf", "data.pdf", {
-//     orientation:"portrait", //set page orientation to portrait
-//     title:"Example Report", //add title to report
-// });
-// }

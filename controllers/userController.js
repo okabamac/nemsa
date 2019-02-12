@@ -2,7 +2,6 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const fs = require('fs');
 const path = require('path');
-// const passport = require('passport');
 const {
     userSchema
 } = require('./validation');

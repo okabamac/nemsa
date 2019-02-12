@@ -1,7 +1,7 @@
 const RoutineTest = require('../models/RoutineTest');
 const TypeTest = require('../models/TypeTest');
 const ReCertification = require('../models/ReCertification');
-// const passport = require('passport');
+const objectid = require('objectid');
 const {
     routineTestSchema,
     typeTestSchema,
@@ -33,7 +33,7 @@ const TestControls = {
                     staffEmail,
                     observation
                 } = validatedCredentials;
-
+                const id = objectid();
                 const routineTest = new RoutineTest({
                     vendorType: radio,
                     country: country,
@@ -51,6 +51,7 @@ const TestControls = {
                     tariffCharge: tariffCharge,
                     staffID: staffID,
                     staffEmail: staffEmail,
+                    seal: `nemsa\/${state.replace(/\s/g, '').toLowerCase()}\/${id}`,
                     observation: observation
                 });
 
@@ -65,7 +66,6 @@ const TestControls = {
                         routineTest
                             .save()
                             .then(() => {
-                               // message: `Seal NEMSA\/${state.replace(/\s/g,'')}\/${meter._id} generated successfully` 
                                 return res.status(200).send({
                                     message: `Routine Test has been added successfully`
                                 });
@@ -73,7 +73,7 @@ const TestControls = {
                             .catch(err => {
                                     console.log(err);
                                     res.status(401).send({
-                                        message: 'Please try again'
+                                        message: 'Please try again 1'
                                     });
                                 }
 
@@ -81,10 +81,11 @@ const TestControls = {
                     }
                 }).catch(err =>
                     res.status(401).send({
-                        message: 'Please try again later'
+                        message: 'Please try again later 2'
                     }));
 
             }).catch(validationError => {
+                console.log(validationError);
                 const errorMessage = validationError.details.map(d => d.message);
                 return res.status(400).send({
                     message: `${errorMessage[0]}`
