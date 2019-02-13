@@ -93,7 +93,9 @@ header[role='banner'] ul li .logout {
   -moz-box-shadow: 0px 0.8px 0.8px #807780;
   box-shadow: 0px 0.8px 0.8px #868286;
 }
-
+#header {
+   background-color: #F7F8FB;
+}
 .verify-header {
   background-color: #7cc68d !important;
 }
