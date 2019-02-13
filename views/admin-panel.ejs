@@ -17,8 +17,9 @@
 <main role='dashboard'>
     <div class='container'>
         <h2>Manage Users/Report</h2>
-        <div class='toggle-buttons'><button class='btn' id='add'>Add User</button> <button class='btn' id='modify'>Edit
-                User</button> <button class='btn' id='report'>Get Report</button> </div>
+
+        <div class='toggle-buttons'><button class='btn' id='add'>Add User</button> <button class='btn' id='modify'>Edit User</button> <button class='btn' id='report'>Get Report</button></div>
+       
         <div class='docker' id='docker-1'>
             <form action='/addUser' method='POST' encrypt='multipart/form-data' id='add_user'>
                 <div>
@@ -115,8 +116,11 @@
             <div class='toggle-buttons report-div'><button class='btn' id='byState'>By State</button> <button class='btn'
                     id='byDate'>By Date</button> </div>
             <div class="mini-docker">
+
                 <div id="mini-docker-1">
+                    
                     <form action='/byState' method='POST' id='byStateForm'>
+
                         <div>
                             <label for='state'>State</label>
                             <select name='state'>
@@ -172,7 +176,9 @@
                         <div>
                             <button type='submit' class='btn'>Submit</button>
                         </div>
+
                     </form>
+
                     <div class='messages-div reports-loader'>
                         <div class='loader' id='loader'>Loading...</div>
                         <div id='downloadBtns'> <button class="btn" id="csvBtn1">Download CSV</button> <button class="btn"
@@ -181,8 +187,11 @@
                         <div id='messages-11'></div>
 
                     </div>
+
                 </div>
+
                 <div id="mini-docker-2">
+
                     <form action='/byDate' method='POST' id='byDateForm'>
                         <div>
                             <label for='from'>From</label>
@@ -205,15 +214,19 @@
                             <button type='submit' class='btn'>Submit</button>
                         </div>
                     </form>
+
                     <div class='messages-div reports-loader'>
                         <div class='loader' id='loader'>Loading...</div>
                         <div id='downloadBtns'> <button class="btn" id="csvBtn2">Download CSV</button> <button class="btn"
                                 id="pdfBtn2">Download PDF</button></div>
                         <div id='messages-12'></div>
                     </div>
+
                 </div>
+
             </div>
         </div>
+
     </div>
 </main>
 <script type='text/javascript' src='/main/admin-forms.js'></script>

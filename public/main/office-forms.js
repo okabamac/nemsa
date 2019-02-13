@@ -72,10 +72,14 @@ const addYearsToDate = (input, addYears) => {
     return newMonth;
   };
   const dayFunc = (d) => {
+    let newDay;
     if(d<10) {
-      return '0'+ d;
+      newDay = '0'+ d;
     }
-    return d;
+    if(d== '00') {
+      newDay = '01';
+    }
+    return newDay;
   };
   const year = new Date(yearAdded).getFullYear();
   const month =  new Date(yearAdded).getMonth();

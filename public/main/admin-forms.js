@@ -22,11 +22,6 @@ report.addEventListener('click', toggleReportForm);
 byState.addEventListener('click', toggleByStateForm);
 byDate.addEventListener('click', toggleByDateForm);
 
-const dateConvert = (date) => {
-  date = new Date(date).toUTCString();
-  date = date.split(' ').slice(0, 4).join(' ');
-  return date;
-};
 
 function toggleAddUserForm() {
   docker1.style.display = 'block';
@@ -237,7 +232,7 @@ if (byStateForm) {
             data: obj.body.data, //load row data from array
             layout: "fitDataFill", //fit columns to width of table
             pagination: "local", //paginate the data
-            paginationSize: 7, //allow 7 rows per page of data
+            paginationSize: 9, //allow 7 rows per page of data
             placeholder: "No Data Available", //display message to user on empty table
             resizableRows: true, //allow row order to be changed
             columns: [ //define the table columns
@@ -250,7 +245,7 @@ if (byStateForm) {
               {
                 title: "Seal Number",
                 field: "seal",
-                width: 200,
+                width: 250,
 
               },
               {
@@ -262,15 +257,15 @@ if (byStateForm) {
               {
                 title: "Date of Test",
                 field: "dateRoutineTest",
-                width: 200,
-                formatter: dateConvert
+                width: 170,
+                
 
               },
               {
                 title: "Expiry Date",
                 field: "expDate",
-                width: 200,
-                formatter: dateConvert
+                width: 170,
+                
 
               },
             ],
@@ -293,7 +288,7 @@ if (byStateForm) {
     if (pdfBtn1) {
       pdfBtn1.addEventListener('click', () => {
        table.download("pdf", "data.pdf", {
-         orientation: "portrait", //set page orientation to portrait
+         orientation: "landscape", //set page orientation to portrait
          title: "Dynamics Quotation Report", //add title to report
          jsPDF: {
            unit: "in", //set units to inches
@@ -360,8 +355,8 @@ if (byDateForm) {
               },
               {
                 title: "Seal Number",
-                field: "_id",
-                width: 200,
+                field: "seal",
+                width: 250,
 
               },
               {
@@ -373,15 +368,15 @@ if (byDateForm) {
               {
                 title: "Date of Test",
                 field: "dateRoutineTest",
-                width: 200,
-                formatter: dateConvert
+                width: 170,
+                
 
               },
               {
                 title: "Expiry Date",
                 field: "expDate",
-                width: 200,
-                formatter: dateConvert
+                width: 170,
+                
 
               },
             ],
@@ -403,7 +398,7 @@ if (byDateForm) {
  if (pdfBtn2) {
    pdfBtn2.addEventListener('click', () => {
      table2.download("pdf", "data.pdf", {
-       orientation: "portrait", //set page orientation to portrait
+       orientation: "landscape", //set page orientation to portrait
        title: "Dynamics Quotation Report", //add title to report
        jsPDF: {
          unit: "in", //set units to inches

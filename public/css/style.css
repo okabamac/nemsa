@@ -482,12 +482,14 @@ input[type='email'] {
   position: relative;
   margin-top: -20px;
 }
+
+.container .mini-docker #mini-docker-1 form,
+.container .mini-docker #mini-docker-2 form {
+  width: 100%;
+}
   .container .mini-docker .btn {
     width: 100px;
     margin-top: 35px;
-  }
-  .container .mini-docker #mini-docker-1 {
-    width: 100%;
   }
   .container .mini-docker #mini-docker-1 select, .container .mini-docker #mini-docker-2 select {
     width: 200px;
@@ -551,6 +553,10 @@ textarea {
 #docker-3 {
   position: absolute;
   top: 77px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   display: none;
   transition: 0.3s;
 }
@@ -598,15 +604,24 @@ textarea {
   top: 20px;
   height: auto;
 }
-#messages-11 .tabulator-header, #messages-12 .tabulator-header {
-  background-color:  rgb(7, 7, 7);
-  color:rgb(20, 18, 18);
-}
 
+#messages-11 .tabulator-header, #messages-12 .tabulator-header {
+  color: #fff;
+}
+#messages-11 .tabulator-col,
+#messages-12 .tabulator-col {
+   background-color: rgb(12, 120, 192);
+   border-bottom: 3px solid green;
+}
+#messages-11 .tabulator,
+#messages-12 .tabulator {
+  border: none;
+}
 /*Allow column header names to wrap lines*/
 #messages-11 .tabulator-header .tabulator-col,
 #messages-11 .tabulator-header .tabulator-col-row-handle, #messages-12 .tabulator-header .tabulator-col,
 #messages-12 .tabulator-header .tabulator-col-row-handle {
+  border: none;
   white-space: normal;
 }
 
@@ -910,7 +925,7 @@ td {
   }
 
   main[role='dashboard'] .container {
-    padding: 0.4em 0.6em;
+    padding: 0.4em 0.8em;
     height: 1500px;
   }
 
