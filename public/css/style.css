@@ -552,11 +552,7 @@ textarea {
 
 #docker-3 {
   position: absolute;
-  top: 77px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  top: 77px; 
   display: none;
   transition: 0.3s;
 }
