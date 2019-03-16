@@ -371,15 +371,7 @@
                     </select>
                 </div>
 
-                <div>
-                    <label for='meterType'>Meter Type</label>
-                    <select name='meterType' required>
-                        <option value="4WIRE">4WIRE</option>
-                        <option value="2WIRE">2WIRE</option>
-                        <option value="3PHASE4WIRE">3PHASE4WIRE</option>
-                    </select>
-                </div>
-
+                 
 
                 <div>
                     <label for='meterClass'>Meter Class</label>
@@ -387,6 +379,17 @@
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='0.5S'>0.5S</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for='meterType'>Meter Type</label>
+                    <select name='meterType' required>
+                        <option value="4WIRE">4WIRE</option>
+                        <option value="1PHASE2WIRES">1PHASE2WIRES</option>
+                        <option value="2WIRE">2WIRE</option>
+                        <option value="3PHASE3WIRE">3PHASE3WIRE</option>
+                        <option value="3PHASE4WIRE">3PHASE4WIRE</option>
                     </select>
                 </div>
                 <div>
@@ -713,6 +716,18 @@
                     <label for='meterRating'>Meter Rating</label>
                     <select name='meterRating' required>
                         <option value=''></option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for='meterClass'>Meter Class</label>
+                    <select name='meterClass' required>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='0.2S'>0.2S</option>
+                        <option value='0.5'>0.5</option>
+                        <option value='2'>2</option>
+                        <option value='0.5S'>0.5S</option>
                     </select>
                 </div>
 
@@ -1130,7 +1145,9 @@
                     <label for='meterType'>Meter Type</label>
                     <select name='meterType' required>
                         <option value="4WIRE">4WIRE</option>
+                        <option value="1PHASE2WIRES">1PHASE2WIRES</option>
                         <option value="2WIRE">2WIRE</option>
+                        <option value="3PHASE3WIRE">3PHASE3WIRE</option>
                         <option value="3PHASE4WIRE">3PHASE4WIRE</option>
                     </select>
                 </div>
@@ -1139,6 +1156,9 @@
                     <label for='meterClass'>Meter Class</label>
                     <select name='meterClass' required>
                         <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='0.2S'>0.2S</option>
+                        <option value='0.5'>0.5</option>
                         <option value='2'>2</option>
                         <option value='0.5S'>0.5S</option>
                     </select>
