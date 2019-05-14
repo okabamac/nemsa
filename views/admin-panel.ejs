@@ -114,7 +114,7 @@
 
         <div class='docker' id='docker-3'>
             <div class='toggle-buttons report-div'><button class='btn' id='byState'>By State</button> <button class='btn'
-                    id='byDate'>By Date</button> </div>
+                    id='byDate'>By Date</button> <button class='btn' id='printSeal'>Print Seal</button> </div>
             <div class="mini-docker">
 
                 <div id="mini-docker-1">
@@ -220,6 +220,28 @@
                         <div id='downloadBtns'> <button class="btn" id="csvBtn2">Download CSV</button> <button class="btn"
                                 id="pdfBtn2">Download PDF</button></div>
                         <div id='messages-12'></div>
+                    </div>
+
+                </div>
+
+                <div id="mini-docker-3">
+
+                    <form action='/byBatch' method='POST' id='byBatchForm'>
+                        <div>
+                            <label for='batchId'></label>
+                            <input type='text' name='batchId' placeholder='Enter Batch ID' required>
+                        </div>
+
+                        <div>
+                            <button type='submit' class='btn'>Submit</button>
+                        </div>
+                    </form>
+
+                    <div class='messages-div reports-loader'>
+                        <div class='loader' id='loader'>Loading...</div>
+                        <div id='downloadBtns'> <button class="btn" id="csvBtn3">Download CSV</button> <button class="btn"
+                                id="pdfBtn3">Download PDF</button></div>
+                        <div id='messages-13'></div>
                     </div>
 
                 </div>

@@ -1,45 +1,42 @@
-const express = require('express');
-const expressLayouts = require('express-ejs-layouts');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const session = require('express-session');
-const flash = require('connect-flash');
-const passport = require('passport');
+import express from 'express';
+import expressLayouts from 'express-ejs-layouts';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import session from 'express-session';
+import flash from 'connect-flash';
+import passport from 'passport';
+import index from './routes/index';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 require('./config/passport')(passport);
 
 
 const db = require('./config/keys').MongoURI;
+
 mongoose.connect(db, {
-        useNewUrlParser: true
-    })
-    .then(() => console.log('MongoDB Connected...'))
-    .catch(err => console.log(err));
+  useNewUrlParser: true,
+})
+  .then(() => console.log('MongoDB Connected...'))
+  .catch(err => console.log(err));
 
 
+app.use(express.urlencoded({
+  extended: false,
+}));
+app.use(express.json());
 
 
-    app.use(express.urlencoded({
-        extended: false
-    }));
-    app.use(express.json());
-
-
-
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(`${__dirname }/public`));
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 
-
 app.use(cors());
 app.use(session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true,
 }));
 
 
@@ -48,28 +45,32 @@ app.use(passport.session());
 
 app.use(flash());
 
-//Global vars
+// Global vars
 
 app.use((req, res, next) => {
-    res.locals.error = req.flash('error');
-    next();
+  res.locals.error = req.flash('error');
+  next();
 });
 
-app.use('/', require('./routes/index'));
+app.use('/', index);
+
+app.use('*', (req, res) => {
+  res.send('404 \n Page not found');
+});
 
 if (app.get('env') === 'development') {
-    app.use(function (err, req, res, next) {
-        res.status(err.code || 500)
-            .send({
-                status: 'Error',
-                message: 'Please try again later'
-            });
-    });
+  app.use((err, req, res) => {
+    res.status(err.code || 500)
+      .send({
+        status: 'Error',
+        message: 'Please try again later',
+      });
+  });
 }
 
 process.on('uncaughtException', (err) => {
-    console.error('There was an uncaught error', err)
-    process.exit(1);
+  console.error('There was an uncaught error', err);
+  process.exit(1);
 });
 
-app.listen(PORT, console.info(`Server started on port ${3000}`));
+export default app;

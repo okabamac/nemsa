@@ -1,144 +1,126 @@
-const User = require('../models/User');
-const bcrypt = require('bcryptjs');
-const fs = require('fs');
-const path = require('path');
-const {
-    userSchema
-} = require('./validation');
+import bcrypt from 'bcryptjs';
+import fs from 'fs';
+import path from 'path';
+import multer from 'multer';
+import {
+  userSchema,
+} from './validation';
 
 
-const multer = require('multer');
+import User from '../models/User';
+
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.resolve(__dirname + '/../uploads'));
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now() + '-' + file.originalname);
-    }
+  destination: (req, file, cb) => {
+    cb(null, path.resolve(`${__dirname}/../uploads`));
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${file.fieldname}-${Date.now()}-${file.originalname}`);
+  },
 });
 
 const upload = multer({
-    storage: storage,
-    limits: { fileSize: 1 * 256 * 1024 }
+  storage,
+  limits: { fileSize: 1 * 256 * 1024 },
 }).single('avatar');
 
 
 const UserControls = {
-    addUser: (req, res) => {
-        upload(req, res, (err) => {
-            if (err instanceof multer.MulterError) {
-                console.log(err.message);
-               return res.status(400).send({
-                    status: 'Error',
-                    message: `There is an error: ${err.message}`
-                });
-            } else if (err) {
-               return res.status(400).send({
-                    status: 'Error',
-                    message: `There is an error: ${err.message}`
-                });
-            } else {
-                userSchema
-                    .validate(req.body, {
-                        abortEarly: false
-                    })
-                    .then(validatedCredentials => {
-                        if(req.file.mimetype) {
-                             const {
-                            firstName,
-                            lastName,
-                            staffEmail,
-                            staffID,
-                            password,
-                            admin
-                        } = validatedCredentials;
-                        
-               
-                User.findOne({
-                    staffEmail: staffEmail
-                }, (err, existingUser) => {
-                    if (existingUser === null) {
-                        
-                        // Creating one user.
-                        let user = new User({
-                            name: {
-                                first: firstName,
-                                last: lastName
-                            },
-                            staffID: staffID,
-                            staffEmail: staffEmail,
-                            password: password,
-                            admin: admin,
-                            avatar: {
-                                data: fs.readFileSync(req.file.path),
-                                contentType: req.file.mimetype
-                            }
-                        });
-                        bcrypt.genSalt(10, (err, salt) =>
-                            bcrypt.hash(user.password, salt, (err, hash) => {
-                                if (err) throw err;
-                                user.password = hash;
-                                user
-                                    .save()
-                                    .then(() => {
-                                       return res.status(200).send({
-                                            message: `Staff with ID ${staffID} has been added successfully`
-                                        });
-                                    })
-                                    .catch(err => {
-                                        console.log(err);
-                                       res.status(401).send({
-                                            message: err
-                                        });
-                                    });
-                            })
-                        );
-                    } else {
-                      return res.status(400).send({
-                            status: 'Error',
-                            message: 'Email is not available'
-                        });
-                    }
-                });
-
-                        } else {
-                            return res.status(400).send({
-                            status: 'Error',
-                            message: `Please upload an image`
-                        });
-                        }
-                    })
-                    .catch(validationError => {
-                        const errorMessage = validationError.details.map(d => d.message);
-                        return res.status(400).send({
-                            status: 'Error',
-                            message: `${errorMessage[0]}`
-                        });
-                    });
-            }
+  addUser: (req, res) => {
+    upload(req, res, (err) => {
+      if (err instanceof multer.MulterError) {
+        return res.status(400).send({
+          status: 'Error',
+          message: `There is an error: ${err.message}`,
         });
-    },
+      } if (err) {
+        return res.status(400).send({
+          status: 'Error',
+          message: `There is an error: ${err.message}`,
+        });
+      }
+      if (req.file.mimetype) {
+        const {
+          firstName,
+          lastName,
+          staffEmail,
+          staffID,
+          password,
+          admin,
+        } = req.body;
 
-    editUser: (req, res) => {
+
         User.findOne({
-            name: {
-                first: req.body.firstName,
-                last: req.body.lastName
-            },
-            staffID: req.body.staffID
-        }).then((staff) => {
-            if (staff) {
-                return res.status(200).send({
-                    staff
+          staffEmail,
+        }, (err, existingUser) => {
+          if (existingUser === null) {
+            // Creating one user.
+            const user = new User({
+              name: {
+                first: firstName,
+                last: lastName,
+              },
+              staffID,
+              staffEmail,
+              password,
+              admin,
+              avatar: {
+                data: fs.readFileSync(req.file.path),
+                contentType: req.file.mimetype,
+              },
+            });
+            bcrypt.genSalt(10, (err, salt) => bcrypt.hash(user.password, salt, (err, hash) => {
+              if (err) throw err;
+              user.password = hash;
+              user
+                .save()
+                .then(() => res.status(200).send({
+                  message: `Staff with ID ${staffID} has been added successfully`,
+                }))
+                .catch((err) => {
+                  res.status(401).send({
+                    message: err,
+                  });
                 });
-            } else {
-                return res.status(400).send({
-                    status: 'Error',
-                    message: 'One of the fields is incorrect or this staff does not exist'
-                });
-            }
-        }).catch((err) => console.log(err));
-    },
+            }));
+          } else {
+            return res.status(400).send({
+              status: 'Error',
+              message: 'Email is not available',
+            });
+          }
+        });
+      } else {
+        return res.status(400).send({
+          status: 'Error',
+          message: 'Please upload an image',
+        });
+      }
+    });
+  },
+
+  editUser: async (req, res, next) => {
+    try {
+      const staff = await User.findOne({
+        name: {
+          first: req.body.firstName,
+          last: req.body.lastName,
+        },
+        staffID: req.body.staffID,
+      });
+      if (staff !== null) {
+        return res.status(200).send({
+          staff,
+        });
+      }
+      return res.status(404).json({
+        status: 'Error',
+        message: 'One of the fields is incorrect or this staff does not exist',
+      });
+    } catch (err) {
+      res.status(500);
+      return next(new Error('Please try again later'));
+    }
+  },
 };
 
-module.exports = UserControls;
+export default UserControls;

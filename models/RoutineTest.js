@@ -25,6 +25,14 @@ const RoutineTestSchema = new Schema({
         type: Date,
         required: true
     },
+    batchID: {
+        type: String,
+        required: true
+    },
+    batchQty: {
+        type: String,
+        required: true
+    },
     state: {
         type: String,
         required: true
