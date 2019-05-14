@@ -33,17 +33,17 @@ router.get('/adminDashboard', ensureAuthenticatedAdmin, LoginControls.adminHome)
 router.post('/loginOffice', LoginControls.officerLoginPost);
 router.post('/loginAdmin', LoginControls.adminLoginPost);
 
-router.post('/addUser', UserControls.addUser);
-router.post('/editUser', UserControls.editUser);
+router.post('/addUser', ensureAuthenticatedAdmin, UserControls.addUser);
+router.post('/editUser', ensureAuthenticatedAdmin, UserControls.editUser);
 
 router.post('/routineTest', ensureAuthenticatedOffice, joiHelper(undefined, routineTestSchema), TestControls.routineTest);
 router.post('/typeTest', ensureAuthenticatedOffice, joiHelper(undefined, typeTestSchema), TestControls.typeTest);
 router.post('/reCertification', ensureAuthenticatedOffice, joiHelper(undefined, reCertificationSchema), TestControls.reCertification);
 
 
-router.post('/byState', ReportControls.byState);
-router.post('/byDate', ReportControls.byDate);
-router.post('/byBatch', ReportControls.byBatch);
+router.post('/byState', ensureAuthenticatedAdmin, ReportControls.byState);
+router.post('/byDate', ensureAuthenticatedAdmin, ReportControls.byDate);
+router.post('/byBatch', ensureAuthenticatedAdmin, ReportControls.byBatch);
 
 
 export default router;
