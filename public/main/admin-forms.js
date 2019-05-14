@@ -8,8 +8,10 @@ const report = document.getElementById('report');
 
 const miniDocker1 = document.getElementById('mini-docker-1');
 const miniDocker2 = document.getElementById('mini-docker-2');
+const miniDocker3 = document.getElementById('mini-docker-3');
 const byState = document.querySelector('#byState');
 const byDate = document.querySelector('#byDate');
+const printSeal = document.getElementById('printSeal');
 
 
 addUser.addEventListener('click', toggleAddUserForm);
@@ -21,6 +23,7 @@ report.addEventListener('click', toggleReportForm);
 
 byState.addEventListener('click', toggleByStateForm);
 byDate.addEventListener('click', toggleByDateForm);
+printSeal.addEventListener('click', togglePrintSeal);
 
 
 function toggleAddUserForm() {
@@ -55,15 +58,27 @@ function toggleReportForm() {
 function toggleByStateForm() {
   miniDocker1.style.display = 'block';
   miniDocker2.style.display = 'none';
+  miniDocker3.style.display = 'none';
   byState.style.backgroundColor = 'green';
   byDate.style.backgroundColor = 'dodgerblue';
+  printSeal.style.backgroundColor = 'dodgerblue';
 }
 
 function toggleByDateForm() {
   miniDocker1.style.display = 'none';
   miniDocker2.style.display = 'block';
+  miniDocker3.style.display = 'none';
   byState.style.backgroundColor = 'dodgerblue';
   byDate.style.backgroundColor = 'green';
+  printSeal.style.backgroundColor = 'dodgerblue';
+}
+function togglePrintSeal() {
+  miniDocker1.style.display = 'none';
+  miniDocker2.style.display = 'none';
+  miniDocker3.style.display = 'block';
+  byState.style.backgroundColor = 'dodgerblue';
+  byDate.style.backgroundColor = 'dodgerblue';
+  printSeal.style.backgroundColor = 'green';
 }
 window.onscroll = function (ev) {
   let header = document.getElementById('header');
@@ -287,22 +302,22 @@ if (byStateForm) {
     pdfBtn1 = document.getElementById('pdfBtn1');
     if (pdfBtn1) {
       pdfBtn1.addEventListener('click', () => {
-       table.download("pdf", "data.pdf", {
+       table.download("pdf", "Report.pdf", {
          orientation: "landscape", //set page orientation to portrait
-         title: "Dynamics Quotation Report", //add title to report
+         title: "NEMSA Quotation Report", //add title to report
          jsPDF: {
            unit: "in", //set units to inches
          },
            margin: {
              top: 60
-           }
+           },
        });
       });
     }
   csvBtn1 = document.getElementById('csvBtn1');
   if (csvBtn1) {
     csvBtn1.addEventListener('click', () => {
-      table.download("csv", "data.csv");
+      table.download("csv", "Report.csv");
     });
   }
 }
@@ -397,9 +412,9 @@ if (byDateForm) {
  pdfBtn2 = document.getElementById('pdfBtn2');
  if (pdfBtn2) {
    pdfBtn2.addEventListener('click', () => {
-     table2.download("pdf", "data.pdf", {
+     table2.download("pdf", "Report.pdf", {
        orientation: "landscape", //set page orientation to portrait
-       title: "Dynamics Quotation Report", //add title to report
+       title: "NEMSA Quotation Report", //add title to report
        jsPDF: {
          unit: "in", //set units to inches
        },
@@ -412,7 +427,97 @@ if (byDateForm) {
  csvBtn2 = document.getElementById('csvBtn2');
  if (csvBtn2) {
    csvBtn2.addEventListener('click', () => {
-     table2.download("csv", "data.csv");
+     table2.download("csv", "Report.csv");
    });
  }
+}
+
+const byBatchForm = document.getElementById('byBatchForm');
+if (byBatchForm) {
+  let table;
+  byBatchForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const downloadBtns = document.querySelectorAll('div#downloadBtns');
+    downloadBtns[2].style.display = 'none';
+    let message13 = document.getElementById('messages-13');
+    message13.style.display = 'none';
+    const loader = document.getElementsByClassName('loader');
+    loader[4].style.display = 'block';
+    const form = document.getElementById('byBatchForm');
+    const formData = new URLSearchParams(new FormData(form));
+    fetch('/byBatch', {
+        method: 'POST',
+        body: formData
+      })
+      .then(r =>
+        r.json().then(data => ({
+          status: r.status,
+          body: data
+        }))
+      )
+      .then(obj => {
+        if (obj.status === 200) {
+          loader[4].style.display = 'none';
+          message13.style.color = '#333';
+          message13.style.display = 'block';
+          downloadBtns[2].style.display = 'block';
+          table = new Tabulator("#messages-13", {
+            height: "311px",
+            data: obj.body.data, //load row data from array
+            layout: "fitDataFill", //fit columns to width of table
+            pagination: "local", //paginate the data
+            paginationSize: 9, //allow 7 rows per page of data
+            placeholder: "No Data Available", //display message to user on empty table
+            resizableRows: true, //allow row order to be changed
+            columns: [ //define the table columns
+              {
+                title: "Meter Number",
+                field: "meterSerialNumber",
+                width: 350,
+
+              },
+              {
+                title: "Seal Number",
+                field: "seal",
+                width: 350,
+
+              },
+              
+            ],
+          });
+        } else {
+          loader[4].style.display = 'none';
+          message13.style.color = 'red';
+          message13.innerHTML = 'Please try again later';
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        message13.style.display = 'block';
+        message13.style.color = 'red';
+        loader[4].style.display = 'none';
+        message13.innerHTML = 'Please try again later';
+      });
+  });
+    pdfBtn3 = document.getElementById('pdfBtn3');
+    if (pdfBtn3) {
+      pdfBtn3.addEventListener('click', () => {
+       table.download("pdf", "Report.pdf", {
+         orientation: "landscape", //set page orientation to portrait
+         title: "NEMSA Quotation Report", //add title to report
+         jsPDF: {
+           unit: "in", //set units to inches
+         },
+           margin: {
+             top: 60
+           },
+       });
+      });
+    } 
+  csvBtn3 = document.getElementById('csvBtn3');
+  if (csvBtn3) {
+    csvBtn3.addEventListener('click', () => {
+      table.download("csv", "Report.csv");
+    });
+  }
 }

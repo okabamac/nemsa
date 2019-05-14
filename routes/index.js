@@ -1,14 +1,23 @@
-const LoginControls = require('../controllers/loginController');
-const VerificationControls = require('../controllers/verificationController');
-const UserControls = require('../controllers/userController');
-const TestControls = require('../controllers/testController');
-const ReportControls = require('../controllers/reportController');
-const express = require('express');
+import express from 'express';
+import LoginControls from '../controllers/loginController';
+import VerificationControls from '../controllers/verificationController';
+import UserControls from '../controllers/userController';
+import TestControls from '../controllers/testController';
+import ReportControls from '../controllers/reportController';
+import joiHelper from '../controllers/joiHelper';
+import {
+  ensureAuthenticatedOffice,
+  ensureAuthenticatedAdmin,
+} from '../config/auth';
+
+import {
+  routineTestSchema,
+  typeTestSchema,
+  reCertificationSchema,
+} from '../controllers/validation';
+
 const router = express.Router();
-const {
-    ensureAuthenticatedOffice,
-    ensureAuthenticatedAdmin
-} = require('../config/auth');
+
 
 router.get('/', LoginControls.getHomePage);
 router.get('/login', LoginControls.loginOffice);
@@ -24,16 +33,17 @@ router.get('/adminDashboard', ensureAuthenticatedAdmin, LoginControls.adminHome)
 router.post('/loginOffice', LoginControls.officerLoginPost);
 router.post('/loginAdmin', LoginControls.adminLoginPost);
 
-router.post('/addUser', UserControls.addUser);
-router.post('/editUser', UserControls.editUser);
+router.post('/addUser', ensureAuthenticatedAdmin, UserControls.addUser);
+router.post('/editUser', ensureAuthenticatedAdmin, UserControls.editUser);
 
-router.post('/routineTest', TestControls.routineTest);
-router.post('/typeTest', TestControls.typeTest);
-router.post('/reCertification', TestControls.reCertification);
-
-
-router.post('/byState', ReportControls.byState);
-router.post('/byDate', ReportControls.byDate);
+router.post('/routineTest', ensureAuthenticatedOffice, joiHelper(undefined, routineTestSchema), TestControls.routineTest);
+router.post('/typeTest', ensureAuthenticatedOffice, joiHelper(undefined, typeTestSchema), TestControls.typeTest);
+router.post('/reCertification', ensureAuthenticatedOffice, joiHelper(undefined, reCertificationSchema), TestControls.reCertification);
 
 
-module.exports = router;
+router.post('/byState', ensureAuthenticatedAdmin, ReportControls.byState);
+router.post('/byDate', ensureAuthenticatedAdmin, ReportControls.byDate);
+router.post('/byBatch', ensureAuthenticatedAdmin, ReportControls.byBatch);
+
+
+export default router;

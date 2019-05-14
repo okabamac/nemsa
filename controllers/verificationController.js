@@ -1,46 +1,44 @@
 
-const RoutineTest = require('../models/RoutineTest');
-const TypeTest = require('../models/TypeTest');
-const ReCertification = require('../models/ReCertification');
+import RoutineTest from '../models/RoutineTest';
+import TypeTest from '../models/TypeTest';
+import ReCertification from '../models/ReCertification';
 
 const Verification = {
-    
-    verify: (req, res) => {
-        RoutineTest.findOne({
-            meterSerialNumber: req.params.serial
-        }).then(meter => {
-            if (meter) {
-                return res.status(200).send({
-                    meter
-                });
-            } else {
-                TypeTest.findOne({
-                    meterSerialNumber: req.params.serial
-                }).then(meter => {
-                    if (meter) {
-                        return res.status(200).send({
-                            meter
-                        });
-                    } else {
-                        ReCertification.findOne({
-                            meterSerialNumber: req.params.serial
-                        }).then(meter => {
-                            if (meter) {
-                                return res.status(200).send({
-                                    meter
-                                });
-                            } else {
-                                return res.status(400).send({
-                                    status: 'Error',
-                                    message: 'This meter does not exist in our database, please contact the nearest DISCO'
-                                });
-                            }
-                        }).catch(err => console.log(err));
-                    }
-                }).catch(err => console.log(err));
-            }
-        }).catch(err => console.log(err));
-    },
+  verify: async (req, res, next) => {
+    try {
+      const res1 = RoutineTest.findOne({
+        meterSerialNumber: req.params.serial,
+      });
+      const res2 = TypeTest.findOne({
+        meterSerialNumber: req.params.serial,
+      });
+      const res3 = ReCertification.findOne({
+        meterSerialNumber: req.params.serial,
+      });
+      const [meter1, meter2, meter3] = await Promise.all([res1, res2, res3]);
+      if (meter1 !== null) {
+        return res.status(200).json({
+          meter: meter1,
+        });
+      }
+      if (meter2 !== null) {
+        return res.status(200).json({
+          meter: meter2,
+        });
+      }
+      if (meter3 !== null) {
+        return res.status(200).json({
+          meter: meter3,
+        });
+      }
+      return res.status(400).send({
+        status: 'Error',
+        message: 'This meter does not exist in our database, please contact the nearest DISCO',
+      });
+    } catch (err) {
+      res.status(500);
+      return next(new Error('Please try again later'));
+    }
+  },
 };
-
-module.exports = Verification;
+export default Verification;
